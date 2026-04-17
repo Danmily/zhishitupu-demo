@@ -4,10 +4,10 @@ Knowledge Graph Job Title Standardization — Pure KG, Zero LLM
 FastAPI backend: graph construction + multi-level matching + 80/20 generalization
 """
 
-import json, re, sys, io, random
+import json, re, sys, io, random, csv, threading, time
 from pathlib import Path
 from collections import defaultdict
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.responses import HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
@@ -467,6 +467,209 @@ async def graph_data():
 
     return {"nodes": nodes, "edges": edges,
             "summary": {"nodes": len(nodes), "edges": len(edges)}}
+
+
+# ═══════════════════════════════════════════════════════
+#  Hybrid Pipeline (KG + Embedding LLM) —— 懒加载 + 后台预热
+# ═══════════════════════════════════════════════════════
+#
+# 这段代码把我们新开发的 pipeline.py（L1/L2 规则 + L3 Embedding 泛化）
+# 接入到 FastAPI 中。模型加载比较重（0.6B Embedding + 629 变体向量索引），
+# 所以采取"启动时后台线程预热 + 请求时若未就绪则 503 + 前端轮询 status"
+# 的方式，保证纯 KG 接口零延迟启动、混合链路按需就绪。
+
+DATASET_DIR = DATA_DIR / "dataset"
+
+_PIPELINE = None
+_PIPELINE_READY = False
+_PIPELINE_LOADING = False
+_PIPELINE_ERROR: str | None = None
+_PIPELINE_BACKEND = None  # 实际加载的模型类型（base / ft）
+_PIPELINE_LOCK = threading.Lock()
+
+
+def _pick_embedding_model_path() -> tuple[str | None, str]:
+    """优先选择已微调模型，否则回退基础模型。返回 (path_or_None, tag)。"""
+    ft = DATA_DIR / "models" / "Qwen3-Embedding-0.6B-ft"
+    base = DATA_DIR / "models" / "Qwen3-Embedding-0.6B"
+    if (ft / "config.json").exists():
+        return str(ft), "ft"
+    if (base / "config.json").exists():
+        return str(base), "base"
+    return None, "missing"
+
+
+def _load_pipeline_background():
+    """在后台线程中加载 HybridPipeline，避免阻塞 FastAPI 启动。"""
+    global _PIPELINE, _PIPELINE_READY, _PIPELINE_LOADING, _PIPELINE_ERROR, _PIPELINE_BACKEND
+    with _PIPELINE_LOCK:
+        if _PIPELINE_READY or _PIPELINE_LOADING:
+            return
+        _PIPELINE_LOADING = True
+    t0 = time.time()
+    try:
+        from pipeline import HybridPipeline
+        model_path, tag = _pick_embedding_model_path()
+        if model_path is None:
+            raise RuntimeError(
+                "未检测到本地 Qwen3-Embedding-0.6B 模型，请先运行 "
+                "`python scripts/download_qwen_embedding.py`"
+            )
+        kwargs = {"model_path": model_path, "index_tag": tag}
+        _PIPELINE = HybridPipeline.from_defaults(
+            llm_backend="embedding", llm_kwargs=kwargs,
+        )
+        _PIPELINE_BACKEND = tag
+        _PIPELINE_READY = True
+        print(f"[Pipeline] ready in {time.time()-t0:.1f}s, backend={tag}, path={model_path}")
+    except Exception as e:
+        _PIPELINE_ERROR = f"{type(e).__name__}: {e}"
+        print(f"[Pipeline] load failed: {_PIPELINE_ERROR}")
+    finally:
+        _PIPELINE_LOADING = False
+
+
+@app.on_event("startup")
+def _startup_warmup():
+    """服务一起来就后台加载 pipeline，前端立刻可用纯 KG 接口。"""
+    threading.Thread(target=_load_pipeline_background, daemon=True).start()
+
+
+@app.get("/api/pipeline_status")
+async def pipeline_status():
+    model_path, tag = _pick_embedding_model_path()
+    return {
+        "ready": _PIPELINE_READY,
+        "loading": _PIPELINE_LOADING,
+        "error": _PIPELINE_ERROR,
+        "backend": _PIPELINE_BACKEND,
+        "embedding_model_tag": tag,
+        "embedding_model_path": model_path,
+        "fine_tuned_available": tag == "ft",
+    }
+
+
+@app.post("/api/pipeline_warmup")
+async def pipeline_warmup():
+    """手动触发一次预热（通常不需要，@startup 已经触发过了）。"""
+    if _PIPELINE_READY:
+        return {"ok": True, "status": "already_ready"}
+    threading.Thread(target=_load_pipeline_background, daemon=True).start()
+    return {"ok": True, "status": "loading_started"}
+
+
+@app.post("/api/pipeline_match")
+async def pipeline_match(req: MatchReq):
+    """单条走 KG + Embedding 混合链路，返回完整 trace。"""
+    if not _PIPELINE_READY:
+        raise HTTPException(
+            status_code=503,
+            detail={
+                "loading": _PIPELINE_LOADING,
+                "error": _PIPELINE_ERROR,
+                "message": "Embedding 模型仍在加载中，请稍后重试（通常 30-60 秒）",
+            },
+        )
+    r = _PIPELINE.match(req.input_title, req.context)
+    return r
+
+
+def _csv_to_list(path: Path) -> list[dict]:
+    if not path.exists():
+        raise HTTPException(status_code=404, detail=f"CSV 文件不存在：{path.name}")
+    with path.open("r", encoding="utf-8-sig") as f:
+        return list(csv.DictReader(f))
+
+
+@app.get("/api/pipeline_report")
+async def pipeline_report():
+    """
+    直接返回离线跑好的 300 条混合链路评测结果（dataset/pipeline_eval_report.csv）。
+    汇报页面秒开用。包含 KG-only 与 KG+LLM 两条链路的并排对比。
+    """
+    rows = _csv_to_list(DATASET_DIR / "pipeline_eval_report.csv")
+
+    total = len(rows)
+    kg_correct = sum(1 for r in rows if (r.get("kg_got") or "") == r.get("expected", ""))
+    final_correct = sum(1 for r in rows if r.get("final_correct") == "1")
+
+    source_counter: dict[str, int] = defaultdict(int)
+    llm_rescue = 0   # KG 没解决 + LLM 解对了
+    llm_wrong = 0    # KG 没解决 + LLM 解错了
+    kg_only_missed_llm_saved_cases = []
+
+    for r in rows:
+        source_counter[r.get("final_source", "") or "unknown"] += 1
+        kg_ok = (r.get("kg_got") or "") == r.get("expected", "")
+        final_ok = r.get("final_correct") == "1"
+        if not kg_ok and r.get("final_source") == "llm":
+            if final_ok:
+                llm_rescue += 1
+                if len(kg_only_missed_llm_saved_cases) < 30:
+                    kg_only_missed_llm_saved_cases.append({
+                        "test_id": r["test_id"],
+                        "input_title": r["input_title"],
+                        "context": r.get("context", ""),
+                        "difficulty": r.get("difficulty", ""),
+                        "expected": r.get("expected", ""),
+                        "kg_got": r.get("kg_got", ""),
+                        "kg_level": r.get("kg_level", ""),
+                        "final_got": r.get("final_got", ""),
+                    })
+            else:
+                llm_wrong += 1
+
+    # 按目标层级拆分两条链路准确率
+    by_target: dict[str, dict] = defaultdict(lambda: {"total": 0, "kg_correct": 0, "final_correct": 0})
+    for r in rows:
+        k = r.get("target_level") or "-"
+        by_target[k]["total"] += 1
+        if (r.get("kg_got") or "") == r.get("expected", ""):
+            by_target[k]["kg_correct"] += 1
+        if r.get("final_correct") == "1":
+            by_target[k]["final_correct"] += 1
+    for v in by_target.values():
+        v["kg_acc"] = round(v["kg_correct"] / v["total"], 4) if v["total"] else 0
+        v["final_acc"] = round(v["final_correct"] / v["total"], 4) if v["total"] else 0
+
+    return {
+        "total": total,
+        "kg_only": {
+            "correct": kg_correct,
+            "accuracy": round(kg_correct / total, 4) if total else 0,
+        },
+        "hybrid": {
+            "correct": final_correct,
+            "accuracy": round(final_correct / total, 4) if total else 0,
+        },
+        "uplift_points": round((final_correct - kg_correct) / total, 4) if total else 0,
+        "sources": dict(source_counter),
+        "llm_rescue_count": llm_rescue,
+        "llm_wrong_count": llm_wrong,
+        "by_target_level": dict(by_target),
+        "llm_rescue_samples": kg_only_missed_llm_saved_cases,
+        "details": rows,
+    }
+
+
+@app.get("/api/llm_failures")
+async def llm_failures():
+    """失败反例聚合（按期望标准职称分组）——词表优化的输入。"""
+    rows = _csv_to_list(DATASET_DIR / "llm_failures_by_std.csv")
+    for r in rows:
+        if "fail_count" in r:
+            try:
+                r["fail_count"] = int(r["fail_count"])
+            except Exception:
+                pass
+    return {"total_groups": len(rows), "rows": rows}
+
+
+@app.get("/api/kg_expand_candidates")
+async def kg_expand_candidates():
+    """LLM 驱动的词表扩充候选（基于失败反例自动生成）。"""
+    rows = _csv_to_list(DATASET_DIR / "kg_expand_candidates.csv")
+    return {"total": len(rows), "rows": rows}
 
 
 if __name__ == "__main__":

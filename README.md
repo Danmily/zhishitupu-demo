@@ -190,6 +190,36 @@ python scripts/eval_pipeline.py --backend embedding --sample 300
 python scripts/analyze_llm_failures.py
 ```
 
+### 6.6 启动前端可视化页面（对外汇报）
+
+```powershell
+python app.py
+# 浏览器打开 http://127.0.0.1:8901
+```
+
+页面一共 6 个 Tab，汇报时建议按如下顺序演示：
+
+1. **交互式匹配** — 演示一条非标题切换 `纯 KG` / `KG+LLM` 两种引擎，给领导看一条 query 的完整路径（L1→L2→L3）。
+2. **KG 基准评估** — 全量 1500 条测试集跑纯 KG，作为基线。
+3. **混合链路汇报**（★汇报主页面）— 直接读 `dataset/pipeline_eval_report.csv`，**一屏展示**：
+   - 并排大卡片：`纯 KG 49%` → `KG+LLM 91.33%`，`+42.33pp`
+   - 来源分布：KG 命中 147 / LLM 救回 127 / LLM 误判 26
+   - 按目标层级拆分：L3 纯 KG 0% → 混合 86.7%、out_of_graph 0% → 71.2%
+   - 可筛选「LLM 救回」「LLM 误判」「KG 直接命中」查看具体样本
+4. **LLM 救回 & 词表优化** — 展示失败反例聚合 + `kg_expand_candidates.csv`，体现"持续迭代闭环"。
+5. **80/20 泛化实验** — 证明 KG 词表本身的泛化能力。
+6. **图谱浏览器** — 可视化 19 个标准职称 × 629 条映射边。
+
+> **注意**：首次启动时后端会在后台线程加载 Qwen3-Embedding-0.6B，CPU 上约 30-60s，首次索引构建约 2 分钟；头部 badge 会显示 `Embedding 就绪`。在此之前切到"交互式匹配"并选 `纯 KG 规则` 即可立刻使用。
+>
+> 如果 `models/Qwen3-Embedding-0.6B-ft/` 存在，后端会自动优先加载微调模型，header 会显示 `Embedding 就绪 · 微调模型`；否则回退加载基础模型。
+
+一键端到端健康检查（确认所有接口正常）：
+
+```powershell
+python scripts/verify_api.py
+```
+
 ---
 
 ## 7. 评测怎么读（给业务/领导看的指标）

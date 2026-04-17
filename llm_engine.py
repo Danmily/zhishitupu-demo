@@ -90,9 +90,24 @@ class EmbeddingEngine(BaseLLMEngine):
 
     name = "embedding"
 
-    def __init__(self, embedding_kg=None, top_k: int = 5, threshold: float = 0.45):
+    def __init__(
+        self,
+        embedding_kg=None,
+        model_path: str | None = None,
+        index_tag: str | None = None,
+        top_k: int = 5,
+        threshold: float = 0.45,
+    ):
         from embedding_service import EmbeddingKG
-        self.ekg = embedding_kg or EmbeddingKG()
+        if embedding_kg is not None:
+            self.ekg = embedding_kg
+        else:
+            kwargs = {}
+            if model_path:
+                kwargs["model_path"] = model_path
+            if index_tag:
+                kwargs["index_tag"] = index_tag
+            self.ekg = EmbeddingKG(**kwargs)
         self.top_k = top_k
         self.threshold = threshold
 

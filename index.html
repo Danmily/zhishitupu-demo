@@ -91,14 +91,16 @@ tr:hover{background:#f8fafc}tr.pass{background:var(--ok-bg)}tr.fail{background:v
 
 <div class="hdr">
   <h1>知识图谱职称标准化系统</h1>
-  <span class="badge badge-kg">纯图谱匹配</span>
-  <span class="badge badge-nollm">无需大模型</span>
+  <span class="badge badge-kg">KG + Embedding LLM 混合链路</span>
+  <span class="badge badge-nollm" id="hdrEngine">模型加载中...</span>
   <span class="badge badge-kg" id="hdrStats">加载中...</span>
 </div>
 
 <div class="tabs">
   <div class="tab on" data-t="search">交互式匹配</div>
-  <div class="tab" data-t="eval">基准测试评估</div>
+  <div class="tab" data-t="eval">KG 基准评估</div>
+  <div class="tab" data-t="report">混合链路汇报</div>
+  <div class="tab" data-t="rescue">LLM 救回 &amp; 词表优化</div>
   <div class="tab" data-t="gen">80/20 泛化实验</div>
   <div class="tab" data-t="graph">图谱浏览器</div>
 </div>
@@ -108,7 +110,19 @@ tr:hover{background:#f8fafc}tr.pass{background:var(--ok-bg)}tr.fail{background:v
 <!-- ═══ Tab 1: 交互式匹配 ═══ -->
 <div id="p-search" class="pnl on">
   <div class="card">
-    <h3><span class="icon icon-kg">KG</span> 知识图谱多层匹配 <span style="font-size:11px;color:var(--text2);font-weight:400;margin-left:8px">L1 精确匹配 → L2 模糊匹配 → L3 图谱推理 — 全程无大模型调用</span></h3>
+    <h3><span class="icon icon-kg">KG</span> 知识图谱多层匹配 <span style="font-size:11px;color:var(--text2);font-weight:400;margin-left:8px">L1 精确 → L2 模糊 → L3 Embedding LLM 泛化</span></h3>
+
+    <div style="display:flex;gap:8px;align-items:center;margin-bottom:12px;padding:8px 12px;background:#faf5ff;border:1px solid #ddd6fe;border-radius:8px">
+      <span style="font-size:12px;color:var(--text2);font-weight:600">引擎模式：</span>
+      <label style="font-size:12px;display:inline-flex;align-items:center;gap:4px;cursor:pointer">
+        <input type="radio" name="engine" value="kg" /> 纯 KG 规则（零 LLM 调用）
+      </label>
+      <label style="font-size:12px;display:inline-flex;align-items:center;gap:4px;cursor:pointer">
+        <input type="radio" name="engine" value="hybrid" checked /> KG + Embedding LLM（L1/L2 miss 时走 L3 LLM 泛化）
+      </label>
+      <span id="engineStatus" style="font-size:11px;color:var(--text2);margin-left:auto"></span>
+    </div>
+
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:10px">
       <div><label style="font-size:12px;color:var(--text2)">输入非标职称</label>
         <input id="inp" placeholder="例：AI产品负责人、数据分析总监、用户增长 lead …" /></div>
@@ -116,6 +130,7 @@ tr:hover{background:#f8fafc}tr.pass{background:var(--ok-bg)}tr.fail{background:v
         <input id="ctx" placeholder="例：在字节带10人团队，做推荐算法相关…" /></div>
     </div>
     <button class="btn btn-kg" onclick="doMatch()">开始匹配</button>
+    <span id="matchSpin" style="display:none;font-size:12px;color:var(--text2);margin-left:8px">调用 LLM 中...</span>
   </div>
 
   <div id="res" style="display:none">
@@ -180,7 +195,115 @@ tr:hover{background:#f8fafc}tr.pass{background:var(--ok-bg)}tr.fail{background:v
   </div>
 </div>
 
-<!-- ═══ Tab 3: 泛化实验 ═══ -->
+<!-- ═══ Tab 3: 混合链路汇报（KG vs KG+LLM 并排对比） ═══ -->
+<div id="p-report" class="pnl">
+  <div class="card">
+    <h3><span class="icon icon-kg">LV</span> 混合链路端到端评测 <span style="font-size:11px;color:var(--text2);font-weight:400;margin-left:8px">直接读取离线跑好的 300 条评测报表（秒开）</span></h3>
+    <p style="font-size:13px;color:var(--text2);margin-bottom:10px">
+      数据来源：<code>dataset/pipeline_eval_report.csv</code>（由 <code>scripts/eval_pipeline.py</code> 使用 Qwen3-Embedding-0.6B 作为 L3 backend 跑出）。
+      汇报时直接给领导看：<b>KG-only 与 KG + Embedding LLM 两条链路在相同测试集上的并排对比</b>。
+    </p>
+    <button class="btn btn-kg" id="btnReport" onclick="loadReport()">加载评测报表</button>
+    <span id="reportSpin" style="display:none;font-size:12px;color:var(--text2);margin-left:8px">加载中...</span>
+  </div>
+
+  <div id="reportHeadline" style="display:none">
+    <div class="card" style="background:linear-gradient(135deg,#faf5ff 0%,#ede9fe 100%);border:2px solid var(--kg)">
+      <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:20px;align-items:center">
+        <div style="text-align:center">
+          <div style="font-size:11px;color:var(--text2);margin-bottom:4px">纯 KG 规则引擎</div>
+          <div style="font-size:48px;font-weight:800;color:#64748b" id="rpKgAcc">-</div>
+          <div style="font-size:12px;color:var(--text2)" id="rpKgCnt">-</div>
+        </div>
+        <div style="text-align:center;color:var(--kg);font-size:32px;font-weight:800">→</div>
+        <div style="text-align:center">
+          <div style="font-size:11px;color:var(--kg-dark);margin-bottom:4px">KG + Embedding LLM 混合链路</div>
+          <div style="font-size:48px;font-weight:800;color:var(--kg)" id="rpHybridAcc">-</div>
+          <div style="font-size:12px;color:var(--text2)" id="rpHybridCnt">-</div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:10px;padding-top:10px;border-top:1px dashed #c4b5fd">
+        <span style="font-size:14px;color:var(--text2)">准确率提升</span>
+        <span id="rpUplift" style="font-size:22px;font-weight:800;color:var(--ok);margin-left:8px">-</span>
+        <span style="font-size:14px;color:var(--text2);margin-left:20px">LLM 救回</span>
+        <span id="rpRescue" style="font-size:22px;font-weight:800;color:var(--kg);margin-left:8px">-</span>
+        <span style="font-size:14px;color:var(--text2);margin-left:20px">LLM 误判</span>
+        <span id="rpWrong" style="font-size:22px;font-weight:800;color:var(--fail);margin-left:8px">-</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>调度路径分布（final_source）</h3>
+      <div id="rpSources" style="display:flex;gap:12px;flex-wrap:wrap"></div>
+      <p style="font-size:11px;color:var(--text2);margin-top:8px">
+        <b>kg</b>=L1/L2 规则直接命中；<b>llm</b>=规则未覆盖，Embedding LLM 泛化救回；<b>miss</b>=两者都失败（L0_miss）
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>按目标层级拆分（哪些 case 是靠 LLM 解决的）</h3>
+      <div class="tw"><table>
+        <thead><tr><th>目标层级</th><th>样本数</th><th>纯 KG 准确率</th><th>混合链路准确率</th><th>LLM 贡献</th></tr></thead>
+        <tbody id="rpByLevel"></tbody>
+      </table></div>
+    </div>
+
+    <div class="card">
+      <h3>筛选样本</h3>
+      <div class="fb" id="rpFilter">
+        <span style="font-size:11px;color:var(--text2);line-height:24px">筛选：</span>
+        <div class="fbtn on" onclick="rpFilt('all')">全部</div>
+        <div class="fbtn" onclick="rpFilt('rescue')">LLM 救回（KG 错/缺 → LLM 对）</div>
+        <div class="fbtn" onclick="rpFilt('llm_wrong')">LLM 误判（KG 缺 → LLM 错）</div>
+        <div class="fbtn" onclick="rpFilt('kg_hit')">KG 直接命中</div>
+        <div class="fbtn" onclick="rpFilt('miss')">彻底未命中</div>
+      </div>
+      <div class="tw"><table>
+        <thead><tr><th style="width:60px">编号</th><th style="width:55px">难度</th><th style="width:55px">目标</th>
+          <th>输入职称</th><th>期望</th><th>纯 KG 结果</th><th>混合链路结果</th><th style="width:60px">来源</th></tr></thead>
+        <tbody id="rpBody"></tbody>
+      </table></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ Tab 4: LLM 救回 & 词表优化候选 ═══ -->
+<div id="p-rescue" class="pnl">
+  <div class="card">
+    <h3><span class="icon icon-kg">FB</span> LLM 泛化反例 → 词表优化候选 <span style="font-size:11px;color:var(--text2);font-weight:400;margin-left:8px">领导关注的"闭环"：失败反例 → 聚合分析 → KG 词表扩充</span></h3>
+    <p style="font-size:13px;color:var(--text2);margin-bottom:10px">
+      这里展示两份自动生成的文件：<br>
+      1. <code>llm_failures_by_std.csv</code>：LLM 仍未解出的 case 按期望标准职称聚合，帮助定位 KG 词表缺失最严重的方向；<br>
+      2. <code>kg_expand_candidates.csv</code>：基于失败反例自动生成的词表扩充候选 —— 下一轮直接把这些变体合并进 <code>knowledge_graph_v2.json</code>，重新评测即可看到提升。
+    </p>
+    <button class="btn btn-kg" onclick="loadRescue()">加载数据</button>
+    <span id="rescueSpin" style="display:none;font-size:12px;color:var(--text2);margin-left:8px">加载中...</span>
+  </div>
+
+  <div id="rescueBlock" style="display:none">
+    <div class="card">
+      <h3>失败反例聚合（LLM 仍未解出）</h3>
+      <div class="tw"><table>
+        <thead><tr><th style="width:130px">期望标准职称</th><th style="width:60px">失败数</th><th>LLM 错答分布</th><th>样例输入</th></tr></thead>
+        <tbody id="failBody"></tbody>
+      </table></div>
+    </div>
+
+    <div class="card">
+      <h3>词表扩充候选（建议合入 KG 后复测）</h3>
+      <div class="tw"><table>
+        <thead><tr><th style="width:180px">建议变体</th><th style="width:120px">建议映射到</th><th style="width:120px">当前 LLM 错映射</th><th>证据上下文</th></tr></thead>
+        <tbody id="candBody"></tbody>
+      </table></div>
+      <p style="font-size:11px;color:var(--text2);margin-top:8px">
+        汇报话术："我们已经跑通了 <b>L1/L2 规则 → L3 LLM 泛化 → 失败反例聚合 → 词表扩充</b> 的完整闭环；
+        这张表就是下一轮词表升级的输入，持续几轮后可以把 L3 剩余的误判进一步压缩。"
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ Tab 5: 泛化实验 ═══ -->
 <div id="p-gen" class="pnl">
   <div class="card">
     <h3><span class="icon icon-kg">KG</span> 80/20 泛化实验</h3>
@@ -217,13 +340,52 @@ tr:hover{background:#f8fafc}tr.pass{background:var(--ok-bg)}tr.fail{background:v
 <script>
 const A='';
 let evalData=null,curFilt='all';
+let reportData=null,rpCurFilt='all';
+let pipelineReady=false;
 
 document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{
   document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));
   document.querySelectorAll('.pnl').forEach(x=>x.classList.remove('on'));
   t.classList.add('on');document.getElementById('p-'+t.dataset.t).classList.add('on');
   if(t.dataset.t==='graph')loadGraph();
+  if(t.dataset.t==='report' && !reportData)loadReport();
+  if(t.dataset.t==='rescue')loadRescue();
 }));
+
+// ── 轮询 pipeline 加载状态，并把结果显示在 header / 交互式匹配面板 ──
+async function pollPipelineStatus(){
+  try{
+    const s=await(await fetch(A+'/api/pipeline_status')).json();
+    const eng=document.getElementById('engineStatus');
+    const hdr=document.getElementById('hdrEngine');
+    if(s.ready){
+      pipelineReady=true;
+      const tag=s.backend==='ft'?'微调模型':(s.backend==='base'?'基础模型':'未知');
+      hdr.textContent='Embedding 就绪 · '+tag+' (Qwen3-Embedding-0.6B'+(s.backend==='ft'?'-ft':'')+')';
+      hdr.style.background='#d1fae5';hdr.style.color='#065f46';
+      if(eng)eng.textContent='LLM 引擎：'+tag+'（本地 '+s.embedding_model_path.split(/[\\/]/).pop()+'）';
+      return true;
+    }else if(s.error){
+      hdr.textContent='加载失败：'+s.error.slice(0,40);
+      hdr.style.background='#fee2e2';hdr.style.color='#991b1b';
+      if(eng)eng.textContent='LLM 引擎：加载失败（仅纯 KG 可用）';
+      return true; // 停止轮询
+    }else{
+      hdr.textContent='Embedding 模型加载中（首次约 30-60s）…';
+      if(eng)eng.textContent='LLM 引擎：加载中…';
+      return false;
+    }
+  }catch(e){return false;}
+}
+
+(function startPolling(){
+  let tries=0;
+  const tick=async()=>{
+    const done=await pollPipelineStatus();
+    if(!done && tries++<40)setTimeout(tick,2500);
+  };
+  tick();
+})();
 
 const EX=[
   ['AI产品负责人','字节跳动，带10人团队做大模型'],
@@ -246,30 +408,58 @@ EX.forEach(([t,c])=>{const b=document.createElement('button');b.className='btn b
 async function doMatch(){
   const t=document.getElementById('inp').value.trim();if(!t)return;
   const c=document.getElementById('ctx').value.trim();
-  const r=await(await fetch(A+'/api/match',{method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({input_title:t,context:c})})).json();
+  const engine=(document.querySelector('input[name="engine"]:checked')||{}).value||'hybrid';
+  const endpoint=engine==='hybrid'?'/api/pipeline_match':'/api/match';
+  const spin=document.getElementById('matchSpin');
+  spin.style.display='inline';spin.textContent=engine==='hybrid'?'调用 LLM 中...':'匹配中...';
+
+  let r;
+  try{
+    const resp=await fetch(A+endpoint,{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({input_title:t,context:c})});
+    if(!resp.ok){
+      const err=await resp.json();
+      spin.style.display='none';
+      alert('请求失败：'+(err.detail&&err.detail.message?err.detail.message:('HTTP '+resp.status)));
+      return;
+    }
+    r=await resp.json();
+  }catch(e){
+    spin.style.display='none';
+    alert('请求异常：'+e.message);return;
+  }
+  spin.style.display='none';
+
   document.getElementById('res').style.display='block';
   const lv=r.level||'L0_miss';
-  document.getElementById('rLv').className='lv lv-'+lv;
-  const lvNames={L1_exact:'L1 精确匹配',L2_fuzzy:'L2 模糊匹配',L3_graph:'L3 图谱推理',L0_miss:'未命中'};
+  document.getElementById('rLv').className='lv lv-'+lv.replace(/_.*/,'_'+lv.split('_').slice(1).join('_'));
+  const lvNames={L1_exact:'L1 精确匹配',L2_fuzzy:'L2 模糊匹配',L3_graph:'L3 图谱推理',
+    L3_llm_embedding:'L3 Embedding LLM',L3_llm_local:'L3 本地 Qwen LLM',L3_llm_api:'L3 API LLM',
+    L0_miss:'未命中'};
+  // 给 L3_llm_* 统一套紫色 class
+  if(lv.startsWith('L3_llm_')) document.getElementById('rLv').className='lv lv-L3_graph';
   document.getElementById('rLv').textContent=lvNames[lv]||lv;
   document.getElementById('rTitle').textContent=r.standard_title||'未匹配';
   const meta=[
+    r.path?'path='+r.path:null,
     r.match_type?'匹配类型='+r.match_type:null,
     r.seniority?'职级='+r.seniority:null,
     r.domain?'领域='+r.domain:null,
-    r.confidence!=null?'置信度='+r.confidence:null
+    r.confidence!=null?'置信度='+r.confidence:null,
+    r.reason?'LLM 理由='+r.reason:null
   ].filter(Boolean).join(' | ');
   document.getElementById('rMeta').textContent=meta;
 
   const trD=document.getElementById('rTrace');
   const stepNames={normalize:'标准化输入',exact_lookup:'精确查找',strip_prefix:'剥离前缀',
-    char_jaccard:'字符重叠计算',threshold_check:'阈值判断',decompose:'Token 分解',score:'候选评分',result:'输出结果',all_levels_exhausted:'所有层级均未命中'};
+    char_jaccard:'字符重叠计算',threshold_check:'阈值判断',decompose:'Token 分解',score:'候选评分',result:'输出结果',all_levels_exhausted:'所有层级均未命中',
+    L1_exact:'L1 精确匹配',L2_fuzzy:'L2 模糊匹配',L3_llm:'L3 LLM 泛化推理'};
   if(r.trace&&r.trace.length){
     trD.innerHTML=r.trace.map((s,i)=>{
       const sn=stepNames[s.step]||s.step;
       const parts=Object.entries(s).filter(([k])=>k!=='step').map(([k,v])=>`<strong>${k}</strong>: ${typeof v==='object'?JSON.stringify(v):v}`);
-      return `<div class="trace-step">步骤 ${i+1}【${sn}】${parts.length?' — '+parts.join('&nbsp;&nbsp;'):''}</div>`;
+      const hitTag=s.hit===true?' <span style="color:var(--ok);font-weight:700">✓ 命中</span>':(s.hit===false?' <span style="color:var(--text2)">未命中，继续下探</span>':'');
+      return `<div class="trace-step">步骤 ${i+1}【${sn}】${hitTag}${parts.length?' — '+parts.join('&nbsp;&nbsp;'):''}</div>`;
     }).join('');
   } else { trD.textContent='无追踪信息'; }
 }
@@ -366,6 +556,119 @@ async function runGen(){
       <td style="font-size:11px;color:var(--text2)">${fails||'（无）'}</td>`;
     tb.appendChild(tr);
   });
+}
+
+// ──────────────────────────────────────────────
+// 混合链路汇报：直接读 /api/pipeline_report（离线报表，秒开）
+// ──────────────────────────────────────────────
+async function loadReport(){
+  const btn=document.getElementById('btnReport'),sp=document.getElementById('reportSpin');
+  btn.disabled=true;sp.style.display='inline';
+  let d;
+  try{ d=await(await fetch(A+'/api/pipeline_report')).json(); }
+  catch(e){ alert('加载失败：'+e.message);btn.disabled=false;sp.style.display='none';return; }
+  if(d.detail){ alert('加载失败：'+d.detail);btn.disabled=false;sp.style.display='none';return; }
+  reportData=d;btn.disabled=false;sp.style.display='none';
+  document.getElementById('reportHeadline').style.display='block';
+
+  document.getElementById('rpKgAcc').textContent=(d.kg_only.accuracy*100).toFixed(1)+'%';
+  document.getElementById('rpKgCnt').textContent=d.kg_only.correct+' / '+d.total+' 条正确';
+  document.getElementById('rpHybridAcc').textContent=(d.hybrid.accuracy*100).toFixed(1)+'%';
+  document.getElementById('rpHybridCnt').textContent=d.hybrid.correct+' / '+d.total+' 条正确';
+  document.getElementById('rpUplift').textContent='+'+(d.uplift_points*100).toFixed(1)+' pp';
+  document.getElementById('rpRescue').textContent=d.llm_rescue_count+' 条';
+  document.getElementById('rpWrong').textContent=d.llm_wrong_count+' 条';
+
+  const srcColors={kg:'var(--ok)',llm:'var(--kg)',miss:'var(--fail)'};
+  const srcNames={kg:'KG 规则命中',llm:'LLM 泛化命中',miss:'彻底未命中'};
+  document.getElementById('rpSources').innerHTML=Object.entries(d.sources).map(([k,v])=>
+    `<div class="sc" style="flex:1;min-width:150px"><div class="n" style="color:${srcColors[k]||'var(--text)'}">${v}</div>
+      <div class="l">${srcNames[k]||k}（占比 ${(v/d.total*100).toFixed(1)}%）</div></div>`).join('');
+
+  const tgtNames={L1:'L1 简单',L2:'L2 模糊',L3:'L3 推理/泛化',L3_ambiguous:'L3 跨域',out_of_graph:'图谱外'};
+  document.getElementById('rpByLevel').innerHTML=Object.entries(d.by_target_level).map(([k,v])=>{
+    const gain=((v.final_acc-v.kg_acc)*100).toFixed(1);
+    const gainColor=gain>0?'var(--ok)':(gain<0?'var(--fail)':'var(--text2)');
+    return `<tr><td><strong>${tgtNames[k]||k}</strong></td><td>${v.total}</td>
+      <td>${(v.kg_acc*100).toFixed(1)}%（${v.kg_correct}/${v.total}）</td>
+      <td style="color:var(--kg);font-weight:700">${(v.final_acc*100).toFixed(1)}%（${v.final_correct}/${v.total}）</td>
+      <td style="color:${gainColor};font-weight:700">${gain>0?'+':''}${gain} pp</td></tr>`;
+  }).join('');
+
+  renderReportRows();
+}
+
+function renderReportRows(){
+  if(!reportData)return;
+  const rows=reportData.details;
+  const tb=document.getElementById('rpBody');
+  const diffNames={easy:'简单',medium:'中等',hard:'困难'};
+  const tgtMap={L1:'L1',L2:'L2',L3:'L3',L3_ambiguous:'L3跨域',out_of_graph:'图外'};
+  const srcTag={kg:'<span class="lv lv-L1_exact" style="font-size:10px">KG</span>',
+                 llm:'<span class="lv lv-L3_graph" style="font-size:10px">LLM</span>',
+                 miss:'<span class="lv lv-L0_miss" style="font-size:10px">MISS</span>'};
+  let html='';let shown=0;
+  rows.forEach(r=>{
+    const kgOk=(r.kg_got||'')===r.expected;
+    const finalOk=r.final_correct==='1';
+    let bucket;
+    if(!kgOk && r.final_source==='llm' && finalOk)bucket='rescue';
+    else if(!kgOk && r.final_source==='llm' && !finalOk)bucket='llm_wrong';
+    else if(kgOk)bucket='kg_hit';
+    else bucket='miss';
+    if(rpCurFilt!=='all' && bucket!==rpCurFilt)return;
+    if(shown++>=200)return;
+    const kgCell=kgOk?`<span style="color:var(--ok)">✓ ${r.kg_got||'∅'}</span>`:`<span style="color:var(--fail)">✗ ${r.kg_got||'∅'}</span>`;
+    const finalCell=finalOk?`<span style="color:var(--ok);font-weight:600">✓ ${r.final_got||'∅'}</span>`:`<span style="color:var(--fail);font-weight:600">✗ ${r.final_got||'∅'}</span>`;
+    html+=`<tr class="${finalOk?'pass':'fail'}">
+      <td>${r.test_id}</td>
+      <td><span class="dtag ${r.difficulty}">${diffNames[r.difficulty]||r.difficulty}</span></td>
+      <td style="font-size:11px;color:var(--text2)">${tgtMap[r.target_level]||r.target_level||'-'}</td>
+      <td><strong>${r.input_title}</strong><br><span style="font-size:11px;color:var(--text2)">${r.context||''}</span></td>
+      <td><strong>${r.expected}</strong></td>
+      <td>${kgCell}<br><span style="font-size:10px;color:var(--text2)">${r.kg_level||''}</span></td>
+      <td>${finalCell}<br><span style="font-size:10px;color:var(--text2)">${r.final_level||''}</span></td>
+      <td>${srcTag[r.final_source]||r.final_source}</td></tr>`;
+  });
+  if(!html)html='<tr><td colspan="8" style="text-align:center;color:var(--text2);padding:20px">该筛选无样本</td></tr>';
+  tb.innerHTML=html;
+}
+
+function rpFilt(f){
+  rpCurFilt=f;
+  const labels={all:'全部',rescue:'LLM 救回（KG 错/缺 → LLM 对）',llm_wrong:'LLM 误判（KG 缺 → LLM 错）',kg_hit:'KG 直接命中',miss:'彻底未命中'};
+  document.querySelectorAll('#rpFilter .fbtn').forEach(b=>b.classList.toggle('on',b.textContent===labels[f]));
+  renderReportRows();
+}
+
+// ──────────────────────────────────────────────
+// LLM 救回 & 词表优化候选
+// ──────────────────────────────────────────────
+async function loadRescue(){
+  const sp=document.getElementById('rescueSpin');sp.style.display='inline';
+  try{
+    const [fails,cands]=await Promise.all([
+      fetch(A+'/api/llm_failures').then(r=>r.json()),
+      fetch(A+'/api/kg_expand_candidates').then(r=>r.json()),
+    ]);
+    sp.style.display='none';
+    document.getElementById('rescueBlock').style.display='block';
+
+    document.getElementById('failBody').innerHTML=fails.rows.map(r=>
+      `<tr><td><strong>${r.expected_standard}</strong><br><span style="font-size:10px;color:var(--text2)">${r.expected_id}</span></td>
+        <td style="text-align:center;font-weight:700;color:var(--fail)">${r.fail_count}</td>
+        <td style="font-size:12px">${r.top_llm_mistakes||''}</td>
+        <td style="font-size:12px;color:var(--text2)">${r.sample_titles||''}</td></tr>`).join('');
+
+    document.getElementById('candBody').innerHTML=cands.rows.map(r=>
+      `<tr><td><strong style="color:var(--kg-dark)">${r.candidate_variant}</strong></td>
+        <td style="color:var(--ok);font-weight:600">${r.suggested_standard}<br><span style="font-size:10px;color:var(--text2)">${r.suggested_standard_id}</span></td>
+        <td style="color:var(--fail)">${r.llm_currently_maps_to||'-'}</td>
+        <td style="font-size:12px;color:var(--text2)">${r.evidence_context||''}</td></tr>`).join('');
+  }catch(e){
+    sp.style.display='none';
+    alert('加载失败：'+e.message);
+  }
 }
 
 async function loadGraph(){
