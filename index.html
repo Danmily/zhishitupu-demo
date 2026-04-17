@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>知识图谱职称标准化系统</title>
+<style>
+:root{
+  --bg:#f0f2f5;--card:#fff;--border:#e2e8f0;
+  --kg:#7c3aed;--kg-light:#ede9fe;--kg-dark:#5b21b6;
+  --ok:#059669;--ok-bg:#ecfdf5;--fail:#dc2626;--fail-bg:#fef2f2;
+  --warn:#d97706;--text:#1e293b;--text2:#64748b;
+  --font:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+  --radius:10px;--shadow:0 1px 3px rgba(0,0,0,.06);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.6}
+
+.hdr{background:linear-gradient(135deg,#1e1b4b 0%,#4c1d95 50%,#7c3aed 100%);
+  color:#fff;padding:18px 28px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.hdr h1{font-size:19px;font-weight:700}
+.badge{padding:3px 10px;border-radius:16px;font-size:11px;font-weight:600}
+.badge-kg{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3)}
+.badge-nollm{background:#fbbf24;color:#78350f}
+
+.tabs{display:flex;background:var(--card);border-bottom:2px solid var(--border);padding:0 28px;position:sticky;top:0;z-index:10}
+.tab{padding:12px 18px;cursor:pointer;font-size:13px;font-weight:600;color:var(--text2);
+  border-bottom:3px solid transparent;transition:.2s;user-select:none}
+.tab:hover{color:var(--kg)}.tab.on{color:var(--kg);border-bottom-color:var(--kg)}
+
+.wrap{max-width:1280px;margin:0 auto;padding:18px 24px}
+.pnl{display:none}.pnl.on{display:block}
+.card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);
+  border:1px solid var(--border);padding:18px;margin-bottom:14px}
+.card h3{font-size:14px;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.icon{width:22px;height:22px;border-radius:5px;display:inline-flex;align-items:center;
+  justify-content:center;font-size:10px;font-weight:800;color:#fff}
+.icon-kg{background:var(--kg)}.icon-test{background:var(--warn)}.icon-graph{background:#0891b2}
+
+input,textarea{width:100%;padding:9px 12px;border:1px solid var(--border);border-radius:8px;
+  font-size:14px;font-family:var(--font);transition:border .2s}
+input:focus,textarea:focus{outline:none;border-color:var(--kg);box-shadow:0 0 0 3px var(--kg-light)}
+.btn{padding:8px 18px;border:none;border-radius:8px;font-size:13px;font-weight:600;
+  cursor:pointer;transition:.15s;display:inline-flex;align-items:center;gap:5px}
+.btn-kg{background:var(--kg);color:#fff}.btn-kg:hover{background:var(--kg-dark)}
+.btn-o{background:transparent;border:1px solid var(--border);color:var(--text2)}
+.btn-o:hover{border-color:var(--kg);color:var(--kg)}
+.btn-sm{padding:4px 10px;font-size:11px}
+
+.trace{background:#faf5ff;border:1px solid #ddd6fe;border-radius:8px;padding:14px;
+  font-family:"Cascadia Code",Consolas,monospace;font-size:12px;color:#4c1d95;line-height:2}
+.trace-step{padding:4px 8px;margin:2px 0;border-left:3px solid var(--kg);background:#f5f3ff;border-radius:0 6px 6px 0}
+.lv{display:inline-block;padding:2px 10px;border-radius:12px;font-size:11px;font-weight:700;color:#fff}
+.lv-L1_exact{background:var(--ok)}.lv-L2_fuzzy{background:var(--warn)}.lv-L3_graph{background:var(--kg)}.lv-L0_miss{background:#94a3b8}
+
+.sr{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.sc{flex:1;min-width:110px;background:var(--card);border:1px solid var(--border);
+  border-radius:var(--radius);padding:12px;text-align:center}
+.sc .n{font-size:24px;font-weight:700}.sc .l{font-size:11px;color:var(--text2);margin-top:2px}
+.sc.ok .n{color:var(--ok)}.sc.bad .n{color:var(--fail)}.sc.info .n{color:var(--kg)}
+
+.tw{max-height:520px;overflow-y:auto;border:1px solid var(--border);border-radius:8px}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th{background:#f8fafc;padding:7px 8px;text-align:left;font-weight:600;border-bottom:2px solid var(--border);position:sticky;top:0}
+td{padding:7px 8px;border-bottom:1px solid var(--border);vertical-align:top}
+tr:hover{background:#f8fafc}tr.pass{background:var(--ok-bg)}tr.fail{background:var(--fail-bg)}
+.dtag{display:inline-block;padding:1px 6px;border-radius:3px;font-size:10px;font-weight:600}
+.dtag.easy{background:#d1fae5;color:#065f46}.dtag.medium{background:#fef3c7;color:#92400e}.dtag.hard{background:#fce7f3;color:#9d174d}
+.dot{width:8px;height:8px;border-radius:50%;display:inline-block}.dot.pass{background:var(--ok)}.dot.fail{background:var(--fail)}
+.fb{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.fbtn{padding:3px 9px;border:1px solid var(--border);border-radius:6px;font-size:11px;cursor:pointer;background:var(--card);transition:.15s}
+.fbtn.on{background:var(--kg);color:#fff;border-color:var(--kg)}
+
+.gnode{display:inline-block;padding:5px 12px;border-radius:8px;font-size:12px;font-weight:500;margin:3px}
+.gnode.cat{background:#dbeafe;color:#1e40af;border:1px solid #93c5fd;font-size:13px;font-weight:600}
+.gnode.standard{background:#fef3c7;color:#92400e;border:1px solid #fcd34d}
+.gnode.variant{background:#f3e8ff;color:#6b21a8;border:1px solid #c4b5fd;font-size:11px}
+.gnode.senior_variant{background:#fce7f3;color:#9d174d;border:1px solid #f9a8d4;font-size:11px}
+.gnode.domain_variant{background:#d1fae5;color:#065f46;border:1px solid #6ee7b7;font-size:11px}
+.garrow{color:var(--text2);font-size:11px;margin:0 2px}
+.gsec{border-left:3px solid var(--kg);padding-left:14px;margin-bottom:14px}
+.gsec h4{font-size:13px;color:var(--text2);margin-bottom:6px}
+.gcr{display:inline-block;padding:4px 10px;border-radius:6px;font-size:12px;
+  background:#f0f9ff;color:#0369a1;border:1px solid #7dd3fc;margin:3px}
+.toggle-btn{display:inline-block;padding:2px 10px;border-radius:12px;font-size:11px;font-weight:600;
+  cursor:pointer;border:1px solid #c4b5fd;color:#6b21a8;background:#f5f3ff;margin:3px;transition:.15s;user-select:none}
+.toggle-btn:hover{background:#ede9fe;border-color:#7c3aed}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <h1>知识图谱职称标准化系统</h1>
+  <span class="badge badge-kg">纯图谱匹配</span>
+  <span class="badge badge-nollm">无需大模型</span>
+  <span class="badge badge-kg" id="hdrStats">加载中...</span>
+</div>
+
+<div class="tabs">
+  <div class="tab on" data-t="search">交互式匹配</div>
+  <div class="tab" data-t="eval">基准测试评估</div>
+  <div class="tab" data-t="gen">80/20 泛化实验</div>
+  <div class="tab" data-t="graph">图谱浏览器</div>
+</div>
+
+<div class="wrap">
+
+<!-- ═══ Tab 1: 交互式匹配 ═══ -->
+<div id="p-search" class="pnl on">
+  <div class="card">
+    <h3><span class="icon icon-kg">KG</span> 知识图谱多层匹配 <span style="font-size:11px;color:var(--text2);font-weight:400;margin-left:8px">L1 精确匹配 → L2 模糊匹配 → L3 图谱推理 — 全程无大模型调用</span></h3>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:10px">
+      <div><label style="font-size:12px;color:var(--text2)">输入非标职称</label>
+        <input id="inp" placeholder="例：AI产品负责人、数据分析总监、用户增长 lead …" /></div>
+      <div><label style="font-size:12px;color:var(--text2)">上下文（可选，辅助 L3 推理）</label>
+        <input id="ctx" placeholder="例：在字节带10人团队，做推荐算法相关…" /></div>
+    </div>
+    <button class="btn btn-kg" onclick="doMatch()">开始匹配</button>
+  </div>
+
+  <div id="res" style="display:none">
+    <div class="card">
+      <h3>匹配结果</h3>
+      <div style="display:flex;gap:10px;align-items:center;margin-bottom:10px">
+        <span class="lv" id="rLv">-</span>
+        <span id="rTitle" style="font-size:20px;font-weight:700;color:var(--kg)">-</span>
+        <span id="rMeta" style="font-size:13px;color:var(--text2)"></span>
+      </div>
+      <h3>图谱匹配路径追踪</h3>
+      <div class="trace" id="rTrace">-</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>快速示例</h3>
+    <div id="examples" style="display:flex;flex-wrap:wrap;gap:5px"></div>
+  </div>
+</div>
+
+<!-- ═══ Tab 2: 基准测试 ═══ -->
+<div id="p-eval" class="pnl">
+  <div class="sr" id="evalStats">
+    <div class="sc info"><div class="n" id="eTotal">-</div><div class="l">总用例数</div></div>
+    <div class="sc ok"><div class="n" id="eCorrect">-</div><div class="l">匹配正确</div></div>
+    <div class="sc bad"><div class="n" id="eFail">-</div><div class="l">匹配错误</div></div>
+    <div class="sc ok"><div class="n" id="eRate">-</div><div class="l">准确率</div></div>
+  </div>
+  <div class="card">
+    <div style="display:flex;gap:10px;align-items:center;margin-bottom:12px">
+      <button class="btn btn-kg" id="btnEval" onclick="runEval()">运行全量评估（瞬间完成）</button>
+      <span id="evalSpin" style="display:none;font-size:12px;color:var(--text2)">计算中...</span>
+    </div>
+
+    <div id="evalBreakdown" style="display:none">
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:14px">
+        <div class="card" style="margin:0"><h3>按匹配层级</h3><div id="byLevel"></div></div>
+        <div class="card" style="margin:0"><h3>按难度</h3><div id="byDiff"></div></div>
+        <div class="card" style="margin:0"><h3>按职能分类 (15)</h3><div id="byCat" style="max-height:200px;overflow-y:auto"></div></div>
+      </div>
+    </div>
+
+    <div class="fb" id="evalFilter">
+      <span style="font-size:11px;color:var(--text2);line-height:24px">筛选：</span>
+      <div class="fbtn on" onclick="filt('all')">全部</div>
+      <div class="fbtn" onclick="filt('pass')">正确</div>
+      <div class="fbtn" onclick="filt('fail')">错误</div>
+      <div class="fbtn" onclick="filt('easy')">简单</div>
+      <div class="fbtn" onclick="filt('medium')">中等</div>
+      <div class="fbtn" onclick="filt('hard')">困难</div>
+      <div class="fbtn" onclick="filt('L1')">L1 精确</div>
+      <div class="fbtn" onclick="filt('L2')">L2 模糊</div>
+      <div class="fbtn" onclick="filt('L3')">L3 推理</div>
+      <div class="fbtn" onclick="filt('out')">图谱外</div>
+    </div>
+    <div class="tw"><table>
+      <thead><tr><th style="width:36px">编号</th><th style="width:28px"></th><th style="width:48px">难度</th>
+        <th style="width:55px">预期层</th><th style="width:55px">实际层</th><th>输入职称</th><th>期望 → 实际</th><th style="width:55px">置信度</th></tr></thead>
+      <tbody id="evalBody"></tbody>
+    </table></div>
+  </div>
+</div>
+
+<!-- ═══ Tab 3: 泛化实验 ═══ -->
+<div id="p-gen" class="pnl">
+  <div class="card">
+    <h3><span class="icon icon-kg">KG</span> 80/20 泛化实验</h3>
+    <p style="font-size:13px;color:var(--text2);margin-bottom:12px">
+      从图谱中随机移除 20% 的变体映射边，测试剩余图谱结构 + 模糊匹配/图谱推理能否恢复被移除的映射关系。共 5 轮取平均值。
+    </p>
+    <button class="btn btn-kg" id="btnGen" onclick="runGen()">运行泛化实验（瞬间完成）</button>
+    <span id="genSpin" style="display:none;font-size:12px;color:var(--text2);margin-left:8px">计算中...</span>
+  </div>
+  <div id="genResults" style="display:none">
+    <div class="sr">
+      <div class="sc info"><div class="n" id="gTotal">-</div><div class="l">变体总数</div></div>
+      <div class="sc info"><div class="n" id="gHoldout">-</div><div class="l">移除数 (20%)</div></div>
+      <div class="sc ok"><div class="n" id="gAvg">-</div><div class="l">平均准确率</div></div>
+    </div>
+    <div class="card"><h3>各轮次详情</h3><div class="tw"><table>
+      <thead><tr><th>轮次</th><th>移除数</th><th>正确数</th><th>准确率</th><th>失败样本</th></tr></thead>
+      <tbody id="genBody"></tbody>
+    </table></div></div>
+  </div>
+</div>
+
+<!-- ═══ Tab 4: 图谱浏览器 ═══ -->
+<div id="p-graph" class="pnl">
+  <div class="card">
+    <h3><span class="icon icon-graph">G</span> 图谱结构总览</h3>
+    <div class="sr" id="gStats"></div>
+  </div>
+  <div class="card" id="graphViz"><div style="text-align:center;color:var(--text2);padding:20px">点击「图谱浏览器」标签页加载</div></div>
+</div>
+
+</div>
+
+<script>
+const A='';
+let evalData=null,curFilt='all';
+
+document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));
+  document.querySelectorAll('.pnl').forEach(x=>x.classList.remove('on'));
+  t.classList.add('on');document.getElementById('p-'+t.dataset.t).classList.add('on');
+  if(t.dataset.t==='graph')loadGraph();
+}));
+
+const EX=[
+  ['AI产品负责人','字节跳动，带10人团队做大模型'],
+  ['CDO','Chief Data Officer，管数据部门'],
+  ['用户增长','找增长方向的人，有海外经验优先'],
+  ['CTO','创业公司联合创始人兼CTO'],
+  ['后端 lead','负责后端架构，Go + K8s'],
+  ['HRBP','对接200人技术团队的HRBP'],
+  ['NLP算法专家','发了10篇顶会，专注大模型'],
+  ['供应链VP','VP管全国供应链体系'],
+  ['硬件产品总监','做智能穿戴的产品总监，IoT行业8年'],
+  ['前端工程师','3年React经验，做过小程序'],
+  ['投资总监','看AI赛道的投资总监'],
+  ['新媒体运营','做抖音和小红书的内容运营3年'],
+];
+const exD=document.getElementById('examples');
+EX.forEach(([t,c])=>{const b=document.createElement('button');b.className='btn btn-o btn-sm';b.textContent=t;
+  b.onclick=()=>{document.getElementById('inp').value=t;document.getElementById('ctx').value=c;doMatch()};exD.appendChild(b)});
+
+async function doMatch(){
+  const t=document.getElementById('inp').value.trim();if(!t)return;
+  const c=document.getElementById('ctx').value.trim();
+  const r=await(await fetch(A+'/api/match',{method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({input_title:t,context:c})})).json();
+  document.getElementById('res').style.display='block';
+  const lv=r.level||'L0_miss';
+  document.getElementById('rLv').className='lv lv-'+lv;
+  const lvNames={L1_exact:'L1 精确匹配',L2_fuzzy:'L2 模糊匹配',L3_graph:'L3 图谱推理',L0_miss:'未命中'};
+  document.getElementById('rLv').textContent=lvNames[lv]||lv;
+  document.getElementById('rTitle').textContent=r.standard_title||'未匹配';
+  const meta=[
+    r.match_type?'匹配类型='+r.match_type:null,
+    r.seniority?'职级='+r.seniority:null,
+    r.domain?'领域='+r.domain:null,
+    r.confidence!=null?'置信度='+r.confidence:null
+  ].filter(Boolean).join(' | ');
+  document.getElementById('rMeta').textContent=meta;
+
+  const trD=document.getElementById('rTrace');
+  const stepNames={normalize:'标准化输入',exact_lookup:'精确查找',strip_prefix:'剥离前缀',
+    char_jaccard:'字符重叠计算',threshold_check:'阈值判断',decompose:'Token 分解',score:'候选评分',result:'输出结果',all_levels_exhausted:'所有层级均未命中'};
+  if(r.trace&&r.trace.length){
+    trD.innerHTML=r.trace.map((s,i)=>{
+      const sn=stepNames[s.step]||s.step;
+      const parts=Object.entries(s).filter(([k])=>k!=='step').map(([k,v])=>`<strong>${k}</strong>: ${typeof v==='object'?JSON.stringify(v):v}`);
+      return `<div class="trace-step">步骤 ${i+1}【${sn}】${parts.length?' — '+parts.join('&nbsp;&nbsp;'):''}</div>`;
+    }).join('');
+  } else { trD.textContent='无追踪信息'; }
+}
+document.getElementById('inp').addEventListener('keydown',e=>{if(e.key==='Enter')doMatch()});
+
+async function runEval(){
+  document.getElementById('btnEval').disabled=true;
+  document.getElementById('evalSpin').style.display='inline';
+  const d=await(await fetch(A+'/api/batch_eval')).json();
+  evalData=d;
+  document.getElementById('btnEval').disabled=false;
+  document.getElementById('evalSpin').style.display='none';
+
+  document.getElementById('eTotal').textContent=d.total;
+  document.getElementById('eCorrect').textContent=d.correct;
+  document.getElementById('eFail').textContent=d.total-d.correct;
+  document.getElementById('eRate').textContent=(d.accuracy*100).toFixed(1)+'%';
+
+  document.getElementById('evalBreakdown').style.display='block';
+  const lvNames={L1_exact:'L1 精确匹配',L2_fuzzy:'L2 模糊匹配',L3_graph:'L3 图谱推理',L0_miss:'未命中'};
+  document.getElementById('byLevel').innerHTML=Object.entries(d.by_level).map(([k,v])=>
+    `<div style="display:flex;justify-content:space-between;font-size:12px;padding:3px 0;border-bottom:1px solid var(--border)">
+      <span class="lv lv-${k}" style="font-size:10px">${lvNames[k]||k}</span>
+      <span>${v.correct}/${v.total} = <strong>${(v.accuracy*100).toFixed(1)}%</strong></span></div>`).join('');
+  const diffNames={easy:'简单',medium:'中等',hard:'困难'};
+  document.getElementById('byDiff').innerHTML=['easy','medium','hard'].map(k=>{
+    const v=d.by_difficulty[k]||{correct:0,total:0,accuracy:0};
+    return `<div style="display:flex;justify-content:space-between;font-size:12px;padding:3px 0;border-bottom:1px solid var(--border)">
+      <span class="dtag ${k}">${diffNames[k]}</span>
+      <span>${v.correct}/${v.total} = <strong>${(v.accuracy*100).toFixed(1)}%</strong></span></div>`;}).join('');
+  document.getElementById('byCat').innerHTML=Object.entries(d.by_category).sort((a,b)=>a[1].accuracy-b[1].accuracy).map(([k,v])=>
+    `<div style="display:flex;justify-content:space-between;font-size:12px;padding:3px 0;border-bottom:1px solid var(--border)">
+      <span>${k}</span>
+      <span style="color:${v.accuracy===1?'var(--ok)':'var(--fail)'}">${v.correct}/${v.total} = ${(v.accuracy*100).toFixed(1)}%</span></div>`).join('');
+
+  const tb=document.getElementById('evalBody');
+  tb.innerHTML='';
+  d.details.forEach((r,i)=>{
+    const tr=document.createElement('tr');tr.id='er'+i;
+    tr.className=r.ok?'pass':'fail';
+    tr.dataset.diff=r.difficulty;tr.dataset.ok=r.ok?'pass':'fail';
+    const lvN=lvNames[r.level]||r.level;
+    const tgtMap={L1:'L1',L2:'L2',L3:'L3',L3_ambiguous:'L3跨域',out_of_graph:'图谱外'};
+    const tgt=tgtMap[r.target_level]||r.target_level||'-';
+    tr.innerHTML=`<td>${r.test_id}</td><td><span class="dot ${r.ok?'pass':'fail'}"></span></td>
+      <td><span class="dtag ${r.difficulty}">${diffNames[r.difficulty]||r.difficulty}</span></td>
+      <td style="font-size:11px;font-weight:600;color:var(--text2)">${tgt}</td>
+      <td><span class="lv lv-${r.level}" style="font-size:10px">${lvN}</span></td>
+      <td><strong>${r.input_title}</strong><br><span style="font-size:11px;color:var(--text2)">${r.context||''}</span></td>
+      <td style="color:${r.ok?'var(--ok)':'var(--fail)'}">${r.expected} → ${r.got||'空'}</td>
+      <td>${r.confidence!=null?r.confidence:'-'}</td>`;
+    tb.appendChild(tr);
+  });
+  filt('all');
+}
+
+function filt(f){
+  curFilt=f;
+  const nameMap={'all':'全部','pass':'正确','fail':'错误','easy':'简单','medium':'中等','hard':'困难',
+    'L1':'L1 精确','L2':'L2 模糊','L3':'L3 推理','out':'图谱外'};
+  document.querySelectorAll('#evalFilter .fbtn').forEach(b=>b.classList.toggle('on',b.textContent===nameMap[f]));
+  if(!evalData)return;
+  evalData.details.forEach((r,i)=>{
+    const tr=document.getElementById('er'+i);if(!tr)return;
+    let s=true;
+    if(f==='pass')s=r.ok;else if(f==='fail')s=!r.ok;
+    else if(['easy','medium','hard'].includes(f))s=r.difficulty===f;
+    else if(f==='L1')s=r.target_level==='L1';
+    else if(f==='L2')s=r.target_level==='L2';
+    else if(f==='L3')s=r.target_level==='L3'||r.target_level==='L3_ambiguous';
+    else if(f==='out')s=r.target_level==='out_of_graph';
+    tr.style.display=s?'':'none';
+  });
+}
+
+async function runGen(){
+  document.getElementById('btnGen').disabled=true;
+  document.getElementById('genSpin').style.display='inline';
+  const d=await(await fetch(A+'/api/generalization')).json();
+  document.getElementById('btnGen').disabled=false;
+  document.getElementById('genSpin').style.display='none';
+  document.getElementById('genResults').style.display='block';
+
+  document.getElementById('gTotal').textContent=d.total_variants;
+  document.getElementById('gHoldout').textContent=d.rounds[0]?.holdout||'-';
+  document.getElementById('gAvg').textContent=(d.avg_accuracy*100).toFixed(1)+'%';
+
+  const tb=document.getElementById('genBody');tb.innerHTML='';
+  d.rounds.forEach(r=>{
+    const tr=document.createElement('tr');
+    const fails=r.sample_failures.map(f=>`"${f.variant}"→实际"${f.got}"`).join('；');
+    tr.innerHTML=`<td>第 ${r.round} 轮</td><td>${r.holdout}</td><td>${r.correct}</td>
+      <td style="font-weight:700;color:${r.accuracy>=0.6?'var(--ok)':'var(--warn)'}">${(r.accuracy*100).toFixed(1)}%</td>
+      <td style="font-size:11px;color:var(--text2)">${fails||'（无）'}</td>`;
+    tb.appendChild(tr);
+  });
+}
+
+async function loadGraph(){
+  const s=await(await fetch(A+'/api/stats')).json();
+  const ks=s.kg;
+  document.getElementById('gStats').innerHTML=`
+    <div class="sc info"><div class="n">${ks.categories}</div><div class="l">职能大类</div></div>
+    <div class="sc info"><div class="n">${ks.standard_titles}</div><div class="l">标准职称</div></div>
+    <div class="sc info"><div class="n">${ks.total_edges}</div><div class="l">映射边</div></div>
+    <div class="sc info"><div class="n">${ks.domain_keywords.length}</div><div class="l">领域关键词</div></div>
+    <div class="sc info"><div class="n">${ks.cross_references}</div><div class="l">交叉引用</div></div>`;
+
+  const g=await(await fetch(A+'/api/graph_data')).json();
+  const cats={},stds={};
+  g.nodes.forEach(n=>{if(n.type==='category')cats[n.id]=n;else if(n.type==='standard')stds[n.id]=n});
+  const stdEdges={},varNodes={};
+  g.edges.forEach(e=>{
+    if(e.type==='MAPS_TO'){if(!stdEdges[e.target])stdEdges[e.target]=[];stdEdges[e.target].push(e.source)}
+  });
+  g.nodes.forEach(n=>{if(n.type!=='category'&&n.type!=='standard')varNodes[n.id]=n});
+
+  const typeNames={variant:'同义变体',senior_variant:'职级变体',domain_variant:'领域变体'};
+  let html=`<p style="font-size:13px;color:var(--text2);margin-bottom:14px">
+    共 ${g.summary.nodes} 个节点、${g.summary.edges} 条边 — 点击「展开全部」查看所有变体</p>`;
+
+  let stdIdx=0;
+  Object.values(cats).sort((a,b)=>a.label.localeCompare(b.label,'zh-CN')).forEach(cat=>{
+    html+=`<div class="gsec"><h4><span class="gnode cat">${cat.label}</span></h4>`;
+    const sids=g.edges.filter(e=>e.type==='BELONGS_TO'&&e.target===cat.id).map(e=>e.source);
+    sids.forEach(sid=>{
+      const sn=stds[sid];if(!sn)return;
+      const allVars=(stdEdges[sid]||[]).map(vid=>varNodes[vid]).filter(Boolean);
+      const preview=allVars.slice(0,5);
+      const rest=allVars.slice(5);
+      const myId='vg_'+stdIdx++;
+
+      html+=`<div style="margin-bottom:8px"><span class="garrow">└─</span>
+        <span class="gnode standard">${sn.label}</span>
+        <span style="font-size:11px;color:var(--text2);margin-left:4px">(${sn.variant_count} 个变体，技能：${(sn.skills||[]).slice(0,4).join('、')})</span>`;
+      if(allVars.length){
+        html+=`<div style="margin-left:30px;margin-top:4px">`;
+        preview.forEach(v=>{
+          const tag=typeNames[v.type]||v.type;
+          html+=`<span class="gnode ${v.type}" title="${tag}">${v.label}${v.seniority?' ['+v.seniority+']':''}${v.domain?' ['+v.domain+']':''}</span>`;
+        });
+        if(rest.length){
+          html+=`<span id="${myId}_rest" style="display:none">`;
+          rest.forEach(v=>{
+            const tag=typeNames[v.type]||v.type;
+            html+=`<span class="gnode ${v.type}" title="${tag}">${v.label}${v.seniority?' ['+v.seniority+']':''}${v.domain?' ['+v.domain+']':''}</span>`;
+          });
+          html+=`</span>`;
+          html+=`<span class="toggle-btn" id="${myId}_btn" onclick="toggleVars('${myId}',${rest.length})">展开全部 (+${rest.length})</span>`;
+        }
+        html+=`</div>`;
+      }
+      html+=`</div>`;
+    });
+    html+=`</div>`;
+  });
+
+  const xrefs=g.edges.filter(e=>!['BELONGS_TO','MAPS_TO'].includes(e.type));
+  if(xrefs.length){
+    html+=`<div class="gsec"><h4>交叉引用（标准职称间关系）</h4><div style="display:flex;flex-wrap:wrap;gap:6px">`;
+    xrefs.forEach(e=>{
+      const from=stds[e.source]?.label||e.source,to=stds[e.target]?.label||e.target;
+      html+=`<span class="gcr">${from} <span class="garrow">──[${e.type}]──></span> ${to}</span>`;
+    });
+    html+=`</div></div>`;
+  }
+
+  document.getElementById('graphViz').innerHTML=html;
+}
+
+function toggleVars(id,count){
+  const rest=document.getElementById(id+'_rest');
+  const btn=document.getElementById(id+'_btn');
+  if(rest.style.display==='none'){
+    rest.style.display='inline';
+    btn.textContent='收起';
+  }else{
+    rest.style.display='none';
+    btn.textContent='展开全部 (+'+count+')';
+  }
+}
+
+(async()=>{
+  try{
+    const s=await(await fetch(A+'/api/stats')).json();
+    document.getElementById('hdrStats').textContent=
+      `${s.kg.standard_titles} 个标准职称 | ${s.kg.total_edges} 条映射边 | ${s.tests_total} 条测试`;
+  }catch(e){}
+})();
+</script>
+</body>
+</html>

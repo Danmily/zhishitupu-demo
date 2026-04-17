@@ -1,0 +1,11 @@
+﻿from_id,to_id,type,description
+software_engineer,architect,晋升路径,资深工程师可晋升为架构师
+software_engineer,test_engineer,协作,开发与测试紧密协作
+software_engineer,algorithm_engineer,同族,同属技术序列
+product_manager,project_manager,技能重叠,产品经理与项目经理有职责交叉
+data_analyst,operations_manager,技能重叠,数据分析和运营工作高度关联
+sales_manager,marketing_manager,协作,销售与市场紧密配合
+mechanical_engineer,supply_chain_manager,协作,硬件研发与供应链紧密配合
+hr_manager,admin_manager,协作,人力资源与行政常合并管理
+finance_manager,investment_manager,同族,同属财务/金融序列
+legal_manager,finance_manager,协作,法务与财务在合规方面协作

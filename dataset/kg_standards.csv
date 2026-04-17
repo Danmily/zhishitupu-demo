@@ -1,0 +1,20 @@
+﻿standard_id,label,category,related_skills
+product_manager,产品经理,产品,需求分析|PRD撰写|用户研究|竞品分析|数据分析|项目管理|原型设计|Axure|Figma
+operations_manager,运营经理,运营,数据分析|用户增长|内容策划|活动策划|社群运营|AB测试|渠道管理|SEO
+marketing_manager,市场经理,市场,品牌策略|内容营销|公关传播|SEM|SEO|社交媒体|市场调研|媒介投放
+hr_manager,人力资源经理,人力资源,招聘|绩效管理|薪酬福利|组织发展|员工关系|劳动法|人才盘点|企业文化
+investment_manager,投资经理,投资,财务建模|尽职调查|估值分析|行业研究|投后管理|资本市场|法律合规
+sales_manager,销售经理,销售,客户开发|商务谈判|渠道管理|CRM|销售策略|方案呈现|合同管理|大客户关系维护
+finance_manager,财务经理,财务,财务分析|预算管理|税务筹划|审计|资金管理|财务报表|ERP|内控合规
+data_analyst,数据分析师,数据分析,SQL|Python|Tableau|PowerBI|Excel|统计分析|AB测试|数据建模|ETL
+software_engineer,软件工程师,开发,Java|Python|Go|JavaScript|TypeScript|React|Vue|Node.js|Spring|MySQL|Redis|Kafka|Docker|K8s|微服务|CI/CD|Git
+test_engineer,测试工程师,测试,自动化测试|性能测试|功能测试|Selenium|JMeter|Appium|接口测试|Postman|持续集成
+algorithm_engineer,算法工程师,算法,PyTorch|TensorFlow|深度学习|机器学习|NLP|CV|推荐系统|大模型|Python|C++|数据挖掘|特征工程
+legal_manager,法务经理,法务,合同审核|知识产权|合规管理|公司法|劳动法|数据隐私|风险控制|诉讼仲裁
+supply_chain_manager,供应链经理,供应链,供应商管理|采购谈判|库存管理|物流规划|ERP|精益生产|质量管理|成本控制
+designer,设计师,设计,Figma|Sketch|Adobe XD|Photoshop|Illustrator|After Effects|用户研究|交互设计|视觉设计|设计系统|C4D
+architect,架构师,开发,系统设计|分布式系统|微服务|云原生|中间件|高可用|性能优化|技术选型
+admin_manager,行政经理,行政,行政管理|办公管理|会议组织|差旅管理|资产管理|供应商对接|政府关系
+general_manager,总经理,管理,战略管理|组织管理|业务规划|团队管理|P&L管理|跨部门协调|融资|商业模式
+project_manager,项目经理,产品,项目管理|PMP|敏捷开发|Scrum|JIRA|风险管理|干系人管理|资源协调
+mechanical_engineer,机械工程师,供应链,SolidWorks|AutoCAD|Pro/E|CATIA|结构设计|机械加工|材料科学|公差分析|DFMA

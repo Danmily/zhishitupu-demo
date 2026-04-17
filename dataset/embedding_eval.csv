@@ -1,0 +1,1001 @@
+﻿pair_id,anchor,positive,positive_id,hard_negative,hard_negative_id,random_negative,random_negative_id,category,generation_type
+P009001,招一个做用户运营负责人的,运营经理,operations_manager,首席数据官,data_analyst,法务负责人,legal_manager,运营,T4_colloquial
+P009002,中级运营专员负责人,运营经理,operations_manager,数据质量经理,data_analyst,安全测试工程师,test_engineer,运营,T2_seniority
+P009003,硬件GM,总经理,general_manager,PMO,project_manager,研发负责人,software_engineer,管理,T3_domain
+P009004,运营总监，刚毕业 3 年,运营经理,operations_manager,业务分析师,data_analyst,安全测试工程师,test_engineer,运营,T7_context
+P009005,副技术主管,软件工程师,software_engineer,解决方案架构师,architect,执行总裁,general_manager,开发,T2_seniority
+P009006,人力资源总监,人力资源经理,hr_manager,文秘,admin_manager,AI工程师,algorithm_engineer,人力资源,T1_raw
+P009007,大模型项目主管,项目经理,project_manager,增长产品经理,product_manager,测试专员,test_engineer,产品,T3_domain
+P009008,Senior 行政主管,行政经理,admin_manager,人力VP,hr_manager,机器人算法工程师,algorithm_engineer,行政,T2_seniority
+P009009,规合总监,法务经理,legal_manager,财务副总裁,finance_manager,设计 leader,designer,法务,T6_typo
+P009010,做财务专员的,财务经理,finance_manager,基金经理,investment_manager,培训负责人,hr_manager,财务,T4_colloquial
+P009011,我们公司做招聘总监,人力资源经理,hr_manager,行政总监,admin_manager,首席数据官,data_analyst,人力资源,T4_colloquial
+P009012,首席算法主管助理,算法工程师,algorithm_engineer,Python开发,software_engineer,质量工程师,test_engineer,算法,T2_seniority
+P009013,我们公司做总裁秘书,行政经理,admin_manager,绩效经理,hr_manager,CLO,legal_manager,行政,T4_colloquial
+P009014,负责HRVP,人力资源经理,hr_manager,行政负责人,admin_manager,投资VP,investment_manager,人力资源,T4_colloquial
+P009015,做后勤主管的,行政经理,admin_manager,薪酬福利经理,hr_manager,商业智能分析师,data_analyst,行政,T4_colloquial
+P009016,产品总监，在腾讯带 10 人团队,产品经理,product_manager,Project Manager,project_manager,视觉设计师,designer,产品,T7_context
+P009017,AI人事主管,人力资源经理,hr_manager,后勤经理,admin_manager,仿真工程师,mechanical_engineer,人力资源,T3_domain
+P009018,数据高级运营经理,运营经理,operations_manager,数据分析主管,data_analyst,视觉设计师,designer,运营,T3_domain
+P009019,技术项目经理，上一段在美团,项目经理,project_manager,数据产品经理,product_manager,商业智能分析师,data_analyst,产品,T7_context
+P009020,Lead 投资经理专家,投资经理,investment_manager,审计经理,finance_manager,总经理,general_manager,投资,T2_seniority
+P009021,搞大客户负责人的同事,销售经理,sales_manager,首席市场官,marketing_manager,法务负责人,legal_manager,销售,T4_colloquial
+P009022,Junior 运营负责人,运营经理,operations_manager,BI分析师,data_analyst,质量总监,test_engineer,运营,T2_seniority
+P009023,数据质量经理，IC 路线,数据分析师,data_analyst,电商运营,operations_manager,交付经理,project_manager,数据分析,T7_context
+P009024,负责供应链专员,供应链经理,supply_chain_manager,CAE工程师,mechanical_engineer,法务主管,legal_manager,供应链,T4_colloquial
+P009025,全安架构师,架构师,architect,游戏开发工程师,software_engineer,区域总经理,general_manager,开发,T6_typo
+P009026,实施理经,项目经理,project_manager,高级产品经理,product_manager,争议解决律师,legal_manager,产品,T6_typo
+P009027,招一个做team leader的,软件工程师,software_engineer,解决方案架构师,architect,行政专员,admin_manager,开发,T4_colloquial
+P009028,做投资负责人的哥们,投资经理,investment_manager,财务规划经理,finance_manager,知识产权经理,legal_manager,投资,T4_colloquial
+P009029,法务主管，偏管理岗,法务经理,legal_manager,财务经理,finance_manager,资深数据分析师,data_analyst,法务,T7_context
+P009030,金融机械工程师,机械工程师,mechanical_engineer,厂长,supply_chain_manager,法务经理,legal_manager,供应链,T3_domain
+P009031,3设D计师,设计师,designer,音视频工程师,software_engineer,质量总监,test_engineer,设计,T6_typo
+P009032,算法主管这块,算法工程师,algorithm_engineer,Unity开发,software_engineer,人力资源经理,hr_manager,算法,T4_colloquial
+P009033,预算经理，之前做过开发,财务经理,finance_manager,风险管理经理,investment_manager,董事总经理,general_manager,财务,T7_context
+P009034,测试工程师，在阿里做 B 端,测试工程师,test_engineer,运维工程师,software_engineer,前台主管,admin_manager,测试,T7_context
+P009035,机器人算法工程师，在腾讯带 10 人团队,算法工程师,algorithm_engineer,Software Engineer,software_engineer,资深数据分析师,data_analyst,算法,T7_context
+P009036,负责项目助理,项目经理,project_manager,数据产品负责人,product_manager,合规经理,legal_manager,产品,T4_colloquial
+P009037,做React Native工程师的哥们,软件工程师,software_engineer,System Architect,architect,性能测试工程师,test_engineer,开发,T4_colloquial
+P009038,业职经理,总经理,general_manager,厂长,supply_chain_manager,高级投资经理,investment_manager,管理,T6_typo
+P009039,Lead 部门负责人,总经理,general_manager,品质经理,supply_chain_manager,AI后端工程师,software_engineer,管理,T2_seniority
+P009040,游戏研发工程师,软件工程师,software_engineer,系统架构师,architect,行政总监,admin_manager,开发,T3_domain
+P009041,BD负责人，刚毕业 3 年,销售经理,sales_manager,营销负责人,marketing_manager,BI负责人,data_analyst,销售,T7_context
+P009042,Senior 设计主管,设计师,designer,测试专员,test_engineer,首席行政官,admin_manager,设计,T2_seniority
+P009043,培训责负人,人力资源经理,hr_manager,后勤主管,admin_manager,BU负责人,general_manager,人力资源,T6_typo
+P009044,人资力源总监,人力资源经理,hr_manager,前台主管,admin_manager,硬件负责人,mechanical_engineer,人力资源,T6_typo
+P009045,搞3D设计师的,设计师,designer,硬件主管,mechanical_engineer,培训负责人,hr_manager,设计,T4_colloquial
+P009046,Web3设计负责人,设计师,designer,数据总监,data_analyst,大模型算法工程师,algorithm_engineer,设计,T3_domain
+P009047,供应链主管，带过 20+ 人团队,供应链经理,supply_chain_manager,散热工程师,mechanical_engineer,商业分析师,data_analyst,供应链,T7_context
+P009048,招一个做海外总经理的,总经理,general_manager,设施管理经理,admin_manager,ML Engineer,algorithm_engineer,管理,T4_colloquial
+P009049,招一个做客户成功经理的,销售经理,sales_manager,品牌经理,marketing_manager,董事总经理,general_manager,销售,T4_colloquial
+P009050,分公司总经理,总经理,general_manager,用户运营,operations_manager,算法负责人,algorithm_engineer,管理,T1_raw
+P009051,我们公司做前台主管,行政经理,admin_manager,雇主品牌负责人,hr_manager,人力资源总监,hr_manager,行政,T4_colloquial
+P009052,硬件技术总监，大厂背景,机械工程师,mechanical_engineer,生产经理,supply_chain_manager,前台经理,admin_manager,供应链,T7_context
+P009053,公关负责人，IC 路线,市场经理,marketing_manager,解决方案经理,sales_manager,业务总监,general_manager,市场,T7_context
+P009054,高级投资经理，大厂背景,投资经理,investment_manager,财务分析经理,finance_manager,争议解决律师,legal_manager,投资,T7_context
+P009055,首席架构师，带过 20+ 人团队,架构师,architect,Python开发,software_engineer,ID设计师,designer,开发,T7_context
+P009056,Principal 行政负责人,行政经理,admin_manager,学习与发展经理,hr_manager,首席数据官,data_analyst,行政,T2_seniority
+P009057,初级产品负责人,产品经理,product_manager,交付经理,project_manager,IT架构师,architect,产品,T2_seniority
+P009058,数据架构师,架构师,architect,SRE工程师,software_engineer,售前顾问,sales_manager,开发,T1_raw
+P009059,控品经理,供应链经理,supply_chain_manager,硬件负责人,mechanical_engineer,风控经理,investment_manager,供应链,T6_typo
+P009060,CAE工程师，汇报给 CEO,机械工程师,mechanical_engineer,供应链总监,supply_chain_manager,team leader,software_engineer,供应链,T7_context
+P009061,Lead 技术 leader专员,软件工程师,software_engineer,业务架构师,architect,海外业务负责人,general_manager,开发,T2_seniority
+P009062,嵌入式工程师,软件工程师,software_engineer,平台架构师,architect,招聘经理,hr_manager,开发,T1_raw
+P009063,初级架构负责人专家,架构师,architect,高级工程师,software_engineer,大模型算法工程师,algorithm_engineer,开发,T2_seniority
+P009064,OD经理，之前做过开发,人力资源经理,hr_manager,Executive Assistant,admin_manager,感知算法,algorithm_engineer,人力资源,T7_context
+P009065,Web3项目经理,项目经理,project_manager,中台产品经理,product_manager,平面设计师,designer,产品,T3_domain
+P009066,知识产权经理,法务经理,legal_manager,财务主管,finance_manager,ID设计师,designer,法务,T1_raw
+P009067,硬件设计工程师，上一段在美团,机械工程师,mechanical_engineer,仓库主管,supply_chain_manager,会计,finance_manager,供应链,T7_context
+P009068,增长产品 lead,产品经理,product_manager,项目总监,project_manager,行政VP,admin_manager,产品,T3_domain
+P009069,硬件VP,机械工程师,mechanical_engineer,供应链专员,supply_chain_manager,财务负责人,finance_manager,供应链,T1_raw
+P009070,增长产品经理，跨部门协作多,产品经理,product_manager,项目助理,project_manager,市场负责人,marketing_manager,产品,T7_context
+P009071,产品VP，刚毕业 3 年,产品经理,product_manager,实施经理,project_manager,市场推广经理,marketing_manager,产品,T7_context
+P009072,类似电气工程师这种的,机械工程师,mechanical_engineer,S&OP经理,supply_chain_manager,公共事务经理,admin_manager,供应链,T4_colloquial
+P009073,数据VP岗位,数据分析师,data_analyst,电商运营经理,operations_manager,LLM工程师,algorithm_engineer,数据分析,T4_colloquial
+P009074,招一个做人事经理的,人力资源经理,hr_manager,设施管理经理,admin_manager,渠道负责人,marketing_manager,人力资源,T4_colloquial
+P009075,负责高级法务经理,法务经理,legal_manager,成本经理,finance_manager,后端负责人,software_engineer,法务,T4_colloquial
+P009076,人力资源业务伙伴，年包 60-80w,人力资源经理,hr_manager,办公室主任,admin_manager,CDO,designer,人力资源,T7_context
+P009077,AI PV,算法工程师,algorithm_engineer,前端 leader,software_engineer,数据主管,data_analyst,算法,T6_typo
+P009078,高级销售经里,销售经理,sales_manager,品牌公关总监,marketing_manager,数据治理经理,data_analyst,销售,T6_typo
+P009079,BI分析师，负责 AI 产品方向,数据分析师,data_analyst,社区运营经理,operations_manager,薪酬经理,hr_manager,数据分析,T7_context
+P009080,策略产品负责人,产品经理,product_manager,实施经理,project_manager,测试主管,test_engineer,产品,T3_domain
+P009081,高级BD,销售经理,sales_manager,市场推广经理,marketing_manager,产品主管,product_manager,销售,T5_en_zh_mix
+P009082,做高级测试工程师的哥们,测试工程师,test_engineer,游戏开发工程师,software_engineer,Solution Architect,architect,测试,T4_colloquial
+P009083,搞首席销售官的,销售经理,sales_manager,Marketing Head,marketing_manager,BI分析师,data_analyst,销售,T4_colloquial
+P009084,做内审经理的,财务经理,finance_manager,管理合伙人,investment_manager,商业分析师,data_analyst,财务,T4_colloquial
+P009085,类似数据合规经理这种的,法务经理,legal_manager,司库,finance_manager,M&A经理,investment_manager,法务,T4_colloquial
+P009086,高级设计主管负责人,设计师,designer,算法工程师,algorithm_engineer,首席运营官,operations_manager,设计,T2_seniority
+P009087,高管助理，刚毕业 3 年,行政经理,admin_manager,员工关系经理,hr_manager,首席法务官,legal_manager,行政,T7_context
+P009088,BD专员，负责 AI 产品方向,销售经理,sales_manager,首席市场官,marketing_manager,用户增长,operations_manager,销售,T7_context
+P009089,做专利工程师的哥们,法务经理,legal_manager,财务副总裁,finance_manager,策略产品经理,product_manager,法务,T4_colloquial
+P009090,Android工程师，负责 AI 产品方向,软件工程师,software_engineer,业务架构师,architect,增长经理,operations_manager,开发,T7_context
+P009091,搞产品部总经理的,产品经理,product_manager,项目负责人,project_manager,电商运营经理,operations_manager,产品,T4_colloquial
+P009092,前端开发,软件工程师,software_engineer,前端架构师,architect,Mechanical Engineer,mechanical_engineer,开发,T1_raw
+P009093,AI产吕负责人,产品经理,product_manager,项目VP,project_manager,会计主管,finance_manager,产品,T6_typo
+P009094,增长产品经理,产品经理,product_manager,交付负责人,project_manager,会计,finance_manager,产品,T1_raw
+P009095,Executive Assistant，IC 路线,行政经理,admin_manager,HR负责人,hr_manager,基金经理,investment_manager,行政,T7_context
+P009096,AI产经品理,产品经理,product_manager,PMO负责人,project_manager,AI架构师,architect,产品,T6_typo
+P009097,做企业文化负责人的,人力资源经理,hr_manager,董事长秘书,admin_manager,公共事务经理,admin_manager,人力资源,T4_colloquial
+P009098,招一个做游戏开发工程师的,软件工程师,software_engineer,System Architect,architect,算法总监,algorithm_engineer,开发,T4_colloquial
+P009099,业务分析师，汇报给 CEO,数据分析师,data_analyst,COO,operations_manager,行政助理,admin_manager,数据分析,T7_context
+P009100,AI产品负责人，负责 AI 产品方向,产品经理,product_manager,项目负责人,project_manager,用户增长,operations_manager,产品,T7_context
+P009101,电商项目负责人,项目经理,project_manager,数据产品经理,product_manager,Mechanical Engineer,mechanical_engineer,产品,T3_domain
+P009102,资深机械负责人,机械工程师,mechanical_engineer,生产经理,supply_chain_manager,语音算法工程师,algorithm_engineer,供应链,T2_seniority
+P009103,商业分析师，在字节做推荐,数据分析师,data_analyst,商业化运营,operations_manager,社区运营经理,operations_manager,数据分析,T7_context
+P009104,招一个做设计师的,设计师,designer,QA工程师,test_engineer,算法专家,algorithm_engineer,设计,T4_colloquial
+P009105,金融技术负责人,软件工程师,software_engineer,高级架构师,architect,移动端测试工程师,test_engineer,开发,T3_domain
+P009106,Senior 运营 leader专员,运营经理,operations_manager,数据主管,data_analyst,高级经理,general_manager,运营,T2_seniority
+P009107,财务副总裁，之前做过开发,财务经理,finance_manager,投资经理,investment_manager,S&OP经理,supply_chain_manager,财务,T7_context
+P009108,本地化运营，在阿里做 B 端,运营经理,operations_manager,数据负责人,data_analyst,品牌策划,marketing_manager,运营,T7_context
+P009109,Lead 设计负责人,设计师,designer,高级数据分析师,data_analyst,政府关系经理,admin_manager,设计,T2_seniority
+P009110,数据分析师岗位,数据分析师,data_analyst,电商运营,operations_manager,质量总监,test_engineer,数据分析,T4_colloquial
+P009111,MG,总经理,general_manager,项目经理,project_manager,机器人算法工程师,algorithm_engineer,管理,T6_typo
+P009112,AI产品经理，在阿里做 B 端,产品经理,product_manager,项目专员,project_manager,ID设计师,designer,产品,T7_context
+P009113,招聘品产经理,产品经理,product_manager,工程项目经理,project_manager,数据专员,data_analyst,产品,T6_typo
+P009114,公关负责人，汇报给 CEO,市场经理,marketing_manager,商务负责人,sales_manager,BI经理,data_analyst,市场,T7_context
+P009115,议争解决律师,法务经理,legal_manager,会计经理,finance_manager,HR负责人,hr_manager,法务,T6_typo
+P009116,CTO,软件工程师,software_engineer,Chief Architect,architect,财务分析经理,finance_manager,开发,T1_raw
+P009117,机械主管岗位,机械工程师,mechanical_engineer,计划经理,supply_chain_manager,Web开发工程师,software_engineer,供应链,T4_colloquial
+P009118,需求计划理经,供应链经理,supply_chain_manager,硬件工程师,mechanical_engineer,Graphic Designer,designer,供应链,T6_typo
+P009119,Software Engineer，在腾讯带 10 人团队,软件工程师,software_engineer,安全架构师,architect,风控算法工程师,algorithm_engineer,开发,T7_context
+P009120,Techncial Program Manager,项目经理,project_manager,产品经理,product_manager,结构工程师,mechanical_engineer,产品,T6_typo
+P009121,搞EA的同事,行政经理,admin_manager,薪酬经理,hr_manager,LLM工程师,algorithm_engineer,行政,T4_colloquial
+P009122,品牌负责人，负责 AI 产品方向,市场经理,marketing_manager,全国销售负责人,sales_manager,文秘,admin_manager,市场,T7_context
+P009123,负责React Native工程师,软件工程师,software_engineer,资深架构师,architect,行政总监,admin_manager,开发,T4_colloquial
+P009124,电商高级数据分析师,数据分析师,data_analyst,电商运营,operations_manager,采购负责人,supply_chain_manager,数据分析,T3_domain
+P009125,习学与发展经理,人力资源经理,hr_manager,GR经理,admin_manager,GTM经理,marketing_manager,人力资源,T6_typo
+P009126,负责招聘主管,人力资源经理,hr_manager,董事长秘书,admin_manager,数据分析负责人,data_analyst,人力资源,T4_colloquial
+P009127,运营 head方向,运营经理,operations_manager,数据专员,data_analyst,市场总监,marketing_manager,运营,T4_colloquial
+P009128,产品VP，年包 60-80w,产品经理,product_manager,项目经理,project_manager,机械总监,mechanical_engineer,产品,T7_context
+P009129,数据PV,数据分析师,data_analyst,运营负责人,operations_manager,高管助理,admin_manager,数据分析,T6_typo
+P009130,搞平台架构师的同事,架构师,architect,DevOps工程师,software_engineer,行政总监,admin_manager,开发,T4_colloquial
+P009131,高级投资经理，刚毕业 3 年,投资经理,investment_manager,内审经理,finance_manager,质量工程师,test_engineer,投资,T7_context
+P009132,中级供应链主管,供应链经理,supply_chain_manager,结构工程师,mechanical_engineer,Tech Architect,architect,供应链,T2_seniority
+P009133,GT经M理,市场经理,marketing_manager,BD负责人,sales_manager,数据分析师,data_analyst,市场,T6_typo
+P009134,做客户经理的哥们,销售经理,sales_manager,CMO,marketing_manager,质量负责人,supply_chain_manager,销售,T4_colloquial
+P009135,负责后勤经理,行政经理,admin_manager,人力资源经理,hr_manager,合规总监,legal_manager,行政,T4_colloquial
+P009136,感知法算,算法工程师,algorithm_engineer,前端 leader,software_engineer,投资VP,investment_manager,算法,T6_typo
+P009137,搞客户成功负责人的,销售经理,sales_manager,海外市场经理,marketing_manager,商业化运营负责人,operations_manager,销售,T4_colloquial
+P009138,Principal 高级行政经理,行政经理,admin_manager,Talent Acquisition,hr_manager,审计经理,finance_manager,行政,T2_seniority
+P009139,做公司律师的,法务经理,legal_manager,财务主管,finance_manager,EA,admin_manager,法务,T4_colloquial
+P009140,会计经理，负责 AI 产品方向,财务经理,finance_manager,公司律师,legal_manager,用户运营负责人,operations_manager,财务,T7_context
+P009141,试测专员,测试工程师,test_engineer,后端负责人,software_engineer,算法总监,algorithm_engineer,测试,T6_typo
+P009142,搞数据VP的,数据分析师,data_analyst,运营经理,operations_manager,平台运营,operations_manager,数据分析,T4_colloquial
+P009143,做本地化运营的,运营经理,operations_manager,数据治理经理,data_analyst,数据分析负责人,data_analyst,运营,T4_colloquial
+P009144,执行裁总,总经理,general_manager,产品工程师,product_manager,海外市场经理,marketing_manager,管理,T6_typo
+P009145,ID设师计,设计师,designer,首席数据官,data_analyst,大区经理,sales_manager,设计,T6_typo
+P009146,电商供应链经理,供应链经理,supply_chain_manager,散热工程师,mechanical_engineer,项目专员,project_manager,供应链,T3_domain
+P009147,硬件人事主管,人力资源经理,hr_manager,行政助理,admin_manager,Business Analyst,data_analyst,人力资源,T3_domain
+P009148,类似高级投资经理这种的,投资经理,investment_manager,FP&A经理,finance_manager,项目VP,project_manager,投资,T4_colloquial
+P009149,HRD，负责 AI 产品方向,人力资源经理,hr_manager,文秘,admin_manager,KOL运营,operations_manager,人力资源,T7_context
+P009150,搞服务设计师的,设计师,designer,业务分析师,data_analyst,组织发展负责人,hr_manager,设计,T4_colloquial
+P009151,Junior Data Analyst,数据分析师,data_analyst,平台运营,operations_manager,高级项目经理,project_manager,数据分析,T2_seniority
+P009152,搞Go工程师的,软件工程师,software_engineer,架构师,architect,基金经理,investment_manager,开发,T4_colloquial
+P009153,CDO岗位,设计师,designer,电气工程师,mechanical_engineer,增长运营,operations_manager,设计,T4_colloquial
+P009154,高级OP,运营经理,operations_manager,数据质量经理,data_analyst,ER经理,hr_manager,运营,T5_en_zh_mix
+P009155,类似成本会计这种的,财务经理,finance_manager,投后经理,investment_manager,人力资源经理,hr_manager,财务,T4_colloquial
+P009156,项目总监，之前做过开发,项目经理,project_manager,首席产品官,product_manager,HR负责人,hr_manager,产品,T7_context
+P009157,C端产品经理岗位,产品经理,product_manager,项目主管,project_manager,测试经理,test_engineer,产品,T4_colloquial
+P009158,法律顾问岗位,法务经理,legal_manager,预算经理,finance_manager,销售总监,sales_manager,法务,T4_colloquial
+P009159,游戏发开工程师,软件工程师,software_engineer,Cloud Architect,architect,人力经理,hr_manager,开发,T6_typo
+P009160,数据product manager,产品经理,product_manager,项目主管,project_manager,三维设计师,designer,产品,T3_domain
+P009161,初级高级经理总监,总经理,general_manager,财务VP,finance_manager,Motion Designer,designer,管理,T2_seniority
+P009162,招聘总监，刚毕业 3 年,人力资源经理,hr_manager,办公室主任,admin_manager,CMO,marketing_manager,人力资源,T7_context
+P009163,中级Marketing Manager,市场经理,marketing_manager,销售总监,sales_manager,测试总监,test_engineer,市场,T2_seniority
+P009164,C端产品主管,产品经理,product_manager,PMO总监,project_manager,供应链负责人,supply_chain_manager,产品,T3_domain
+P009165,PM这块,产品经理,product_manager,资深项目经理,project_manager,总裁秘书,admin_manager,产品,T4_colloquial
+P009166,做产品工程师的哥们,产品经理,product_manager,项目总监,project_manager,市场负责人,marketing_manager,产品,T4_colloquial
+P009167,公办室主任,行政经理,admin_manager,学习与发展经理,hr_manager,售前顾问,sales_manager,行政,T6_typo
+P009168,做市场主管的哥们,市场经理,marketing_manager,销售总监,sales_manager,人力VP,hr_manager,市场,T4_colloquial
+P009169,IP理经,法务经理,legal_manager,财务分析经理,finance_manager,执行总监,general_manager,法务,T6_typo
+P009170,初级团队 leader总监,总经理,general_manager,合伙人,investment_manager,技术项目经理,project_manager,管理,T2_seniority
+P009171,UI/UX(senior),设计师,designer,硬件工程师,mechanical_engineer,财务主管,finance_manager,设计,T5_en_zh_mix
+P009172,研发工程师这块,软件工程师,software_engineer,平台架构师,architect,感知算法,algorithm_engineer,开发,T4_colloquial
+P009173,资金负责人，负责 AI 产品方向,财务经理,finance_manager,M&A经理,investment_manager,Marketing Manager,marketing_manager,财务,T7_context
+P009174,移动开发工程师，偏管理岗,软件工程师,software_engineer,架构负责人,architect,中后台负责人,general_manager,开发,T7_context
+P009175,副HR经理,人力资源经理,hr_manager,前台经理,admin_manager,Mechanical Engineer,mechanical_engineer,人力资源,T2_seniority
+P009176,搞首席架构师的,架构师,architect,Go工程师,software_engineer,董事长秘书,admin_manager,开发,T4_colloquial
+P009177,数据负责人，汇报给 CEO,数据分析师,data_analyst,运营 leader,operations_manager,质量工程师,test_engineer,数据分析,T7_context
+P009178,游戏商务主管,销售经理,sales_manager,品牌经理,marketing_manager,视觉设计师,designer,销售,T3_domain
+P009179,数据主管，上一段在美团,数据分析师,data_analyst,社区运营,operations_manager,人力总监,hr_manager,数据分析,T7_context
+P009180,移动端工程师，年包 60-80w,软件工程师,software_engineer,高级架构师,architect,Designer,designer,开发,T7_context
+P009181,测工试程师,测试工程师,test_engineer,研发VP,software_engineer,管理合伙人,investment_manager,测试,T6_typo
+P009182,Junior ArchitectVP,架构师,architect,DevOps工程师,software_engineer,供应链专员,supply_chain_manager,开发,T2_seniority
+P009183,搞税务负责人的,财务经理,finance_manager,法务主管,legal_manager,QA,test_engineer,财务,T4_colloquial
+P009184,私域运营经理方向,运营经理,operations_manager,BI负责人,data_analyst,法务负责人,legal_manager,运营,T4_colloquial
+P009185,CAO方向,行政经理,admin_manager,人力经理,hr_manager,仿真工程师,mechanical_engineer,行政,T4_colloquial
+P009186,Supply Chain Manager，年包 60-80w,供应链经理,supply_chain_manager,硬件主管,mechanical_engineer,软件工程师,software_engineer,供应链,T7_context
+P009187,售前经理岗位,销售经理,sales_manager,市场专员,marketing_manager,招聘总监,hr_manager,销售,T4_colloquial
+P009188,营运 head,运营经理,operations_manager,BI负责人,data_analyst,仓储负责人,supply_chain_manager,运营,T6_typo
+P009189,做品牌总监的,市场经理,marketing_manager,VP Sales,sales_manager,人力VP,hr_manager,市场,T4_colloquial
+P009190,搞Motion Designer的,设计师,designer,技术主管,software_engineer,执行总裁,general_manager,设计,T4_colloquial
+P009191,产吕策划,产品经理,product_manager,TPM,project_manager,达人运营,operations_manager,产品,T6_typo
+P009192,财务责负人,财务经理,finance_manager,战略投资经理,investment_manager,售前经理,sales_manager,财务,T6_typo
+P009193,ER经理，汇报给 CEO,人力资源经理,hr_manager,高管助理,admin_manager,市场VP,marketing_manager,人力资源,T7_context
+P009194,Python开发,软件工程师,software_engineer,Cloud Architect,architect,策略产品经理,product_manager,开发,T1_raw
+P009195,搞人事经理的同事,人力资源经理,hr_manager,公共事务经理,admin_manager,海外业务负责人,general_manager,人力资源,T4_colloquial
+P009196,机械主管,机械工程师,mechanical_engineer,SQE,supply_chain_manager,PR经理,marketing_manager,供应链,T1_raw
+P009197,略战投资经理,投资经理,investment_manager,财务分析经理,finance_manager,海外销售负责人,sales_manager,投资,T6_typo
+P009198,新媒体运营经理，IC 路线,运营经理,operations_manager,数据质量经理,data_analyst,渠道经理,marketing_manager,运营,T7_context
+P009199,采购员专,供应链经理,supply_chain_manager,硬件主管,mechanical_engineer,市场主管,marketing_manager,供应链,T6_typo
+P009200,视觉设计师，在阿里做 B 端,设计师,designer,硬件技术总监,mechanical_engineer,数据分析经理,data_analyst,设计,T7_context
+P009201,设施管理经理，在字节做推荐,行政经理,admin_manager,薪酬福利经理,hr_manager,法务主管,legal_manager,行政,T7_context
+P009202,首席架构师，IC 路线,架构师,architect,SRE工程师,software_engineer,数据分析负责人,data_analyst,开发,T7_context
+P009203,招一个做高管助理的,行政经理,admin_manager,绩效负责人,hr_manager,海外营销经理,marketing_manager,行政,T4_colloquial
+P009204,类似品牌经理这种的,市场经理,marketing_manager,销售专员,sales_manager,高级HR经理,hr_manager,市场,T4_colloquial
+P009205,DSET,测试工程师,test_engineer,team leader,software_engineer,实施经理,project_manager,测试,T6_typo
+P009206,搞推荐系统工程师的同事,算法工程师,algorithm_engineer,安全工程师,software_engineer,市场专员,marketing_manager,算法,T4_colloquial
+P009207,招一个做SDET的,测试工程师,test_engineer,前端 leader,software_engineer,项目专员,project_manager,测试,T4_colloquial
+P009208,我们公司做首席法务官,法务经理,legal_manager,成本会计,finance_manager,市场经理,marketing_manager,法务,T4_colloquial
+P009209,FP&A经理，在阿里做 B 端,财务经理,finance_manager,投资VP,investment_manager,物流经理,supply_chain_manager,财务,T7_context
+P009210,市场专员，IC 路线,市场经理,marketing_manager,售前经理,sales_manager,风控负责人,investment_manager,市场,T7_context
+P009211,团队负责人岗位,总经理,general_manager,投资主管,investment_manager,计划经理,supply_chain_manager,管理,T4_colloquial
+P009212,品控经理，刚毕业 3 年,供应链经理,supply_chain_manager,硬件技术总监,mechanical_engineer,平台运营,operations_manager,供应链,T7_context
+P009213,Senior Architect,架构师,architect,技术 leader,software_engineer,EE工程师,mechanical_engineer,开发,T2_seniority
+P009214,风险管理经理，IC 路线,投资经理,investment_manager,高级财务经理,finance_manager,增长产品经理,product_manager,投资,T7_context
+P009215,LL工M程师,算法工程师,algorithm_engineer,team leader,software_engineer,员工关系经理,hr_manager,算法,T6_typo
+P009216,B端高级算法工程师,算法工程师,algorithm_engineer,CTO,software_engineer,自动化测试负责人,test_engineer,算法,T3_domain
+P009217,客户成功负责人，在阿里做 B 端,销售经理,sales_manager,海外营销经理,marketing_manager,公关经理,marketing_manager,销售,T7_context
+P009218,Principal 设计负责人,设计师,designer,ASR工程师,algorithm_engineer,用户运营经理,operations_manager,设计,T2_seniority
+P009219,海外运营经理，带过 20+ 人团队,运营经理,operations_manager,资深数据分析师,data_analyst,CHRO,hr_manager,运营,T7_context
+P009220,类似业务负责人这种的,总经理,general_manager,生产经理,supply_chain_manager,大模型工程师,algorithm_engineer,管理,T4_colloquial
+P009221,商业化运营负责人，偏管理岗,运营经理,operations_manager,数据运营经理,data_analyst,算法工程师,algorithm_engineer,运营,T7_context
+P009222,Senior 会计经理,财务经理,finance_manager,风控经理,investment_manager,文秘,admin_manager,财务,T2_seniority
+P009223,电子程工师,机械工程师,mechanical_engineer,IQC经理,supply_chain_manager,QA总监,test_engineer,供应链,T6_typo
+P009224,中台产品经理，年包 60-80w,产品经理,product_manager,项目总监,project_manager,绩效经理,hr_manager,产品,T7_context
+P009225,做风控负责人的哥们,投资经理,investment_manager,财务规划经理,finance_manager,高级项目经理,project_manager,投资,T4_colloquial
+P009226,项目主管，在腾讯带 10 人团队,项目经理,project_manager,C端产品经理,product_manager,测试经理,test_engineer,产品,T7_context
+P009227,高级财务主管leader,财务经理,finance_manager,管理合伙人,investment_manager,员工关系经理,hr_manager,财务,T2_seniority
+P009228,做技术负责人的,软件工程师,software_engineer,安全架构师,architect,用户运营,operations_manager,开发,T4_colloquial
+P009229,Principal Tech Architect,架构师,architect,移动开发工程师,software_engineer,首席行政官,admin_manager,开发,T2_seniority
+P009230,电商运营，刚毕业 3 年,运营经理,operations_manager,Data Analyst,data_analyst,GTM经理,marketing_manager,运营,T7_context
+P009231,首席测试经理专家,测试工程师,test_engineer,服务端开发,software_engineer,风控负责人,investment_manager,测试,T2_seniority
+P009232,研发VP，汇报给 CEO,软件工程师,software_engineer,业务架构师,architect,总法律顾问,legal_manager,开发,T7_context
+P009233,人力总监方向,人力资源经理,hr_manager,公共事务经理,admin_manager,推荐算法工程师,algorithm_engineer,人力资源,T4_colloquial
+P009234,机器学习工程师,算法工程师,algorithm_engineer,Go工程师,software_engineer,营销负责人,marketing_manager,算法,T1_raw
+P009235,商业化运营负责人，跨部门协作多,运营经理,operations_manager,数据主管,data_analyst,BD经理,sales_manager,运营,T7_context
+P009236,前台经理，跨部门协作多,行政经理,admin_manager,人力总监,hr_manager,全国销售运营负责人,sales_manager,行政,T7_context
+P009237,COO,运营经理,operations_manager,数据治理经理,data_analyst,财务主管,finance_manager,运营,T1_raw
+P009238,投资经理，在字节做推荐,投资经理,investment_manager,税务经理,finance_manager,安全测试工程师,test_engineer,投资,T7_context
+P009239,marketing 方向,市场经理,marketing_manager,客户成功经理,sales_manager,行政专员,admin_manager,市场,T5_en_zh_mix
+P009240,招一个做首席架构师的,架构师,architect,中间件工程师,software_engineer,运营经理,operations_manager,开发,T4_colloquial
+P009241,负责测试总监,测试工程师,test_engineer,Go工程师,software_engineer,移动开发工程师,software_engineer,测试,T4_colloquial
+P009242,负责人事主管,人力资源经理,hr_manager,行政主管,admin_manager,资金负责人,finance_manager,人力资源,T4_colloquial
+P009243,区域销售经理，跨部门协作多,销售经理,sales_manager,首席市场官,marketing_manager,合规经理,legal_manager,销售,T7_context
+P009244,机结械构工程师,机械工程师,mechanical_engineer,供应链经理,supply_chain_manager,基础架构工程师,software_engineer,供应链,T6_typo
+P009245,负责企业文化负责人,人力资源经理,hr_manager,CAO,admin_manager,区域负责人,sales_manager,人力资源,T4_colloquial
+P009246,类似创意总监这种的,设计师,designer,AIGC工程师,algorithm_engineer,CSO,sales_manager,设计,T4_colloquial
+P009247,性能测试工程师，年包 60-80w,测试工程师,test_engineer,基础架构工程师,software_engineer,3D设计师,designer,测试,T7_context
+P009248,大模型行政专员,行政经理,admin_manager,Talent Acquisition,hr_manager,人力负责人,hr_manager,行政,T3_domain
+P009249,Marketing Manager，大厂背景,市场经理,marketing_manager,区域销售经理,sales_manager,测试主管,test_engineer,市场,T7_context
+P009250,C端测试经理,测试工程师,test_engineer,开发工程师,software_engineer,文秘,admin_manager,测试,T3_domain
+P009251,中级法务专员,法务经理,legal_manager,成本经理,finance_manager,会计经理,finance_manager,法务,T2_seniority
+P009252,招聘投资主管,投资经理,investment_manager,资金负责人,finance_manager,性能测试工程师,test_engineer,投资,T3_domain
+P009253,财务VP，年包 60-80w,财务经理,finance_manager,首席法务官,legal_manager,界面设计师,designer,财务,T7_context
+P009254,Key Account Manaegr,销售经理,sales_manager,品牌公关总监,marketing_manager,设计VP,designer,销售,T6_typo
+P009255,AI总监长,算法工程师,algorithm_engineer,安全工程师,software_engineer,研发负责人,software_engineer,算法,T6_typo
+P009256,项目助理，在字节做推荐,项目经理,project_manager,数据产品经理,product_manager,隐私合规经理,legal_manager,产品,T7_context
+P009257,做数据分析经理的,数据分析师,data_analyst,用户增长,operations_manager,投后经理,investment_manager,数据分析,T4_colloquial
+P009258,运维工程师,软件工程师,software_engineer,资深架构师,architect,机械负责人,mechanical_engineer,开发,T1_raw
+P009259,战略投资负责人，年包 60-80w,投资经理,investment_manager,内审经理,finance_manager,Project Manager,project_manager,投资,T7_context
+P009260,CPO，汇报给 CEO,产品经理,product_manager,Project Manager,project_manager,执行总监,general_manager,产品,T7_context
+P009261,类似HR经理这种的,人力资源经理,hr_manager,行政专员,admin_manager,搜索推荐工程师,algorithm_engineer,人力资源,T4_colloquial
+P009262,首席销官售,销售经理,sales_manager,海外营销经理,marketing_manager,算法总监,algorithm_engineer,销售,T6_typo
+P009263,TA经理，在腾讯带 10 人团队,人力资源经理,hr_manager,政府关系经理,admin_manager,商业化产品经理,product_manager,人力资源,T7_context
+P009264,高级算法 head,算法工程师,algorithm_engineer,技术 leader,software_engineer,公共事务经理,admin_manager,算法,T2_seniority
+P009265,增长供应链负责人,供应链经理,supply_chain_manager,嵌入式硬件工程师,mechanical_engineer,PM,product_manager,供应链,T3_domain
+P009266,Lead 产品助理负责人,产品经理,product_manager,Technical Program Manager,project_manager,首席法务官,legal_manager,产品,T2_seniority
+P009267,部门责负人,总经理,general_manager,仓储经理,supply_chain_manager,市场VP,marketing_manager,管理,T6_typo
+P009268,负责BI经理,数据分析师,data_analyst,内容运营负责人,operations_manager,后勤经理,admin_manager,数据分析,T4_colloquial
+P009269,数据技术 leader,软件工程师,software_engineer,云架构师,architect,产品运营经理,operations_manager,开发,T3_domain
+P009270,文秘，在字节做推荐,行政经理,admin_manager,HR主管,hr_manager,财务分析经理,finance_manager,行政,T7_context
+P009271,数据总监，大厂背景,数据分析师,data_analyst,新媒体运营经理,operations_manager,中台负责人,general_manager,数据分析,T7_context
+P009272,储仓负责人,供应链经理,supply_chain_manager,散热工程师,mechanical_engineer,测试工程师,test_engineer,供应链,T6_typo
+P009273,做UX研究员的,设计师,designer,Cloud Architect,architect,VP Sales,sales_manager,设计,T4_colloquial
+P009274,招聘team leader,软件工程师,software_engineer,System Architect,architect,渗透测试工程师,test_engineer,开发,T3_domain
+P009275,Senior 行政助理,行政经理,admin_manager,人力资源总监,hr_manager,首席法务官,legal_manager,行政,T2_seniority
+P009276,Principal 高级销售经理,销售经理,sales_manager,市场VP,marketing_manager,争议解决律师,legal_manager,销售,T2_seniority
+P009277,tech lead 方向,架构师,architect,嵌入式开发,software_engineer,部门负责人,general_manager,开发,T5_en_zh_mix
+P009278,投资总监，上一段在美团,投资经理,investment_manager,会计,finance_manager,人事经理,hr_manager,投资,T7_context
+P009279,我们公司做直播运营经理,运营经理,operations_manager,数据运营经理,data_analyst,推荐系统工程师,algorithm_engineer,运营,T4_colloquial
+P009280,研总发监,软件工程师,software_engineer,Chief Architect,architect,人力负责人,hr_manager,开发,T6_typo
+P009281,高级市场负责人,市场经理,marketing_manager,商务总监,sales_manager,海外销售经理,sales_manager,市场,T2_seniority
+P009282,硬件HR经理,人力资源经理,hr_manager,前台主管,admin_manager,财务专员,finance_manager,人力资源,T3_domain
+P009283,高级财务经理这块,财务经理,finance_manager,争议解决律师,legal_manager,Tech Architect,architect,财务,T4_colloquial
+P009284,SaaS高级投资经理,投资经理,investment_manager,FP&A经理,finance_manager,海外总经理,general_manager,投资,T3_domain
+P009285,税务负责人，上一段在美团,财务经理,finance_manager,知识产权经理,legal_manager,首席设计师,designer,财务,T7_context
+P009286,商务负责人，在腾讯带 10 人团队,销售经理,sales_manager,首席市场官,marketing_manager,学习与发展经理,hr_manager,销售,T7_context
+P009287,Business Analyst，负责 AI 产品方向,数据分析师,data_analyst,资深运营,operations_manager,自动化测试工程师,test_engineer,数据分析,T7_context
+P009288,平面设计师，刚毕业 3 年,设计师,designer,业务架构师,architect,投资分析师,investment_manager,设计,T7_context
+P009289,资深资深产品经理leader,产品经理,product_manager,TPM,project_manager,行政专员,admin_manager,产品,T2_seniority
+P009290,基金经理，汇报给 CEO,投资经理,investment_manager,财务规划经理,finance_manager,大模型算法工程师,algorithm_engineer,投资,T7_context
+P009291,HR主管，之前做过开发,人力资源经理,hr_manager,后勤经理,admin_manager,大客户负责人,sales_manager,人力资源,T7_context
+P009292,做性能测试工程师的哥们,测试工程师,test_engineer,前端开发,software_engineer,首席设计师,designer,测试,T4_colloquial
+P009293,数据合经规理,法务经理,legal_manager,财务经理,finance_manager,高级行政经理,admin_manager,法务,T6_typo
+P009294,BI分析师,数据分析师,data_analyst,新媒体运营经理,operations_manager,资金负责人,finance_manager,数据分析,T1_raw
+P009295,测试经理，年包 60-80w,测试工程师,test_engineer,iOS工程师,software_engineer,需求计划经理,supply_chain_manager,测试,T7_context
+P009296,我们公司做行政负责人,行政经理,admin_manager,招聘专员,hr_manager,B端产品经理,product_manager,行政,T4_colloquial
+P009297,招一个做首席设计师的,设计师,designer,数据挖掘工程师,algorithm_engineer,性能测试工程师,test_engineer,设计,T4_colloquial
+P009298,财务监总,财务经理,finance_manager,法律顾问,legal_manager,销售VP,sales_manager,财务,T6_typo
+P009299,首席务法官,法务经理,legal_manager,税务经理,finance_manager,人力资源业务伙伴,hr_manager,法务,T6_typo
+P009300,Lead 高级行政经理总监,行政经理,admin_manager,人力资源经理,hr_manager,设计负责人,designer,行政,T2_seniority
+P009301,我们公司做风控负责人,投资经理,investment_manager,财务专员,finance_manager,隐私合规经理,legal_manager,投资,T4_colloquial
+P009302,全国销售运营负责人，带过 20+ 人团队,销售经理,sales_manager,Marketing Head,marketing_manager,商业化运营,operations_manager,销售,T7_context
+P009303,投资分析师，在腾讯带 10 人团队,投资经理,investment_manager,资金经理,finance_manager,SDET,test_engineer,投资,T7_context
+P009304,我们公司做高级供应链经理,供应链经理,supply_chain_manager,机械总监,mechanical_engineer,法务经理,legal_manager,供应链,T4_colloquial
+P009305,PM，刚毕业 3 年,产品经理,product_manager,PMO,project_manager,平台运营经理,operations_manager,产品,T7_context
+P009306,搞质量总监的同事,测试工程师,test_engineer,嵌入式工程师,software_engineer,司库,finance_manager,测试,T4_colloquial
+P009307,首席架构师，在腾讯带 10 人团队,架构师,architect,Flutter工程师,software_engineer,数据质量经理,data_analyst,开发,T7_context
+P009308,搞投后管理负责人的同事,投资经理,investment_manager,FP&A经理,finance_manager,培训经理,hr_manager,投资,T4_colloquial
+P009309,全栈程工师,软件工程师,software_engineer,Solution Architect,architect,法务专员,legal_manager,开发,T6_typo
+P009310,副数据专员负责人,数据分析师,data_analyst,KOL运营,operations_manager,产品助理,product_manager,数据分析,T2_seniority
+P009311,市场主管,市场经理,marketing_manager,商务经理,sales_manager,AI工程师,algorithm_engineer,市场,T1_raw
+P009312,硬件主管这块,机械工程师,mechanical_engineer,物流负责人,supply_chain_manager,GR经理,admin_manager,供应链,T4_colloquial
+P009313,高级project manager,项目经理,project_manager,后台产品经理,product_manager,首席法务官,legal_manager,产品,T5_en_zh_mix
+P009314,硬件资深机械工程师,机械工程师,mechanical_engineer,供应链专员,supply_chain_manager,合规负责人,legal_manager,供应链,T3_domain
+P009315,我们公司做高级运营经理,运营经理,operations_manager,商业智能分析师,data_analyst,实施经理,project_manager,运营,T4_colloquial
+P009316,Talent Acquisition,人力资源经理,hr_manager,政府关系经理,admin_manager,分公司总经理,general_manager,人力资源,T1_raw
+P009317,培训经理，IC 路线,人力资源经理,hr_manager,行政负责人,admin_manager,CSM,sales_manager,人力资源,T7_context
+P009318,部门负责人,总经理,general_manager,知识产权经理,legal_manager,TA经理,hr_manager,管理,T1_raw
+P009319,前端 leader方向,软件工程师,software_engineer,架构负责人,architect,人力经理,hr_manager,开发,T4_colloquial
+P009320,首席算法主管,算法工程师,algorithm_engineer,音视频工程师,software_engineer,首席行政官,admin_manager,算法,T2_seniority
+P009321,副Marketing Manager总监,市场经理,marketing_manager,渠道销售经理,sales_manager,投资助理,investment_manager,市场,T2_seniority
+P009322,Designer，偏管理岗,设计师,designer,移动端工程师,software_engineer,海外销售经理,sales_manager,设计,T7_context
+P009323,销售专员，在腾讯带 10 人团队,销售经理,sales_manager,海外营销经理,marketing_manager,薪酬福利经理,hr_manager,销售,T7_context
+P009324,隐私合规经理岗位,法务经理,legal_manager,成本会计,finance_manager,文秘,admin_manager,法务,T4_colloquial
+P009325,tech lead，负责 AI 产品方向,软件工程师,software_engineer,架构师,architect,办公室主任,admin_manager,开发,T7_context
+P009326,高级Marketing Head,市场经理,marketing_manager,KA经理,sales_manager,人事负责人,hr_manager,市场,T2_seniority
+P009327,嵌入式硬件工程师岗位,机械工程师,mechanical_engineer,生产负责人,supply_chain_manager,SLAM工程师,algorithm_engineer,供应链,T4_colloquial
+P009328,嵌入式开发，负责 AI 产品方向,软件工程师,software_engineer,业务架构师,architect,市场推广经理,marketing_manager,开发,T7_context
+P009329,策略运营，在字节做推荐,运营经理,operations_manager,数据分析主管,data_analyst,董事长秘书,admin_manager,运营,T7_context
+P009330,搞HRD的同事,人力资源经理,hr_manager,董事长秘书,admin_manager,算法 leader,algorithm_engineer,人力资源,T4_colloquial
+P009331,电商公司律师,法务经理,legal_manager,财务经理,finance_manager,综合管理,admin_manager,法务,T3_domain
+P009332,容内运营,运营经理,operations_manager,数据分析负责人,data_analyst,product owner,product_manager,运营,T6_typo
+P009333,搞招聘专员的同事,人力资源经理,hr_manager,行政主管,admin_manager,算法负责人,algorithm_engineer,人力资源,T4_colloquial
+P009334,类似中台负责人这种的,总经理,general_manager,CSM,sales_manager,研发负责人,software_engineer,管理,T4_colloquial
+P009335,CMO，在阿里做 B 端,市场经理,marketing_manager,区域经理,sales_manager,Executive Assistant,admin_manager,市场,T7_context
+P009336,我们公司做S&OP经理,供应链经理,supply_chain_manager,EE工程师,mechanical_engineer,FP&A经理,finance_manager,供应链,T4_colloquial
+P009337,增长运营主管,运营经理,operations_manager,数据运营,data_analyst,财务副总裁,finance_manager,运营,T3_domain
+P009338,游戏商务经理,销售经理,sales_manager,市场总监,marketing_manager,职业经理人,general_manager,销售,T3_domain
+P009339,搞技术项目经理的同事,项目经理,project_manager,产品主管,product_manager,NLP工程师,algorithm_engineer,产品,T4_colloquial
+P009340,增长供应链专员,供应链经理,supply_chain_manager,硬件主管,mechanical_engineer,SDET,test_engineer,供应链,T3_domain
+P009341,自动驾驶开发工程师,软件工程师,software_engineer,IT架构师,architect,首席数据官,data_analyst,开发,T3_domain
+P009342,负责市场经理,市场经理,marketing_manager,BD负责人,sales_manager,合伙人,investment_manager,市场,T4_colloquial
+P009343,商业分析师，带过 20+ 人团队,数据分析师,data_analyst,内容运营负责人,operations_manager,大区经理,sales_manager,数据分析,T7_context
+P009344,Principal 算法 leader总监,算法工程师,algorithm_engineer,移动开发工程师,software_engineer,战投经理,investment_manager,算法,T2_seniority
+P009345,电子工程师,机械工程师,mechanical_engineer,战略采购经理,supply_chain_manager,设施管理经理,admin_manager,供应链,T1_raw
+P009346,教育项目负责人,项目经理,project_manager,产品策划,product_manager,投资总监,investment_manager,产品,T3_domain
+P009347,投资助理，汇报给 CEO,投资经理,investment_manager,财务负责人,finance_manager,人力资源经理,hr_manager,投资,T7_context
+P009348,中级GM助理,总经理,general_manager,战略投资负责人,investment_manager,用户增长,operations_manager,管理,T2_seniority
+P009349,初级销售经理,销售经理,sales_manager,海外市场经理,marketing_manager,团队负责人,general_manager,销售,T2_seniority
+P009350,SaaS行政专员,行政经理,admin_manager,招聘负责人,hr_manager,算法总监,algorithm_engineer,行政,T3_domain
+P009351,负责资深工程师,软件工程师,software_engineer,平台架构师,architect,企业文化负责人,hr_manager,开发,T4_colloquial
+P009352,计设师,设计师,designer,数据分析主管,data_analyst,部门经理,general_manager,设计,T6_typo
+P009353,招一个做直播运营经理的,运营经理,operations_manager,商业分析师,data_analyst,销售经理,sales_manager,运营,T4_colloquial
+P009354,产品运营，偏管理岗,运营经理,operations_manager,数据分析主管,data_analyst,Marketing Manager,marketing_manager,运营,T7_context
+P009355,Junior 市场经理主管,市场经理,marketing_manager,高级销售经理,sales_manager,策略产品经理,product_manager,市场,T2_seniority
+P009356,招聘总监,人力资源经理,hr_manager,董事长秘书,admin_manager,安全架构师,architect,人力资源,T1_raw
+P009357,我们公司做音视频工程师,软件工程师,software_engineer,系统架构师,architect,社区运营经理,operations_manager,开发,T4_colloquial
+P009358,高级法务经理，在字节做推荐,法务经理,legal_manager,财务VP,finance_manager,成本会计,finance_manager,法务,T7_context
+P009359,设计VP这块,设计师,designer,决策规划算法,algorithm_engineer,C&B经理,hr_manager,设计,T4_colloquial
+P009360,平台架构师，在字节做推荐,架构师,architect,资深工程师,software_engineer,数据分析经理,data_analyst,开发,T7_context
+P009361,税务经理，跨部门协作多,财务经理,finance_manager,DPO,legal_manager,雇主品牌负责人,hr_manager,财务,T7_context
+P009362,中级GM,总经理,general_manager,Technical Program Manager,project_manager,绩效经理,hr_manager,管理,T2_seniority
+P009363,高级市经场理,市场经理,marketing_manager,商务负责人,sales_manager,CSO,sales_manager,市场,T6_typo
+P009364,设计负责人，在字节做推荐,设计师,designer,高级测试工程师,test_engineer,CAO,admin_manager,设计,T7_context
+P009365,Tech Arhcitect,架构师,architect,React Native工程师,software_engineer,物流主管,supply_chain_manager,开发,T6_typo
+P009366,Senior 数据专员,数据分析师,data_analyst,达人运营,operations_manager,Marketing Manager,marketing_manager,数据分析,T2_seniority
+P009367,数据专员，偏管理岗,数据分析师,data_analyst,平台运营,operations_manager,测试开发工程师,test_engineer,数据分析,T7_context
+P009368,据数架构师,架构师,architect,iOS工程师,software_engineer,数据产品经理,data_analyst,开发,T6_typo
+P009369,高级数据分析师，在阿里做 B 端,数据分析师,data_analyst,用户增长,operations_manager,产品专员,product_manager,数据分析,T7_context
+P009370,做首席架构师的,架构师,architect,游戏服务端工程师,software_engineer,风险管理经理,investment_manager,开发,T4_colloquial
+P009371,我们公司做CSM,销售经理,sales_manager,品牌公关总监,marketing_manager,业务总监,general_manager,销售,T4_colloquial
+P009372,Softwaer Engineer,软件工程师,software_engineer,前端架构师,architect,品牌负责人,marketing_manager,开发,T6_typo
+P009373,投后经理，之前做过开发,投资经理,investment_manager,资金负责人,finance_manager,Talent Acquisition,hr_manager,投资,T7_context
+P009374,知识产权经理，在阿里做 B 端,法务经理,legal_manager,财务VP,finance_manager,社区运营经理,operations_manager,法务,T7_context
+P009375,负责CFO,财务经理,finance_manager,风控负责人,investment_manager,Graphic Designer,designer,财务,T4_colloquial
+P009376,Principal 高级机械工程师主管,机械工程师,mechanical_engineer,仓储负责人,supply_chain_manager,产品专员,product_manager,供应链,T2_seniority
+P009377,初级机械主管专家,机械工程师,mechanical_engineer,仓储负责人,supply_chain_manager,解决方案架构师,architect,供应链,T2_seniority
+P009378,商主务管,销售经理,sales_manager,市场VP,marketing_manager,数据分析师,data_analyst,销售,T6_typo
+P009379,行政总监，在字节做推荐,行政经理,admin_manager,HRBP,hr_manager,测试经理,test_engineer,行政,T7_context
+P009380,争议解决律师，在字节做推荐,法务经理,legal_manager,FP&A经理,finance_manager,投后经理,investment_manager,法务,T7_context
+P009381,商业化软件工程师,软件工程师,software_engineer,System Architect,architect,联合创始人,general_manager,开发,T3_domain
+P009382,品牌负责人，大厂背景,市场经理,marketing_manager,区域经理,sales_manager,财务VP,finance_manager,市场,T7_context
+P009383,IQC经理岗位,供应链经理,supply_chain_manager,硬件负责人,mechanical_engineer,分公司总经理,general_manager,供应链,T4_colloquial
+P009384,sales manager 方向,销售经理,sales_manager,市场总监,marketing_manager,投资经理,investment_manager,销售,T5_en_zh_mix
+P009385,初级商务经理助理,销售经理,sales_manager,市场主管,marketing_manager,Interaction Designer,designer,销售,T2_seniority
+P009386,Senior 公司律师VP,法务经理,legal_manager,会计主管,finance_manager,测试工程师,test_engineer,法务,T2_seniority
+P009387,搞执行总裁的同事,总经理,general_manager,投资经理,investment_manager,算法 head,algorithm_engineer,管理,T4_colloquial
+P009388,CAE工程师，跨部门协作多,机械工程师,mechanical_engineer,生产计划经理,supply_chain_manager,增长产品经理,product_manager,供应链,T7_context
+P009389,类似行政主管这种的,行政经理,admin_manager,人力资源总监,hr_manager,测试开发工程师,test_engineer,行政,T4_colloquial
+P009390,BU负责人方向,总经理,general_manager,投资助理,investment_manager,产品 lead,product_manager,管理,T4_colloquial
+P009391,区域销售经理方向,销售经理,sales_manager,渠道经理,marketing_manager,直播运营经理,operations_manager,销售,T4_colloquial
+P009392,搞网络安全工程师的同事,软件工程师,software_engineer,Architect,architect,CDO,designer,开发,T4_colloquial
+P009393,商业化测试经理,测试工程师,test_engineer,iOS工程师,software_engineer,人力VP,hr_manager,测试,T3_domain
+P009394,据数专员,数据分析师,data_analyst,运营VP,operations_manager,项目负责人,project_manager,数据分析,T6_typo
+P009395,务法专员,法务经理,legal_manager,CFO,finance_manager,行政主管,admin_manager,法务,T6_typo
+P009396,海外售销经理,销售经理,sales_manager,品牌主管,marketing_manager,架构师,architect,销售,T6_typo
+P009397,我们公司做招聘负责人,人力资源经理,hr_manager,高级行政经理,admin_manager,客户经理,sales_manager,人力资源,T4_colloquial
+P009398,副测试主管专员,测试工程师,test_engineer,基础架构工程师,software_engineer,高级市场经理,marketing_manager,测试,T2_seniority
+P009399,做中台产品经理的哥们,产品经理,product_manager,项目负责人,project_manager,机械总监,mechanical_engineer,产品,T4_colloquial
+P009400,业架务构师,架构师,architect,音视频工程师,software_engineer,招聘主管,hr_manager,开发,T6_typo
+P009401,做FP&A经理的,财务经理,finance_manager,法务专员,legal_manager,高级法务经理,legal_manager,财务,T4_colloquial
+P009402,Junior 质量工程师,测试工程师,test_engineer,技术 leader,software_engineer,中间件工程师,software_engineer,测试,T2_seniority
+P009403,招聘财务经理,财务经理,finance_manager,首席法务官,legal_manager,AIGC工程师,algorithm_engineer,财务,T3_domain
+P009404,运工维程师,软件工程师,software_engineer,数据架构师,architect,中后台负责人,general_manager,开发,T6_typo
+P009405,类似高级市场经理这种的,市场经理,marketing_manager,销售VP,sales_manager,电子工程师,mechanical_engineer,市场,T4_colloquial
+P009406,财分务析经理,财务经理,finance_manager,公司律师,legal_manager,全国销售负责人,sales_manager,财务,T6_typo
+P009407,项目VP这块,项目经理,project_manager,AI产品负责人,product_manager,行政总监,admin_manager,产品,T4_colloquial
+P009408,类似高级行政经理这种的,行政经理,admin_manager,招聘主管,hr_manager,自动驾驶算法工程师,algorithm_engineer,行政,T4_colloquial
+P009409,招聘负责人这块,人力资源经理,hr_manager,行政专员,admin_manager,财务总监,finance_manager,人力资源,T4_colloquial
+P009410,搞投资分析师的同事,投资经理,investment_manager,CFO,finance_manager,薪酬经理,hr_manager,投资,T4_colloquial
+P009411,搞硬件工程师的,机械工程师,mechanical_engineer,供应链专员,supply_chain_manager,投资总监,investment_manager,供应链,T4_colloquial
+P009412,资金责负人,财务经理,finance_manager,法律顾问,legal_manager,高级经理,general_manager,财务,T6_typo
+P009413,我们公司做PMO,项目经理,project_manager,产品VP,product_manager,海外运营,operations_manager,产品,T4_colloquial
+P009414,销售VP，在阿里做 B 端,销售经理,sales_manager,公关负责人,marketing_manager,动效设计师,designer,销售,T7_context
+P009415,后端 leader,软件工程师,software_engineer,架构负责人,architect,财务总监,finance_manager,开发,T1_raw
+P009416,team leader，在腾讯带 10 人团队,软件工程师,software_engineer,前端架构师,architect,社区运营经理,operations_manager,开发,T7_context
+P009417,类似审计负责人这种的,财务经理,finance_manager,法律顾问,legal_manager,销售专员,sales_manager,财务,T4_colloquial
+P009418,数据治理经理，上一段在美团,数据分析师,data_analyst,产品运营,operations_manager,首席人力官,hr_manager,数据分析,T7_context
+P009419,搞管理合伙人的,投资经理,investment_manager,首席财务官,finance_manager,生产负责人,supply_chain_manager,投资,T4_colloquial
+P009420,资深算法工程师，之前做过开发,算法工程师,algorithm_engineer,开发负责人,software_engineer,大客户负责人,sales_manager,算法,T7_context
+P009421,UI/UX 方向,设计师,designer,BI负责人,data_analyst,软件工程师,software_engineer,设计,T5_en_zh_mix
+P009422,负责数据架构师,架构师,architect,安全负责人,software_engineer,学习与发展经理,hr_manager,开发,T4_colloquial
+P009423,知识产权经理，上一段在美团,法务经理,legal_manager,税务经理,finance_manager,基金经理,investment_manager,法务,T7_context
+P009424,CV程工师,算法工程师,algorithm_engineer,React Native工程师,software_engineer,Project Manager,project_manager,算法,T6_typo
+P009425,搞AIGC工程师的,算法工程师,algorithm_engineer,VP of Engineering,software_engineer,中台负责人,general_manager,算法,T4_colloquial
+P009426,我们公司做测试专员,测试工程师,test_engineer,React Native工程师,software_engineer,绩效负责人,hr_manager,测试,T4_colloquial
+P009427,设计负责人，大厂背景,设计师,designer,高级数据分析师,data_analyst,CDO,data_analyst,设计,T7_context
+P009428,资深产品负责人助理,产品经理,product_manager,交付经理,project_manager,事业部总经理,general_manager,产品,T2_seniority
+P009429,类似数字营销经理这种的,市场经理,marketing_manager,渠道销售负责人,sales_manager,高级测试工程师,test_engineer,市场,T4_colloquial
+P009430,中台产品经理，跨部门协作多,产品经理,product_manager,PMO总监,project_manager,增长经理,operations_manager,产品,T7_context
+P009431,测试负责人岗位,测试工程师,test_engineer,后端负责人,software_engineer,投资VP,investment_manager,测试,T4_colloquial
+P009432,Web3研发负责人,软件工程师,software_engineer,架构师,architect,品牌主管,marketing_manager,开发,T3_domain
+P009433,搞合伙人的同事,投资经理,investment_manager,财务VP,finance_manager,客户成功经理,sales_manager,投资,T4_colloquial
+P009434,质量经理岗位,供应链经理,supply_chain_manager,硬件设计工程师,mechanical_engineer,算法专家,algorithm_engineer,供应链,T4_colloquial
+P009435,Junior GM主管,总经理,general_manager,内容运营负责人,operations_manager,市场推广经理,marketing_manager,管理,T2_seniority
+P009436,B端产品经理,产品经理,product_manager,实施经理,project_manager,财务经理,finance_manager,产品,T1_raw
+P009437,负责前台经理,行政经理,admin_manager,雇主品牌负责人,hr_manager,薪酬福利经理,hr_manager,行政,T4_colloquial
+P009438,招聘资深算法工程师,算法工程师,algorithm_engineer,DevOps工程师,software_engineer,Web开发工程师,software_engineer,算法,T3_domain
+P009439,做SQE的,供应链经理,supply_chain_manager,结构工程师,mechanical_engineer,product owner,product_manager,供应链,T4_colloquial
+P009440,B端测试工程师,测试工程师,test_engineer,全栈工程师,software_engineer,首席产品官,product_manager,测试,T3_domain
+P009441,招聘行政经理,行政经理,admin_manager,招聘专员,hr_manager,SQE,supply_chain_manager,行政,T3_domain
+P009442,做Data Architect的哥们,架构师,architect,资深工程师,software_engineer,数据合规经理,legal_manager,开发,T4_colloquial
+P009443,工程项目理经,项目经理,project_manager,产品部总经理,product_manager,数据分析师,data_analyst,产品,T6_typo
+P009444,出海法务负责人,法务经理,legal_manager,财务VP,finance_manager,招聘专员,hr_manager,法务,T3_domain
+P009445,SaaS数据分析经理,数据分析师,data_analyst,运营负责人,operations_manager,大模型算法工程师,algorithm_engineer,数据分析,T3_domain
+P009446,运营VP，汇报给 CEO,运营经理,operations_manager,CDO,data_analyst,中台负责人,general_manager,运营,T7_context
+P009447,taem leader,软件工程师,software_engineer,系统架构师,architect,机器学习工程师,algorithm_engineer,开发,T6_typo
+P009448,开发工程师，跨部门协作多,软件工程师,software_engineer,Solution Architect,architect,财务负责人,finance_manager,开发,T7_context
+P009449,服务设计师方向,设计师,designer,SDET,test_engineer,区域负责人,sales_manager,设计,T4_colloquial
+P009450,资金负责人，偏管理岗,财务经理,finance_manager,高级法务经理,legal_manager,政府关系经理,admin_manager,财务,T7_context
+P009451,招一个做算法工程师的,算法工程师,algorithm_engineer,服务端开发,software_engineer,KA经理,sales_manager,算法,T4_colloquial
+P009452,负责测试VP,测试工程师,test_engineer,前端工程师,software_engineer,会计主管,finance_manager,测试,T4_colloquial
+P009453,做制造经理的哥们,供应链经理,supply_chain_manager,硬件技术总监,mechanical_engineer,人事负责人,hr_manager,供应链,T4_colloquial
+P009454,商业化产品经理，带过 20+ 人团队,产品经理,product_manager,工程项目经理,project_manager,高级法务经理,legal_manager,产品,T7_context
+P009455,招聘专员,人力资源经理,hr_manager,综合管理,admin_manager,营销负责人,marketing_manager,人力资源,T1_raw
+P009456,做财务规划经理的,财务经理,finance_manager,M&A经理,investment_manager,项目专员,project_manager,财务,T4_colloquial
+P009457,风控经理，年包 60-80w,投资经理,investment_manager,财务专员,finance_manager,法务负责人,legal_manager,投资,T7_context
+P009458,自动驾驶高级运营经理,运营经理,operations_manager,商业智能分析师,data_analyst,游戏开发工程师,software_engineer,运营,T3_domain
+P009459,我们公司做并购经理,投资经理,investment_manager,财务规划经理,finance_manager,事业部总经理,general_manager,投资,T4_colloquial
+P009460,全工栈程师,软件工程师,software_engineer,架构师,architect,总经理,general_manager,开发,T6_typo
+P009461,直播运营，在腾讯带 10 人团队,运营经理,operations_manager,数据运营经理,data_analyst,首席架构师,architect,运营,T7_context
+P009462,中级投资专员,投资经理,investment_manager,资金经理,finance_manager,质量经理,supply_chain_manager,投资,T2_seniority
+P009463,Web开发工程师，偏管理岗,软件工程师,software_engineer,Data Architect,architect,三维设计师,designer,开发,T7_context
+P009464,类似Marketing Head这种的,市场经理,marketing_manager,海外销售经理,sales_manager,前台经理,admin_manager,市场,T4_colloquial
+P009465,数据治理经理，汇报给 CEO,数据分析师,data_analyst,私域运营,operations_manager,IP经理,legal_manager,数据分析,T7_context
+P009466,技术 leader，年包 60-80w,软件工程师,software_engineer,系统架构师,architect,中台负责人,general_manager,开发,T7_context
+P009467,Cloud Acrhitect,架构师,architect,前端负责人,software_engineer,电商运营经理,operations_manager,开发,T6_typo
+P009468,类似Unity开发这种的,软件工程师,software_engineer,System Architect,architect,高级项目经理,project_manager,开发,T4_colloquial
+P009469,增长产品经理，之前做过开发,产品经理,product_manager,交付负责人,project_manager,投资总监,investment_manager,产品,T7_context
+P009470,医疗资深运营,运营经理,operations_manager,Business Analyst,data_analyst,OD经理,hr_manager,运营,T3_domain
+P009471,高级架构师，IC 路线,架构师,architect,研发总监,software_engineer,界面设计师,designer,开发,T7_context
+P009472,Unity开发，之前做过开发,软件工程师,software_engineer,安全架构师,architect,供应链主管,supply_chain_manager,开发,T7_context
+P009473,招一个做商业智能分析师的,数据分析师,data_analyst,内容运营负责人,operations_manager,数据产品负责人,product_manager,数据分析,T4_colloquial
+P009474,服务端开发，在腾讯带 10 人团队,软件工程师,software_engineer,系统架构师,architect,ER经理,hr_manager,开发,T7_context
+P009475,资深高级市场经理,市场经理,marketing_manager,BD负责人,sales_manager,业务分析师,data_analyst,市场,T2_seniority
+P009476,商业化运营，在腾讯带 10 人团队,运营经理,operations_manager,BI经理,data_analyst,法务总监,legal_manager,运营,T7_context
+P009477,嵌入式硬件工程师，跨部门协作多,机械工程师,mechanical_engineer,制造经理,supply_chain_manager,高级经理,general_manager,供应链,T7_context
+P009478,投资经理，负责 AI 产品方向,投资经理,investment_manager,资金经理,finance_manager,成本会计,finance_manager,投资,T7_context
+P009479,增长产品负责人,产品经理,product_manager,高级项目经理,project_manager,设施管理经理,admin_manager,产品,T3_domain
+P009480,Senior 程序员,软件工程师,software_engineer,Tech Architect,architect,城市经理,sales_manager,开发,T2_seniority
+P009481,海外销营经理,市场经理,marketing_manager,商务负责人,sales_manager,CAO,admin_manager,市场,T6_typo
+P009482,HRBP(senior),人力资源经理,hr_manager,文秘,admin_manager,董事长,general_manager,人力资源,T5_en_zh_mix
+P009483,营销经理，跨部门协作多,市场经理,marketing_manager,售前经理,sales_manager,数据专员,data_analyst,市场,T7_context
+P009484,B端法律顾问,法务经理,legal_manager,财务负责人,finance_manager,人力总监,hr_manager,法务,T3_domain
+P009485,AI产品负责人，大厂背景,产品经理,product_manager,资深项目经理,project_manager,首席运营官,operations_manager,产品,T7_context
+P009486,招一个做ML Engineer的,算法工程师,algorithm_engineer,Developer,software_engineer,中台负责人,general_manager,算法,T4_colloquial
+P009487,DB专员,销售经理,sales_manager,品牌负责人,marketing_manager,专利工程师,legal_manager,销售,T6_typo
+P009488,搞法务VP的,法务经理,legal_manager,财务负责人,finance_manager,行政专员,admin_manager,法务,T4_colloquial
+P009489,搞供应链主管的同事,供应链经理,supply_chain_manager,硬件设计工程师,mechanical_engineer,组织发展经理,hr_manager,供应链,T4_colloquial
+P009490,Junior 机械工程师VP,机械工程师,mechanical_engineer,生产计划经理,supply_chain_manager,Key Account Manager,sales_manager,供应链,T2_seniority
+P009491,投资总监，年包 60-80w,投资经理,investment_manager,财务VP,finance_manager,数据产品经理,product_manager,投资,T7_context
+P009492,高级运营经理岗位,运营经理,operations_manager,BA,data_analyst,测试主管,test_engineer,运营,T4_colloquial
+P009493,商业智能分析师，上一段在美团,数据分析师,data_analyst,平台运营,operations_manager,联合创始人,general_manager,数据分析,T7_context
+P009494,搞自动化测试工程师的,测试工程师,test_engineer,iOS工程师,software_engineer,品牌负责人,marketing_manager,测试,T4_colloquial
+P009495,负责雇主品牌负责人,人力资源经理,hr_manager,行政助理,admin_manager,商务拓展经理,sales_manager,人力资源,T4_colloquial
+P009496,高级数据分析师,数据分析师,data_analyst,电商运营,operations_manager,游戏客户端工程师,software_engineer,数据分析,T1_raw
+P009497,人力负责人，年包 60-80w,人力资源经理,hr_manager,行政VP,admin_manager,DPO,legal_manager,人力资源,T7_context
+P009498,初级Test Engineer,测试工程师,test_engineer,研发负责人,software_engineer,项目经理,project_manager,测试,T2_seniority
+P009499,总裁秘书，偏管理岗,行政经理,admin_manager,HR主管,hr_manager,算法总监,algorithm_engineer,行政,T7_context
+P009500,中后台负责人这块,总经理,general_manager,项目VP,project_manager,行政VP,admin_manager,管理,T4_colloquial
+P009501,培训经理这块,人力资源经理,hr_manager,高级行政经理,admin_manager,CEO,general_manager,人力资源,T4_colloquial
+P009502,负责PMO,项目经理,project_manager,增长产品经理,product_manager,城市经理,sales_manager,产品,T4_colloquial
+P009503,雇主品牌负责人,人力资源经理,hr_manager,前台经理,admin_manager,高级销售经理,sales_manager,人力资源,T1_raw
+P009504,高级市场经理，刚毕业 3 年,市场经理,marketing_manager,Sales Manager,sales_manager,Flutter工程师,software_engineer,市场,T7_context
+P009505,首席产品官，上一段在美团,产品经理,product_manager,高级项目经理,project_manager,品牌主管,marketing_manager,产品,T7_context
+P009506,B端项目专员,项目经理,project_manager,策略产品经理,product_manager,资深设计师,designer,产品,T3_domain
+P009507,高级Designer专员,设计师,designer,数据VP,data_analyst,物流经理,supply_chain_manager,设计,T2_seniority
+P009508,中级高级法务经理,法务经理,legal_manager,会计主管,finance_manager,海外销售经理,sales_manager,法务,T2_seniority
+P009509,大客户负责人，带过 20+ 人团队,销售经理,sales_manager,品牌负责人,marketing_manager,HRVP,hr_manager,销售,T7_context
+P009510,B端投资专员,投资经理,investment_manager,会计,finance_manager,VP Sales,sales_manager,投资,T3_domain
+P009511,游戏运营主管,运营经理,operations_manager,商业智能分析师,data_analyst,安全测试工程师,test_engineer,运营,T3_domain
+P009512,测试开发工程师，大厂背景,测试工程师,test_engineer,技术主管,software_engineer,交付经理,project_manager,测试,T7_context
+P009513,首席高级HR经理,人力资源经理,hr_manager,行政经理,admin_manager,CMO,marketing_manager,人力资源,T2_seniority
+P009514,人力负责人，刚毕业 3 年,人力资源经理,hr_manager,行政经理,admin_manager,分公司总经理,general_manager,人力资源,T7_context
+P009515,直播运营经理方向,运营经理,operations_manager,BI分析师,data_analyst,DevOps工程师,software_engineer,运营,T4_colloquial
+P009516,Junior 开发工程师,软件工程师,software_engineer,架构师,architect,财务副总裁,finance_manager,开发,T2_seniority
+P009517,我们公司做iOS工程师,软件工程师,software_engineer,Architect,architect,客户成功负责人,sales_manager,开发,T4_colloquial
+P009518,公司律师，IC 路线,法务经理,legal_manager,预算经理,finance_manager,商业智能分析师,data_analyst,法务,T7_context
+P009519,&SOP经理,供应链经理,supply_chain_manager,硬件设计工程师,mechanical_engineer,投资VP,investment_manager,供应链,T6_typo
+P009520,首席运营官，上一段在美团,运营经理,operations_manager,数据分析主管,data_analyst,组织发展经理,hr_manager,运营,T7_context
+P009521,架构负责人，之前做过开发,架构师,architect,Android工程师,software_engineer,Test Engineer,test_engineer,开发,T7_context
+P009522,移动端测试工程师这块,测试工程师,test_engineer,研发负责人,software_engineer,数据运营经理,data_analyst,测试,T4_colloquial
+P009523,负责资深测试工程师,测试工程师,test_engineer,游戏服务端工程师,software_engineer,投后管理负责人,investment_manager,测试,T4_colloquial
+P009524,招一个做Designer的,设计师,designer,tech lead,software_engineer,争议解决律师,legal_manager,设计,T4_colloquial
+P009525,招一个做全国销售负责人的,销售经理,sales_manager,市场负责人,marketing_manager,CLO,legal_manager,销售,T4_colloquial
+P009526,BD经理，IC 路线,销售经理,sales_manager,公关负责人,marketing_manager,SQE,supply_chain_manager,销售,T7_context
+P009527,大模型算法工程师这块,算法工程师,algorithm_engineer,前端负责人,software_engineer,内审经理,finance_manager,算法,T4_colloquial
+P009528,搞投资负责人的,投资经理,investment_manager,审计经理,finance_manager,策略运营负责人,operations_manager,投资,T4_colloquial
+P009529,大模型人力负责人,人力资源经理,hr_manager,总裁秘书,admin_manager,售前顾问,sales_manager,人力资源,T3_domain
+P009530,制造经理，刚毕业 3 年,供应链经理,supply_chain_manager,热设计工程师,mechanical_engineer,总裁秘书,admin_manager,供应链,T7_context
+P009531,三设维计师,设计师,designer,仿真工程师,mechanical_engineer,BU负责人,general_manager,设计,T6_typo
+P009532,数据总监长,数据分析师,data_analyst,策略运营负责人,operations_manager,品牌负责人,marketing_manager,数据分析,T6_typo
+P009533,招聘主管，负责 AI 产品方向,人力资源经理,hr_manager,综合管理,admin_manager,测试开发工程师,test_engineer,人力资源,T7_context
+P009534,Junior 供应链专员助理,供应链经理,supply_chain_manager,资深机械工程师,mechanical_engineer,业务分析师,data_analyst,供应链,T2_seniority
+P009535,区域总经理,总经理,general_manager,投资主管,investment_manager,管理合伙人,investment_manager,管理,T1_raw
+P009536,类似高级运营经理这种的,运营经理,operations_manager,数据分析师,data_analyst,ASR工程师,algorithm_engineer,运营,T4_colloquial
+P009537,UI设计师方向,设计师,designer,前端开发,software_engineer,HR负责人,hr_manager,设计,T4_colloquial
+P009538,投资总监，之前做过开发,投资经理,investment_manager,财务负责人,finance_manager,组织发展经理,hr_manager,投资,T7_context
+P009539,Motion Designer，负责 AI 产品方向,设计师,designer,Go工程师,software_engineer,办公室主任,admin_manager,设计,T7_context
+P009540,业分务析师,数据分析师,data_analyst,达人运营,operations_manager,品牌策划,marketing_manager,数据分析,T6_typo
+P009541,Software Engineer这块,软件工程师,software_engineer,架构负责人,architect,投后经理,investment_manager,开发,T4_colloquial
+P009542,做Java工程师的哥们,软件工程师,software_engineer,云架构师,architect,隐私合规经理,legal_manager,开发,T4_colloquial
+P009543,Principal 算法负责人主管,算法工程师,algorithm_engineer,Go工程师,software_engineer,投资VP,investment_manager,算法,T2_seniority
+P009544,类似SQE这种的,供应链经理,supply_chain_manager,硬件工程师,mechanical_engineer,职业经理人,general_manager,供应链,T4_colloquial
+P009545,推荐算法工程师,算法工程师,algorithm_engineer,SRE工程师,software_engineer,风控经理,investment_manager,算法,T1_raw
+P009546,战投经理，之前做过开发,投资经理,investment_manager,资金经理,finance_manager,数据总监,data_analyst,投资,T7_context
+P009547,Junior 产品负责人,产品经理,product_manager,实施经理,project_manager,市场总监,marketing_manager,产品,T2_seniority
+P009548,数据挖工掘程师,算法工程师,algorithm_engineer,team leader,software_engineer,产品助理,product_manager,算法,T6_typo
+P009549,销售总监，跨部门协作多,销售经理,sales_manager,Marketing Manager,marketing_manager,办公室主任,admin_manager,销售,T7_context
+P009550,董事长，跨部门协作多,总经理,general_manager,策略运营负责人,operations_manager,研发负责人,software_engineer,管理,T7_context
+P009551,三维设计师岗位,设计师,designer,性能测试工程师,test_engineer,全国销售负责人,sales_manager,设计,T4_colloquial
+P009552,CMO方向,市场经理,marketing_manager,销售总监,sales_manager,战略投资经理,investment_manager,市场,T4_colloquial
+P009553,产品理助,产品经理,product_manager,交付负责人,project_manager,QA总监,test_engineer,产品,T6_typo
+P009554,COA,行政经理,admin_manager,HR负责人,hr_manager,安全架构师,architect,行政,T6_typo
+P009555,QA总监，偏管理岗,测试工程师,test_engineer,后端工程师,software_engineer,市场总监,marketing_manager,测试,T7_context
+P009556,全国销售运营负责人,销售经理,sales_manager,市场专员,marketing_manager,内容运营,operations_manager,销售,T1_raw
+P009557,类似设计VP这种的,设计师,designer,EE工程师,mechanical_engineer,销售总监,sales_manager,设计,T4_colloquial
+P009558,医疗资深架构师,架构师,architect,工程VP,software_engineer,BD经理,sales_manager,开发,T3_domain
+P009559,医疗Supply Chain Manager,供应链经理,supply_chain_manager,EE工程师,mechanical_engineer,自然语言处理工程师,algorithm_engineer,供应链,T3_domain
+P009560,Designer,设计师,designer,测试VP,test_engineer,产品策划,product_manager,设计,T1_raw
+P009561,搞散热工程师的同事,机械工程师,mechanical_engineer,Supply Chain Manager,supply_chain_manager,首席数据官,data_analyst,供应链,T4_colloquial
+P009562,高级operations,运营经理,operations_manager,数据分析经理,data_analyst,行政主管,admin_manager,运营,T5_en_zh_mix
+P009563,Senior 运营 leader专家,运营经理,operations_manager,数据质量经理,data_analyst,招聘经理,hr_manager,运营,T2_seniority
+P009564,平台运营经理，年包 60-80w,运营经理,operations_manager,数据分析经理,data_analyst,设施管理经理,admin_manager,运营,T7_context
+P009565,商业智能分析师,数据分析师,data_analyst,运营专员,operations_manager,测试专员,test_engineer,数据分析,T1_raw
+P009566,Sales Manager，在腾讯带 10 人团队,销售经理,sales_manager,市场主管,marketing_manager,投资助理,investment_manager,销售,T7_context
+P009567,首席算法官这块,算法工程师,algorithm_engineer,中间件工程师,software_engineer,海外商务,sales_manager,算法,T4_colloquial
+P009568,硬件财务负责人,财务经理,finance_manager,DPO,legal_manager,BD负责人,sales_manager,财务,T3_domain
+P009569,自然语言处理工程师,算法工程师,algorithm_engineer,全栈工程师,software_engineer,数据产品经理,data_analyst,算法,T1_raw
+P009570,做测试总监的,测试工程师,test_engineer,前端工程师,software_engineer,产品助理,product_manager,测试,T4_colloquial
+P009571,网络安工全程师,软件工程师,software_engineer,Solution Architect,architect,BD经理,sales_manager,开发,T6_typo
+P009572,初级资深运营专家,运营经理,operations_manager,首席数据官,data_analyst,审计负责人,finance_manager,运营,T2_seniority
+P009573,大模型团队负责人,总经理,general_manager,Supply Chain Manager,supply_chain_manager,Graphic Designer,designer,管理,T3_domain
+P009574,UE发开,软件工程师,software_engineer,AI架构师,architect,电商运营,operations_manager,开发,T6_typo
+P009575,高级test engineer,测试工程师,test_engineer,嵌入式工程师,software_engineer,客户成功经理,sales_manager,测试,T5_en_zh_mix
+P009576,Junior 法务经理,法务经理,legal_manager,成本经理,finance_manager,数据专员,data_analyst,法务,T2_seniority
+P009577,配送理经,供应链经理,supply_chain_manager,电子工程师,mechanical_engineer,财务总监,finance_manager,供应链,T6_typo
+P009578,Web3销售专员,销售经理,sales_manager,市场主管,marketing_manager,UX设计师,designer,销售,T3_domain
+P009579,教育产品助理,产品经理,product_manager,技术项目经理,project_manager,资深运营,operations_manager,产品,T3_domain
+P009580,product owner方向,产品经理,product_manager,Technical Program Manager,project_manager,行政主管,admin_manager,产品,T4_colloquial
+P009581,C端产品经理，负责 AI 产品方向,产品经理,product_manager,项目总监,project_manager,技术VP,software_engineer,产品,T7_context
+P009582,招聘高级项目经理,项目经理,project_manager,资深产品经理,product_manager,文秘,admin_manager,产品,T3_domain
+P009583,招一个做IP经理的,法务经理,legal_manager,资金负责人,finance_manager,界面设计师,designer,法务,T4_colloquial
+P009584,数据运营 leader,运营经理,operations_manager,数据主管,data_analyst,品牌公关总监,marketing_manager,运营,T3_domain
+P009585,会计这块,财务经理,finance_manager,DPO,legal_manager,Interaction Designer,designer,财务,T4_colloquial
+P009586,策决规划算法,算法工程师,algorithm_engineer,SRE工程师,software_engineer,投资VP,investment_manager,算法,T6_typo
+P009587,产品经理，之前做过开发,产品经理,product_manager,项目专员,project_manager,移动端测试工程师,test_engineer,产品,T7_context
+P009588,类似首席架构师这种的,架构师,architect,开发工程师,software_engineer,视觉设计师,designer,开发,T4_colloquial
+P009589,财务总监，偏管理岗,财务经理,finance_manager,法务经理,legal_manager,项目负责人,project_manager,财务,T7_context
+P009590,Principal 运营专员主管,运营经理,operations_manager,数据运营经理,data_analyst,风控总监,investment_manager,运营,T2_seniority
+P009591,商务负责人，上一段在美团,销售经理,sales_manager,营销负责人,marketing_manager,争议解决律师,legal_manager,销售,T7_context
+P009592,硬件会计主管,财务经理,finance_manager,公司律师,legal_manager,交付负责人,project_manager,财务,T3_domain
+P009593,硬件测试工程师,测试工程师,test_engineer,运维工程师,software_engineer,供应链总监,supply_chain_manager,测试,T3_domain
+P009594,产品主管方向,产品经理,product_manager,工程项目经理,project_manager,算法主管,algorithm_engineer,产品,T4_colloquial
+P009595,Lead 市场经理leader,市场经理,marketing_manager,售前顾问,sales_manager,性能测试工程师,test_engineer,市场,T2_seniority
+P009596,项目主管，汇报给 CEO,项目经理,project_manager,后台产品经理,product_manager,财务规划经理,finance_manager,产品,T7_context
+P009597,搞机械工程师的同事,机械工程师,mechanical_engineer,SQE,supply_chain_manager,法务主管,legal_manager,供应链,T4_colloquial
+P009598,大模型人力资源经理,人力资源经理,hr_manager,行政专员,admin_manager,海外运营经理,operations_manager,人力资源,T3_domain
+P009599,硬件市场主管,市场经理,marketing_manager,销售负责人,sales_manager,文秘,admin_manager,市场,T3_domain
+P009600,渠道销售经理方向,销售经理,sales_manager,公关经理,marketing_manager,高级供应链经理,supply_chain_manager,销售,T4_colloquial
+P009601,界面计设师,设计师,designer,测试VP,test_engineer,职业经理,general_manager,设计,T6_typo
+P009602,自动驾驶投资经理,投资经理,investment_manager,审计经理,finance_manager,设施管理经理,admin_manager,投资,T3_domain
+P009603,负责财务分析经理,财务经理,finance_manager,战略投资经理,investment_manager,CEO,general_manager,财务,T4_colloquial
+P009604,数字营销经理，偏管理岗,市场经理,marketing_manager,区域销售经理,sales_manager,PMO负责人,project_manager,市场,T7_context
+P009605,私隐合规经理,法务经理,legal_manager,审计经理,finance_manager,数据治理经理,data_analyst,法务,T6_typo
+P009606,高级销售经理,销售经理,sales_manager,市场专员,marketing_manager,品质经理,supply_chain_manager,销售,T1_raw
+P009607,新媒体运营经理,运营经理,operations_manager,数据分析师,data_analyst,风控负责人,investment_manager,运营,T1_raw
+P009608,Junior 算法主管专家,算法工程师,algorithm_engineer,CTO,software_engineer,IP经理,legal_manager,算法,T2_seniority
+P009609,HRVP，刚毕业 3 年,人力资源经理,hr_manager,后勤主管,admin_manager,CV工程师,algorithm_engineer,人力资源,T7_context
+P009610,预算经理这块,财务经理,finance_manager,投资主管,investment_manager,CAO,admin_manager,财务,T4_colloquial
+P009611,我们公司做高管助理,行政经理,admin_manager,人事负责人,hr_manager,推荐系统工程师,algorithm_engineer,行政,T4_colloquial
+P009612,电商项目专员,项目经理,project_manager,产品负责人,product_manager,BI负责人,data_analyst,产品,T3_domain
+P009613,类似动效设计师这种的,设计师,designer,Data Architect,architect,商务负责人,sales_manager,设计,T4_colloquial
+P009614,Architect,架构师,architect,Software Engineer,software_engineer,自动化测试负责人,test_engineer,开发,T1_raw
+P009615,电商会计,财务经理,finance_manager,投资主管,investment_manager,Business Analyst,data_analyst,财务,T3_domain
+P009616,海外运营，大厂背景,运营经理,operations_manager,商业智能分析师,data_analyst,前端负责人,software_engineer,运营,T7_context
+P009617,市场总监，带过 20+ 人团队,市场经理,marketing_manager,大区经理,sales_manager,项目专员,project_manager,市场,T7_context
+P009618,内容运营，刚毕业 3 年,运营经理,operations_manager,数据分析主管,data_analyst,物流主管,supply_chain_manager,运营,T7_context
+P009619,B端供应链专员,供应链经理,supply_chain_manager,嵌入式硬件工程师,mechanical_engineer,创始人,general_manager,供应链,T3_domain
+P009620,资金经理，之前做过开发,财务经理,finance_manager,合规总监,legal_manager,区域经理,sales_manager,财务,T7_context
+P009621,级高架构师,架构师,architect,开发负责人,software_engineer,散热工程师,mechanical_engineer,开发,T6_typo
+P009622,数据分析经理岗位,数据分析师,data_analyst,海外增长运营,operations_manager,BD专员,sales_manager,数据分析,T4_colloquial
+P009623,Senior 算法专家总监,算法工程师,algorithm_engineer,研发总监,software_engineer,人事主管,hr_manager,算法,T2_seniority
+P009624,增长资深数据分析师,数据分析师,data_analyst,KOL运营,operations_manager,投资助理,investment_manager,数据分析,T3_domain
+P009625,C端运营专员,运营经理,operations_manager,商业智能分析师,data_analyst,投后经理,investment_manager,运营,T3_domain
+P009626,做Unity开发的哥们,软件工程师,software_engineer,前端架构师,architect,品牌设计师,designer,开发,T4_colloquial
+P009627,质量工程师，大厂背景,测试工程师,test_engineer,多媒体开发工程师,software_engineer,用户运营负责人,operations_manager,测试,T7_context
+P009628,客户成功经理，上一段在美团,销售经理,sales_manager,品牌主管,marketing_manager,产品主管,product_manager,销售,T7_context
+P009629,搞安全架构师的,架构师,architect,Software Engineer,software_engineer,税务负责人,finance_manager,开发,T4_colloquial
+P009630,FP&A经理，年包 60-80w,财务经理,finance_manager,法务VP,legal_manager,策略运营负责人,operations_manager,财务,T7_context
+P009631,策略产品策划,产品经理,product_manager,项目助理,project_manager,招聘经理,hr_manager,产品,T3_domain
+P009632,增长高级HR经理,人力资源经理,hr_manager,办公室主任,admin_manager,风控总监,investment_manager,人力资源,T3_domain
+P009633,负责高级算法工程师,算法工程师,algorithm_engineer,前端工程师,software_engineer,产品工程师,product_manager,算法,T4_colloquial
+P009634,大模型Test Engineer,测试工程师,test_engineer,AI后端工程师,software_engineer,IQC经理,supply_chain_manager,测试,T3_domain
+P009635,医疗市场经理,市场经理,marketing_manager,销售专员,sales_manager,销售经理,sales_manager,市场,T3_domain
+P009636,仓储负责人方向,供应链经理,supply_chain_manager,EE工程师,mechanical_engineer,财务分析经理,finance_manager,供应链,T4_colloquial
+P009637,财务负责人，在腾讯带 10 人团队,财务经理,finance_manager,战略投资经理,investment_manager,市场推广经理,marketing_manager,财务,T7_context
+P009638,研发负责人,软件工程师,software_engineer,AI架构师,architect,Marketing Manager,marketing_manager,开发,T1_raw
+P009639,副供应链专员,供应链经理,supply_chain_manager,结构设计工程师,mechanical_engineer,平面设计师,designer,供应链,T2_seniority
+P009640,私域运营，汇报给 CEO,运营经理,operations_manager,BI分析师,data_analyst,数据负责人,data_analyst,运营,T7_context
+P009641,品牌经理，年包 60-80w,市场经理,marketing_manager,销售经理,sales_manager,SQE,supply_chain_manager,市场,T7_context
+P009642,副行政主管,行政经理,admin_manager,HRD,hr_manager,数字营销经理,marketing_manager,行政,T2_seniority
+P009643,性能测试工程师，大厂背景,测试工程师,test_engineer,技术总监,software_engineer,数据治理经理,data_analyst,测试,T7_context
+P009644,NLP工程师,算法工程师,algorithm_engineer,资深工程师,software_engineer,财务副总裁,finance_manager,算法,T1_raw
+P009645,资深高级架构师leader,架构师,architect,多媒体开发工程师,software_engineer,BD负责人,sales_manager,开发,T2_seniority
+P009646,BI负责人，在字节做推荐,数据分析师,data_analyst,增长负责人,operations_manager,AIGC工程师,algorithm_engineer,数据分析,T7_context
+P009647,电商营运经理,运营经理,operations_manager,数据分析师,data_analyst,战略投资负责人,investment_manager,运营,T6_typo
+P009648,移动端测试工程师，带过 20+ 人团队,测试工程师,test_engineer,后端负责人,software_engineer,数据产品经理,data_analyst,测试,T7_context
+P009649,Senior 人事主管主管,人力资源经理,hr_manager,前台主管,admin_manager,高级设计师,designer,人力资源,T2_seniority
+P009650,招聘数据负责人,数据分析师,data_analyst,运营经理,operations_manager,质量经理,supply_chain_manager,数据分析,T3_domain
+P009651,搜推索荐工程师,算法工程师,algorithm_engineer,服务端开发,software_engineer,全栈工程师,software_engineer,算法,T6_typo
+P009652,搞高级架构师的,架构师,architect,中间件工程师,software_engineer,事业部总经理,general_manager,开发,T4_colloquial
+P009653,BA，IC 路线,数据分析师,data_analyst,产品运营,operations_manager,品控经理,supply_chain_manager,数据分析,T7_context
+P009654,游戏高级销售经理,销售经理,sales_manager,Marketing Manager,marketing_manager,CV工程师,algorithm_engineer,销售,T3_domain
+P009655,副设计 leaderleader,设计师,designer,基础架构工程师,software_engineer,争议解决律师,legal_manager,设计,T2_seniority
+P009656,数据高级行政经理,行政经理,admin_manager,员工关系经理,hr_manager,分公司总经理,general_manager,行政,T3_domain
+P009657,B端产品经理，在阿里做 B 端,产品经理,product_manager,技术项目经理,project_manager,职业经理人,general_manager,产品,T7_context
+P009658,首席机械主管VP,机械工程师,mechanical_engineer,质量负责人,supply_chain_manager,争议解决律师,legal_manager,供应链,T2_seniority
+P009659,数据分析师，IC 路线,数据分析师,data_analyst,运营主管,operations_manager,战略投资负责人,investment_manager,数据分析,T7_context
+P009660,财务副裁总,财务经理,finance_manager,投资经理,investment_manager,数字营销经理,marketing_manager,财务,T6_typo
+P009661,外海增长运营,运营经理,operations_manager,数据主管,data_analyst,语音算法工程师,algorithm_engineer,运营,T6_typo
+P009662,类似Android工程师这种的,软件工程师,software_engineer,AI架构师,architect,海外总经理,general_manager,开发,T4_colloquial
+P009663,供应商管理经理，上一段在美团,供应链经理,supply_chain_manager,机械工程师,mechanical_engineer,三维设计师,designer,供应链,T7_context
+P009664,数据运营，跨部门协作多,数据分析师,data_analyst,运营主管,operations_manager,行政主管,admin_manager,数据分析,T7_context
+P009665,高级项目经理，年包 60-80w,项目经理,project_manager,AI产品负责人,product_manager,公司律师,legal_manager,产品,T7_context
+P009666,海外销售经里,销售经理,sales_manager,营销负责人,marketing_manager,CMO,marketing_manager,销售,T6_typo
+P009667,组发织展经理,人力资源经理,hr_manager,行政总监,admin_manager,运营主管,operations_manager,人力资源,T6_typo
+P009668,产吕助理,产品经理,product_manager,项目助理,project_manager,SLAM工程师,algorithm_engineer,产品,T6_typo
+P009669,搞高级项目经理的同事,项目经理,project_manager,产品策划,product_manager,创意总监,designer,产品,T4_colloquial
+P009670,后经勤理,行政经理,admin_manager,HR经理,hr_manager,职业经理人,general_manager,行政,T6_typo
+P009671,数据分析经理，带过 20+ 人团队,数据分析师,data_analyst,新媒体运营,operations_manager,首席法务官,legal_manager,数据分析,T7_context
+P009672,Principal 高级市场经理,市场经理,marketing_manager,销售主管,sales_manager,算法总监,algorithm_engineer,市场,T2_seniority
+P009673,Senior Tech Architect主管,架构师,architect,Flutter工程师,software_engineer,GR经理,admin_manager,开发,T2_seniority
+P009674,高级法务专员,法务经理,legal_manager,会计经理,finance_manager,数据分析师,data_analyst,法务,T2_seniority
+P009675,搞AI架构师的,架构师,architect,前端开发,software_engineer,平台运营经理,operations_manager,开发,T4_colloquial
+P009676,安全架构师，偏管理岗,架构师,architect,全栈工程师,software_engineer,测试负责人,test_engineer,开发,T7_context
+P009677,BU负责人，偏管理岗,总经理,general_manager,招聘经理,hr_manager,HR经理,hr_manager,管理,T7_context
+P009678,风控负责人,投资经理,investment_manager,财务专员,finance_manager,全国销售负责人,sales_manager,投资,T1_raw
+P009679,legal counsel,法务经理,legal_manager,财务负责人,finance_manager,总裁,general_manager,法务,T5_en_zh_mix
+P009680,用户营运,运营经理,operations_manager,数据VP,data_analyst,实施经理,project_manager,运营,T6_typo
+P009681,中级投资经理leader,投资经理,investment_manager,内审经理,finance_manager,法务VP,legal_manager,投资,T2_seniority
+P009682,出海中后台负责人,总经理,general_manager,工程项目经理,project_manager,运维工程师,software_engineer,管理,T3_domain
+P009683,Principal 产品专员,产品经理,product_manager,交付经理,project_manager,税务负责人,finance_manager,产品,T2_seniority
+P009684,做BD负责人的哥们,销售经理,sales_manager,PR经理,marketing_manager,Go工程师,software_engineer,销售,T4_colloquial
+P009685,Sales Mnaager,销售经理,sales_manager,品牌总监,marketing_manager,合规总监,legal_manager,销售,T6_typo
+P009686,首席商务负责人,销售经理,sales_manager,公关负责人,marketing_manager,团队负责人,general_manager,销售,T2_seniority
+P009687,Principal 人力负责人助理,人力资源经理,hr_manager,高级行政经理,admin_manager,海外市场经理,marketing_manager,人力资源,T2_seniority
+P009688,教育机械主管,机械工程师,mechanical_engineer,厂长,supply_chain_manager,财务总监,finance_manager,供应链,T3_domain
+P009689,区域业务责负人,总经理,general_manager,海外营销经理,marketing_manager,销售经理,sales_manager,管理,T6_typo
+P009690,首席架师构,架构师,architect,iOS工程师,software_engineer,财务总监,finance_manager,开发,T6_typo
+P009691,级高工程师,软件工程师,software_engineer,云架构师,architect,平台运营经理,operations_manager,开发,T6_typo
+P009692,Lead 资深算法工程师负责人,算法工程师,algorithm_engineer,AI后端工程师,software_engineer,品牌负责人,marketing_manager,算法,T2_seniority
+P009693,搞决策规划算法的同事,算法工程师,algorithm_engineer,iOS工程师,software_engineer,事业部总经理,general_manager,算法,T4_colloquial
+P009694,增长机械负责人,机械工程师,mechanical_engineer,品控经理,supply_chain_manager,成本经理,finance_manager,供应链,T3_domain
+P009695,副法务经理,法务经理,legal_manager,会计经理,finance_manager,管理合伙人,investment_manager,法务,T2_seniority
+P009696,成本经理，在腾讯带 10 人团队,财务经理,finance_manager,投资主管,investment_manager,电商运营经理,operations_manager,财务,T7_context
+P009697,algo engineer,算法工程师,algorithm_engineer,开发负责人,software_engineer,海外市场经理,marketing_manager,算法,T5_en_zh_mix
+P009698,Principal 法务负责人,法务经理,legal_manager,财务分析经理,finance_manager,行政专员,admin_manager,法务,T2_seniority
+P009699,Junior 法律顾问,法务经理,legal_manager,财务专员,finance_manager,品控经理,supply_chain_manager,法务,T2_seniority
+P009700,sdet,测试工程师,test_engineer,音视频工程师,software_engineer,会计主管,finance_manager,测试,T5_en_zh_mix
+P009701,大模型Project Manager,项目经理,project_manager,产品 lead,product_manager,产品运营,operations_manager,产品,T3_domain
+P009702,搞产品运营经理的同事,运营经理,operations_manager,业务分析师,data_analyst,公司律师,legal_manager,运营,T4_colloquial
+P009703,数据程序员,软件工程师,software_engineer,Solution Architect,architect,采购主管,supply_chain_manager,开发,T3_domain
+P009704,雇主品负牌责人,人力资源经理,hr_manager,前台经理,admin_manager,资深测试工程师,test_engineer,人力资源,T6_typo
+P009705,SLAM工程师岗位,算法工程师,algorithm_engineer,VP of Engineering,software_engineer,供应链负责人,supply_chain_manager,算法,T4_colloquial
+P009706,中级销售专员助理,销售经理,sales_manager,市场负责人,marketing_manager,数据主管,data_analyst,销售,T2_seniority
+P009707,C端Supply Chain Manager,供应链经理,supply_chain_manager,机械主管,mechanical_engineer,交互设计师,designer,供应链,T3_domain
+P009708,中级资深架构师负责人,架构师,architect,技术 leader,software_engineer,设计主管,designer,开发,T2_seniority
+P009709,审计负责人，汇报给 CEO,财务经理,finance_manager,合伙人,investment_manager,高级投资经理,investment_manager,财务,T7_context
+P009710,Junior 人事负责人,人力资源经理,hr_manager,高管助理,admin_manager,财务规划经理,finance_manager,人力资源,T2_seniority
+P009711,全栈工程师，在字节做推荐,软件工程师,software_engineer,系统架构师,architect,PMO总监,project_manager,开发,T7_context
+P009712,做高级产品经理的,产品经理,product_manager,PMO负责人,project_manager,3D设计师,designer,产品,T4_colloquial
+P009713,基础架构工程师，跨部门协作多,软件工程师,software_engineer,数据架构师,architect,S&OP经理,supply_chain_manager,开发,T7_context
+P009714,结构工程,机械工程师,mechanical_engineer,仓储经理,supply_chain_manager,品牌公关总监,marketing_manager,供应链,T6_typo
+P009715,首席架构师专家,架构师,architect,运维工程师,software_engineer,供应链VP,supply_chain_manager,开发,T2_seniority
+P009716,增长Developer,软件工程师,software_engineer,IT架构师,architect,海外总经理,general_manager,开发,T3_domain
+P009717,席首人力官,人力资源经理,hr_manager,GR经理,admin_manager,区域经理,sales_manager,人力资源,T6_typo
+P009718,Web3供应链主管,供应链经理,supply_chain_manager,资深机械工程师,mechanical_engineer,ID设计师,designer,供应链,T3_domain
+P009719,教育运营负责人,运营经理,operations_manager,数据分析负责人,data_analyst,自动化测试负责人,test_engineer,运营,T3_domain
+P009720,厂长方向,供应链经理,supply_chain_manager,EE工程师,mechanical_engineer,数据分析经理,data_analyst,供应链,T4_colloquial
+P009721,SaaS高级经理,总经理,general_manager,财务负责人,finance_manager,合伙人,investment_manager,管理,T3_domain
+P009722,品牌总监，IC 路线,市场经理,marketing_manager,Sales Manager,sales_manager,产品策划,product_manager,市场,T7_context
+P009723,品控经理这块,供应链经理,supply_chain_manager,硬件主管,mechanical_engineer,投资VP,investment_manager,供应链,T4_colloquial
+P009724,中级财务经理,财务经理,finance_manager,知识产权经理,legal_manager,海外增长运营,operations_manager,财务,T2_seniority
+P009725,我们公司做云架构师,架构师,architect,tech lead,software_engineer,合规负责人,legal_manager,开发,T4_colloquial
+P009726,自动驾驶机械工程师,机械工程师,mechanical_engineer,生产经理,supply_chain_manager,招聘负责人,hr_manager,供应链,T3_domain
+P009727,Junior 投资专员VP,投资经理,investment_manager,司库,finance_manager,内容运营经理,operations_manager,投资,T2_seniority
+P009728,首席产品助理leader,产品经理,product_manager,项目助理,project_manager,市场专员,marketing_manager,产品,T2_seniority
+P009729,项目主管岗位,项目经理,project_manager,首席产品官,product_manager,直播运营经理,operations_manager,产品,T4_colloquial
+P009730,资深Supply Chain Manager,供应链经理,supply_chain_manager,光学工程师,mechanical_engineer,tech lead,software_engineer,供应链,T2_seniority
+P009731,品牌经理，大厂背景,市场经理,marketing_manager,海外销售负责人,sales_manager,合规经理,legal_manager,市场,T7_context
+P009732,做Tech Architect的,架构师,architect,Android工程师,software_engineer,ML Engineer,algorithm_engineer,开发,T4_colloquial
+P009733,渠经道理,市场经理,marketing_manager,区域负责人,sales_manager,产品工程师,product_manager,市场,T6_typo
+P009734,做投资经理的,投资经理,investment_manager,资金经理,finance_manager,商务总监,sales_manager,投资,T4_colloquial
+P009735,区域负责人，大厂背景,销售经理,sales_manager,市场专员,marketing_manager,政府关系经理,admin_manager,销售,T7_context
+P009736,中级Design Lead,设计师,designer,服务端开发,software_engineer,首席市场官,marketing_manager,设计,T2_seniority
+P009737,负责新媒体运营,运营经理,operations_manager,数据分析经理,data_analyst,Business Analyst,data_analyst,运营,T4_colloquial
+P009738,做办公室主任的,行政经理,admin_manager,学习与发展经理,hr_manager,Marketing Manager,marketing_manager,行政,T4_colloquial
+P009739,做雇主品牌负责人的哥们,人力资源经理,hr_manager,CAO,admin_manager,质量负责人,supply_chain_manager,人力资源,T4_colloquial
+P009740,AI设计 leader,设计师,designer,CDO,data_analyst,CLO,legal_manager,设计,T3_domain
+P009741,识知产权经理,法务经理,legal_manager,成本经理,finance_manager,首席产品官,product_manager,法务,T6_typo
+P009742,机械主管，偏管理岗,机械工程师,mechanical_engineer,制造经理,supply_chain_manager,BU负责人,general_manager,供应链,T7_context
+P009743,product manager，在阿里做 B 端,产品经理,product_manager,PMO负责人,project_manager,办公室主任,admin_manager,产品,T7_context
+P009744,副副总经理总监,总经理,general_manager,投资专员,investment_manager,投资总监,investment_manager,管理,T2_seniority
+P009745,争议解决律师这块,法务经理,legal_manager,成本经理,finance_manager,综合管理,admin_manager,法务,T4_colloquial
+P009746,G经R理,行政经理,admin_manager,薪酬福利经理,hr_manager,战略投资经理,investment_manager,行政,T6_typo
+P009747,BusinessA nalyst,数据分析师,data_analyst,用户运营经理,operations_manager,TTS工程师,algorithm_engineer,数据分析,T6_typo
+P009748,首席产品官，负责 AI 产品方向,产品经理,product_manager,项目主管,project_manager,总裁秘书,admin_manager,产品,T7_context
+P009749,搞硬件负责人的,机械工程师,mechanical_engineer,供应链主管,supply_chain_manager,行政主管,admin_manager,供应链,T4_colloquial
+P009750,商业化供应链主管,供应链经理,supply_chain_manager,资深机械工程师,mechanical_engineer,法务负责人,legal_manager,供应链,T3_domain
+P009751,高级开发负责人VP,软件工程师,software_engineer,解决方案架构师,architect,首席人力官,hr_manager,开发,T2_seniority
+P009752,高级产品经里,产品经理,product_manager,PMO负责人,project_manager,海外总经理,general_manager,产品,T6_typo
+P009753,采购负责人方向,供应链经理,supply_chain_manager,结构设计工程师,mechanical_engineer,感知算法工程师,algorithm_engineer,供应链,T4_colloquial
+P009754,Talent Acquisition，之前做过开发,人力资源经理,hr_manager,EA,admin_manager,解决方案经理,sales_manager,人力资源,T7_context
+P009755,Principal 投资专员,投资经理,investment_manager,首席财务官,finance_manager,创始人,general_manager,投资,T2_seniority
+P009756,专工利程师,法务经理,legal_manager,财务VP,finance_manager,财务总监,finance_manager,法务,T6_typo
+P009757,数据管主,数据分析师,data_analyst,商业化运营负责人,operations_manager,内审经理,finance_manager,数据分析,T6_typo
+P009758,招一个做硬件VP的,机械工程师,mechanical_engineer,S&OP经理,supply_chain_manager,审计负责人,finance_manager,供应链,T4_colloquial
+P009759,负责渠道销售负责人,销售经理,sales_manager,品牌公关总监,marketing_manager,Supply Chain Manager,supply_chain_manager,销售,T4_colloquial
+P009760,Principal 机械主管助理,机械工程师,mechanical_engineer,物流经理,supply_chain_manager,M&A经理,investment_manager,供应链,T2_seniority
+P009761,出海法务专员,法务经理,legal_manager,财务副总裁,finance_manager,中后台负责人,general_manager,法务,T3_domain
+P009762,高级理经,总经理,general_manager,投资经理,investment_manager,人力资源总监,hr_manager,管理,T6_typo
+P009763,类似GR经理这种的,行政经理,admin_manager,高级HR经理,hr_manager,市场专员,marketing_manager,行政,T4_colloquial
+P009764,三维设计师方向,设计师,designer,NLP工程师,algorithm_engineer,法务VP,legal_manager,设计,T4_colloquial
+P009765,我们公司做市场总监,市场经理,marketing_manager,高级销售经理,sales_manager,文秘,admin_manager,市场,T4_colloquial
+P009766,S&O经P理,供应链经理,supply_chain_manager,结构工程师,mechanical_engineer,CLO,legal_manager,供应链,T6_typo
+P009767,首席测试专员专员,测试工程师,test_engineer,全栈工程师,software_engineer,战投经理,investment_manager,测试,T2_seniority
+P009768,Solution Architect这块,架构师,architect,开发负责人,software_engineer,产品负责人,product_manager,开发,T4_colloquial
+P009769,首席技术官，跨部门协作多,软件工程师,software_engineer,系统架构师,architect,生成式AI工程师,algorithm_engineer,开发,T7_context
+P009770,测试总监，在腾讯带 10 人团队,测试工程师,test_engineer,移动端工程师,software_engineer,算法主管,algorithm_engineer,测试,T7_context
+P009771,搞Tech Architect的同事,架构师,architect,技术负责人,software_engineer,大区经理,sales_manager,开发,T4_colloquial
+P009772,C端高级机械工程师,机械工程师,mechanical_engineer,供应链总监,supply_chain_manager,设计VP,designer,供应链,T3_domain
+P009773,产品VP，IC 路线,产品经理,product_manager,技术项目经理,project_manager,财务主管,finance_manager,产品,T7_context
+P009774,类似推荐系统工程师这种的,算法工程师,algorithm_engineer,运维负责人,software_engineer,测试负责人,test_engineer,算法,T4_colloquial
+P009775,首席构架师,架构师,architect,移动开发工程师,software_engineer,算法 head,algorithm_engineer,开发,T6_typo
+P009776,B端Sales Manager,销售经理,sales_manager,品牌策划,marketing_manager,数据VP,data_analyst,销售,T3_domain
+P009777,组织发展经理,人力资源经理,hr_manager,EA,admin_manager,Chief Architect,architect,人力资源,T1_raw
+P009778,B端执行总监,总经理,general_manager,产品主管,product_manager,区域经理,sales_manager,管理,T3_domain
+P009779,类似多媒体开发工程师这种的,软件工程师,software_engineer,Data Architect,architect,人力VP,hr_manager,开发,T4_colloquial
+P009780,初级全栈工程师总监,软件工程师,software_engineer,高级架构师,architect,项目主管,project_manager,开发,T2_seniority
+P009781,PMO负人责,项目经理,project_manager,产品专员,product_manager,嵌入式工程师,software_engineer,产品,T6_typo
+P009782,类似海外增长运营这种的,运营经理,operations_manager,商业分析师,data_analyst,财务负责人,finance_manager,运营,T4_colloquial
+P009783,Lead 法务主管,法务经理,legal_manager,首席财务官,finance_manager,管理合伙人,investment_manager,法务,T2_seniority
+P009784,做用户增长的哥们,运营经理,operations_manager,数据主管,data_analyst,董事总经理,general_manager,运营,T4_colloquial
+P009785,资深供应链专员,供应链经理,supply_chain_manager,硬件VP,mechanical_engineer,product manager,product_manager,供应链,T2_seniority
+P009786,Data Analyst，带过 20+ 人团队,数据分析师,data_analyst,运营VP,operations_manager,采购经理,supply_chain_manager,数据分析,T7_context
+P009787,搞Talent Acquisition的同事,人力资源经理,hr_manager,文秘,admin_manager,专利工程师,legal_manager,人力资源,T4_colloquial
+P009788,CFO岗位,财务经理,finance_manager,诉讼律师,legal_manager,销售经理,sales_manager,财务,T4_colloquial
+P009789,品牌划策,市场经理,marketing_manager,商务主管,sales_manager,人事主管,hr_manager,市场,T6_typo
+P009790,team leader，上一段在美团,软件工程师,software_engineer,平台架构师,architect,售前经理,sales_manager,开发,T7_context
+P009791,首席数据官，跨部门协作多,数据分析师,data_analyst,海外增长运营,operations_manager,推荐系统工程师,algorithm_engineer,数据分析,T7_context
+P009792,搞行政总监的同事,行政经理,admin_manager,招聘经理,hr_manager,产品运营经理,operations_manager,行政,T4_colloquial
+P009793,初级测试主管专家,测试工程师,test_engineer,Developer,software_engineer,财务副总裁,finance_manager,测试,T2_seniority
+P009794,Tceh Architect,架构师,architect,Flutter工程师,software_engineer,销售VP,sales_manager,开发,T6_typo
+P009795,搞大客户经理的同事,销售经理,sales_manager,海外市场经理,marketing_manager,PM,product_manager,销售,T4_colloquial
+P009796,CHRO方向,人力资源经理,hr_manager,行政专员,admin_manager,知识产权经理,legal_manager,人力资源,T4_colloquial
+P009797,Android工程师这块,软件工程师,software_engineer,架构师,architect,人力负责人,hr_manager,开发,T4_colloquial
+P009798,招一个做BD专员的,销售经理,sales_manager,营销负责人,marketing_manager,高级HR经理,hr_manager,销售,T4_colloquial
+P009799,增长法务主管,法务经理,legal_manager,会计,finance_manager,前端负责人,software_engineer,法务,T3_domain
+P009800,研发工程师,软件工程师,software_engineer,解决方案架构师,architect,社区运营,operations_manager,开发,T1_raw
+P009801,中级架构师,架构师,architect,Java工程师,software_engineer,综合管理,admin_manager,开发,T2_seniority
+P009802,技术项目经理这块,项目经理,project_manager,PM,product_manager,系统架构师,architect,产品,T4_colloquial
+P009803,类似ID设计师这种的,设计师,designer,tech lead,software_engineer,LLM工程师,algorithm_engineer,设计,T4_colloquial
+P009804,席首数据官,数据分析师,data_analyst,运营 leader,operations_manager,风控负责人,investment_manager,数据分析,T6_typo
+P009805,AI总经理,总经理,general_manager,运营 leader,operations_manager,社区运营,operations_manager,管理,T3_domain
+P009806,运营VP,运营经理,operations_manager,商业智能分析师,data_analyst,工程VP,software_engineer,运营,T1_raw
+P009807,Web3资深运营,运营经理,operations_manager,数据分析主管,data_analyst,品牌策划,marketing_manager,运营,T3_domain
+P009808,产品划策,产品经理,product_manager,资深项目经理,project_manager,开发工程师,software_engineer,产品,T6_typo
+P009809,TECH LEAD,架构师,architect,工程VP,software_engineer,增长负责人,operations_manager,开发,T5_en_zh_mix
+P009810,项目专员，负责 AI 产品方向,项目经理,project_manager,产品策划,product_manager,资深测试工程师,test_engineer,产品,T7_context
+P009811,产品设计师岗位,设计师,designer,测试负责人,test_engineer,高级行政经理,admin_manager,设计,T4_colloquial
+P009812,C端法务专员,法务经理,legal_manager,首席财务官,finance_manager,感知算法工程师,algorithm_engineer,法务,T3_domain
+P009813,资深算法工程,算法工程师,algorithm_engineer,多媒体开发工程师,software_engineer,人事负责人,hr_manager,算法,T6_typo
+P009814,负责数据运营经理,数据分析师,data_analyst,商业化运营负责人,operations_manager,COO,operations_manager,数据分析,T4_colloquial
+P009815,交付经理，跨部门协作多,项目经理,project_manager,PM,product_manager,投资主管,investment_manager,产品,T7_context
+P009816,做数据合规经理的,法务经理,legal_manager,CFO,finance_manager,人力VP,hr_manager,法务,T4_colloquial
+P009817,初级法务负责人,法务经理,legal_manager,财务副总裁,finance_manager,S&OP经理,supply_chain_manager,法务,T2_seniority
+P009818,财务经理，年包 60-80w,财务经理,finance_manager,投后经理,investment_manager,用户运营,operations_manager,财务,T7_context
+P009819,Mechanical Engineer岗位,机械工程师,mechanical_engineer,S&OP经理,supply_chain_manager,市场主管,marketing_manager,供应链,T4_colloquial
+P009820,ER经理方向,人力资源经理,hr_manager,行政总监,admin_manager,NLP算法工程师,algorithm_engineer,人力资源,T4_colloquial
+P009821,负责SDET,测试工程师,test_engineer,开发工程师,software_engineer,品牌设计师,designer,测试,T4_colloquial
+P009822,事业部总经理，大厂背景,总经理,general_manager,产品助理,product_manager,界面设计师,designer,管理,T7_context
+P009823,播直运营,运营经理,operations_manager,数据运营经理,data_analyst,数字营销经理,marketing_manager,运营,T6_typo
+P009824,投资经理方向,投资经理,investment_manager,财务经理,finance_manager,财务分析经理,finance_manager,投资,T4_colloquial
+P009825,市专场员,市场经理,marketing_manager,解决方案经理,sales_manager,Test Engineer,test_engineer,市场,T6_typo
+P009826,CAO,行政经理,admin_manager,C&B经理,hr_manager,首席销售官,sales_manager,行政,T1_raw
+P009827,高级产品经理，年包 60-80w,产品经理,product_manager,工程项目经理,project_manager,战略投资经理,investment_manager,产品,T7_context
+P009828,招聘专员，上一段在美团,人力资源经理,hr_manager,行政经理,admin_manager,AI后端工程师,software_engineer,人力资源,T7_context
+P009829,做设计总监的,设计师,designer,资深架构师,architect,中台负责人,general_manager,设计,T4_colloquial
+P009830,中级法务负责人,法务经理,legal_manager,财务VP,finance_manager,HRVP,hr_manager,法务,T2_seniority
+P009831,做高级HR经理的哥们,人力资源经理,hr_manager,后勤经理,admin_manager,执行总监,general_manager,人力资源,T4_colloquial
+P009832,副财务经理,财务经理,finance_manager,战略投资负责人,investment_manager,客户经理,sales_manager,财务,T2_seniority
+P009833,Graphic Designre,设计师,designer,架构师,architect,算法工程师,algorithm_engineer,设计,T6_typo
+P009834,中级人力资源经理助理,人力资源经理,hr_manager,文秘,admin_manager,财务副总裁,finance_manager,人力资源,T2_seniority
+P009835,搞CLO的,法务经理,legal_manager,税务负责人,finance_manager,市场VP,marketing_manager,法务,T4_colloquial
+P009836,Junior 财务专员负责人,财务经理,finance_manager,首席法务官,legal_manager,SDET,test_engineer,财务,T2_seniority
+P009837,自动驾驶技术负责人,软件工程师,software_engineer,架构总监,architect,QA总监,test_engineer,开发,T3_domain
+P009838,金融设计师,设计师,designer,解决方案架构师,architect,COO,operations_manager,设计,T3_domain
+P009839,大模型算法工程师，汇报给 CEO,算法工程师,algorithm_engineer,Flutter工程师,software_engineer,ID设计师,designer,算法,T7_context
+P009840,数据架构师方向,架构师,architect,软件工程师,software_engineer,总裁,general_manager,开发,T4_colloquial
+P009841,搞质量工程师的同事,测试工程师,test_engineer,游戏客户端工程师,software_engineer,UX设计师,designer,测试,T4_colloquial
+P009842,搞招聘负责人的同事,人力资源经理,hr_manager,综合管理,admin_manager,机械工程师,mechanical_engineer,人力资源,T4_colloquial
+P009843,交付经理这块,项目经理,project_manager,产品专员,product_manager,技术总监,software_engineer,产品,T4_colloquial
+P009844,招主聘管,人力资源经理,hr_manager,文秘,admin_manager,IP经理,legal_manager,人力资源,T6_typo
+P009845,Software Engineer,软件工程师,software_engineer,System Architect,architect,成本经理,finance_manager,开发,T1_raw
+P009846,招一个做结构工程师的,机械工程师,mechanical_engineer,物流负责人,supply_chain_manager,审计经理,finance_manager,供应链,T4_colloquial
+P009847,算法 leader，汇报给 CEO,算法工程师,algorithm_engineer,中间件工程师,software_engineer,人事主管,hr_manager,算法,T7_context
+P009848,税务负责人岗位,财务经理,finance_manager,投后经理,investment_manager,质量经理,supply_chain_manager,财务,T4_colloquial
+P009849,增长高级行政经理,行政经理,admin_manager,组织发展负责人,hr_manager,高级财务经理,finance_manager,行政,T3_domain
+P009850,OD经理，年包 60-80w,人力资源经理,hr_manager,董事长秘书,admin_manager,ASR工程师,algorithm_engineer,人力资源,T7_context
+P009851,数据资深架构师,架构师,architect,客户端开发,software_engineer,风控经理,investment_manager,开发,T3_domain
+P009852,电商运营经理,运营经理,operations_manager,数据分析主管,data_analyst,法务主管,legal_manager,运营,T1_raw
+P009853,我们公司做税务经理,财务经理,finance_manager,投资主管,investment_manager,高级投资经理,investment_manager,财务,T4_colloquial
+P009854,类似BA这种的,数据分析师,data_analyst,产品运营经理,operations_manager,公共事务经理,admin_manager,数据分析,T4_colloquial
+P009855,SaaS算法工程师,算法工程师,algorithm_engineer,后端工程师,software_engineer,资深测试工程师,test_engineer,算法,T3_domain
+P009856,做部门负责人的哥们,总经理,general_manager,市场推广经理,marketing_manager,数据负责人,data_analyst,管理,T4_colloquial
+P009857,Principal 会计,财务经理,finance_manager,风控负责人,investment_manager,国际业务负责人,general_manager,财务,T2_seniority
+P009858,Supply Chain Manager岗位,供应链经理,supply_chain_manager,高级机械工程师,mechanical_engineer,平面设计师,designer,供应链,T4_colloquial
+P009859,程序员,软件工程师,software_engineer,Solution Architect,architect,售前负责人,sales_manager,开发,T1_raw
+P009860,产品策划，偏管理岗,产品经理,product_manager,项目VP,project_manager,社区运营,operations_manager,产品,T7_context
+P009861,VP Sales，汇报给 CEO,销售经理,sales_manager,Marketing Head,marketing_manager,移动端测试工程师,test_engineer,销售,T7_context
+P009862,BA，负责 AI 产品方向,数据分析师,data_analyst,社区运营,operations_manager,战略投资负责人,investment_manager,数据分析,T7_context
+P009863,务法总监,法务经理,legal_manager,财务经理,finance_manager,财务总监,finance_manager,法务,T6_typo
+P009864,税务经理，负责 AI 产品方向,财务经理,finance_manager,高级投资经理,investment_manager,招聘总监,hr_manager,财务,T7_context
+P009865,高级机械工程,机械工程师,mechanical_engineer,生产负责人,supply_chain_manager,技术VP,software_engineer,供应链,T6_typo
+P009866,策略人事负责人,人力资源经理,hr_manager,行政VP,admin_manager,政府关系经理,admin_manager,人力资源,T3_domain
+P009867,product manager，大厂背景,产品经理,product_manager,项目总监,project_manager,部门经理,general_manager,产品,T7_context
+P009868,BI经理,数据分析师,data_analyst,活动运营,operations_manager,设计主管,designer,数据分析,T1_raw
+P009869,商业化会计,财务经理,finance_manager,专利工程师,legal_manager,Test Engineer,test_engineer,财务,T3_domain
+P009870,做TPM的,项目经理,project_manager,产品策划,product_manager,UX研究员,designer,产品,T4_colloquial
+P009871,海外营销经理，大厂背景,市场经理,marketing_manager,客户成功负责人,sales_manager,公共事务经理,admin_manager,市场,T7_context
+P009872,区域经理，之前做过开发,销售经理,sales_manager,市场经理,marketing_manager,数据运营,data_analyst,销售,T7_context
+P009873,VP of Engineering，汇报给 CEO,软件工程师,software_engineer,Architect,architect,后勤经理,admin_manager,开发,T7_context
+P009874,高级投资经理，之前做过开发,投资经理,investment_manager,税务负责人,finance_manager,采购经理,supply_chain_manager,投资,T7_context
+P009875,产品 lead这块,产品经理,product_manager,资深项目经理,project_manager,机器学习工程师,algorithm_engineer,产品,T4_colloquial
+P009876,我们公司做PMO负责人,项目经理,project_manager,product manager,product_manager,自然语言处理工程师,algorithm_engineer,产品,T4_colloquial
+P009877,产品经理,产品经理,product_manager,Technical Program Manager,project_manager,国际业务负责人,general_manager,产品,T1_raw
+P009878,并购经理岗位,投资经理,investment_manager,财务总监,finance_manager,成本经理,finance_manager,投资,T4_colloquial
+P009879,渗透测试工程师方向,测试工程师,test_engineer,嵌入式开发,software_engineer,财务分析经理,finance_manager,测试,T4_colloquial
+P009880,Data Analyst，大厂背景,数据分析师,data_analyst,用户运营,operations_manager,法务专员,legal_manager,数据分析,T7_context
+P009881,我们公司做QA总监,测试工程师,test_engineer,UE开发,software_engineer,联合创始人,general_manager,测试,T4_colloquial
+P009882,高级供应链负责人leader,供应链经理,supply_chain_manager,结构设计工程师,mechanical_engineer,QA,test_engineer,供应链,T2_seniority
+P009883,争议解决律师，在阿里做 B 端,法务经理,legal_manager,资金负责人,finance_manager,EA,admin_manager,法务,T7_context
+P009884,GM，在腾讯带 10 人团队,总经理,general_manager,风控总监,investment_manager,策略运营负责人,operations_manager,管理,T7_context
+P009885,搞COO的,运营经理,operations_manager,业务分析师,data_analyst,合规负责人,legal_manager,运营,T4_colloquial
+P009886,平台运营经里,运营经理,operations_manager,数据总监,data_analyst,高级经理,general_manager,运营,T6_typo
+P009887,组织展发经理,人力资源经理,hr_manager,后勤主管,admin_manager,全栈工程师,software_engineer,人力资源,T6_typo
+P009888,资深tech lead总监,软件工程师,software_engineer,AI架构师,architect,硬件VP,mechanical_engineer,开发,T2_seniority
+P009889,法务专员，在腾讯带 10 人团队,法务经理,legal_manager,资金负责人,finance_manager,策略运营负责人,operations_manager,法务,T7_context
+P009890,审计负责人，刚毕业 3 年,财务经理,finance_manager,投后经理,investment_manager,供应商质量工程师,supply_chain_manager,财务,T7_context
+P009891,事业部总经理方向,总经理,general_manager,投资专员,investment_manager,用户体验设计师,designer,管理,T4_colloquial
+P009892,BU负责人，IC 路线,总经理,general_manager,CFO,finance_manager,并购经理,investment_manager,管理,T7_context
+P009893,学习与发展经理方向,人力资源经理,hr_manager,设施管理经理,admin_manager,品牌公关总监,marketing_manager,人力资源,T4_colloquial
+P009894,测试负责人，大厂背景,测试工程师,test_engineer,全栈工程师,software_engineer,UE开发,software_engineer,测试,T7_context
+P009895,MA&经理,投资经理,investment_manager,CFO,finance_manager,TPM,project_manager,投资,T6_typo
+P009896,Lead 高级架构师,架构师,architect,Developer,software_engineer,UX Researcher,designer,开发,T2_seniority
+P009897,做PMO的哥们,项目经理,project_manager,中台产品经理,product_manager,设计师,designer,产品,T4_colloquial
+P009898,资深ML Engineer负责人,算法工程师,algorithm_engineer,前端负责人,software_engineer,平台运营,operations_manager,算法,T2_seniority
+P009899,Junior 高级测试工程师,测试工程师,test_engineer,Developer,software_engineer,BA,data_analyst,测试,T2_seniority
+P009900,效绩经理,人力资源经理,hr_manager,前台主管,admin_manager,自动化测试负责人,test_engineer,人力资源,T6_typo
+P009901,渠道销售负责人，刚毕业 3 年,销售经理,sales_manager,营销负责人,marketing_manager,IP经理,legal_manager,销售,T7_context
+P009902,税务负责人，跨部门协作多,财务经理,finance_manager,DPO,legal_manager,投资助理,investment_manager,财务,T7_context
+P009903,营销经理，在腾讯带 10 人团队,市场经理,marketing_manager,客户经理,sales_manager,IP经理,legal_manager,市场,T7_context
+P009904,CDO岗位,数据分析师,data_analyst,内容运营经理,operations_manager,大客户经理,sales_manager,数据分析,T4_colloquial
+P009905,BI分析师，大厂背景,数据分析师,data_analyst,运营VP,operations_manager,区域总经理,general_manager,数据分析,T7_context
+P009906,数据负责人，IC 路线,数据分析师,data_analyst,资深运营,operations_manager,市场专员,marketing_manager,数据分析,T7_context
+P009907,Junior Quality Assuranceleader,测试工程师,test_engineer,Android工程师,software_engineer,交互设计师,designer,测试,T2_seniority
+P009908,Senior 技术 leaderleader,软件工程师,software_engineer,云架构师,architect,董事长,general_manager,开发,T2_seniority
+P009909,算法工程师，在阿里做 B 端,算法工程师,algorithm_engineer,后端工程师,software_engineer,首席财务官,finance_manager,算法,T7_context
+P009910,区域业务负人责,总经理,general_manager,私域运营,operations_manager,绩效负责人,hr_manager,管理,T6_typo
+P009911,海外销售负责人，偏管理岗,销售经理,sales_manager,首席市场官,marketing_manager,资深工程师,software_engineer,销售,T7_context
+P009912,策略运负营责人,运营经理,operations_manager,数据主管,data_analyst,后勤主管,admin_manager,运营,T6_typo
+P009913,搞QA工程师的同事,测试工程师,test_engineer,技术VP,software_engineer,销售负责人,sales_manager,测试,T4_colloquial
+P009914,中级投资分析师负责人,投资经理,investment_manager,成本经理,finance_manager,QA,test_engineer,投资,T2_seniority
+P009915,Principal Data Analyst,数据分析师,data_analyst,KOL运营,operations_manager,市场经理,marketing_manager,数据分析,T2_seniority
+P009916,资深Quality Assurance负责人,测试工程师,test_engineer,固件工程师,software_engineer,全栈工程师,software_engineer,测试,T2_seniority
+P009917,品牌策划，上一段在美团,市场经理,marketing_manager,售前负责人,sales_manager,隐私合规经理,legal_manager,市场,T7_context
+P009918,CDO,设计师,designer,自动驾驶算法工程师,algorithm_engineer,图像算法工程师,algorithm_engineer,设计,T1_raw
+P009919,负责商业化产品经理,产品经理,product_manager,项目主管,project_manager,大模型算法工程师,algorithm_engineer,产品,T4_colloquial
+P009920,类似设计负责人这种的,设计师,designer,Mechanical Engineer,mechanical_engineer,首席法务官,legal_manager,设计,T4_colloquial
+P009921,资深机械工程师,机械工程师,mechanical_engineer,需求计划经理,supply_chain_manager,CMO,marketing_manager,供应链,T1_raw
+P009922,财务专员,财务经理,finance_manager,管理合伙人,investment_manager,大区经理,sales_manager,财务,T1_raw
+P009923,行政助理,行政经理,admin_manager,人力总监,hr_manager,Talent Acquisition,hr_manager,行政,T1_raw
+P009924,制造经理，带过 20+ 人团队,供应链经理,supply_chain_manager,嵌入式硬件工程师,mechanical_engineer,海外增长运营,operations_manager,供应链,T7_context
+P009925,前端负责人，带过 20+ 人团队,软件工程师,software_engineer,业务架构师,architect,生成式AI工程师,algorithm_engineer,开发,T7_context
+P009926,硬件Marketing Head,市场经理,marketing_manager,大客户负责人,sales_manager,人力资源总监,hr_manager,市场,T3_domain
+P009927,我们公司做AI产品负责人,产品经理,product_manager,工程项目经理,project_manager,雇主品牌经理,hr_manager,产品,T4_colloquial
+P009928,大模型架构负责人,架构师,architect,中间件工程师,software_engineer,数据治理经理,data_analyst,开发,T3_domain
+P009929,语音算法工程,算法工程师,algorithm_engineer,VP of Engineering,software_engineer,客户成功经理,sales_manager,算法,T6_typo
+P009930,做计算机视觉工程师的,算法工程师,algorithm_engineer,嵌入式工程师,software_engineer,移动端工程师,software_engineer,算法,T4_colloquial
+P009931,PMO责负人,项目经理,project_manager,AI产品负责人,product_manager,首席行政官,admin_manager,产品,T6_typo
+P009932,高级算法工程师，偏管理岗,算法工程师,algorithm_engineer,技术VP,software_engineer,行政负责人,admin_manager,算法,T7_context
+P009933,移端动工程师,软件工程师,software_engineer,System Architect,architect,风控总监,investment_manager,开发,T6_typo
+P009934,我们公司做品质经理,供应链经理,supply_chain_manager,仿真工程师,mechanical_engineer,MD,general_manager,供应链,T4_colloquial
+P009935,负责测试工程师,测试工程师,test_engineer,Developer,software_engineer,PR经理,marketing_manager,测试,T4_colloquial
+P009936,PDO,法务经理,legal_manager,审计负责人,finance_manager,首席人力官,hr_manager,法务,T6_typo
+P009937,ID设计师这块,设计师,designer,结构设计工程师,mechanical_engineer,AI VP,algorithm_engineer,设计,T4_colloquial
+P009938,VP investment 方向,投资经理,investment_manager,财务经理,finance_manager,Executive Assistant,admin_manager,投资,T5_en_zh_mix
+P009939,负责QA总监,测试工程师,test_engineer,前端开发,software_engineer,高级市场经理,marketing_manager,测试,T4_colloquial
+P009940,数据数据分析负责人,数据分析师,data_analyst,运营经理,operations_manager,法务主管,legal_manager,数据分析,T3_domain
+P009941,Flutter工程师岗位,软件工程师,software_engineer,云架构师,architect,产品运营经理,operations_manager,开发,T4_colloquial
+P009942,首架席构师,架构师,architect,嵌入式工程师,software_engineer,区域销售经理,sales_manager,开发,T6_typo
+P009943,BD负责人，在阿里做 B 端,销售经理,sales_manager,高级市场经理,marketing_manager,PR经理,marketing_manager,销售,T7_context
+P009944,后台产品经理，刚毕业 3 年,产品经理,product_manager,PMO负责人,project_manager,法务专员,legal_manager,产品,T7_context
+P009945,数据运营，偏管理岗,数据分析师,data_analyst,电商运营,operations_manager,市场主管,marketing_manager,数据分析,T7_context
+P009946,业务总监,总经理,general_manager,海外销售负责人,sales_manager,TTS工程师,algorithm_engineer,管理,T1_raw
+P009947,搞创始人的,总经理,general_manager,风控负责人,investment_manager,合规经理,legal_manager,管理,T4_colloquial
+P009948,Marketing Manager，年包 60-80w,市场经理,marketing_manager,区域负责人,sales_manager,区域负责人,sales_manager,市场,T7_context
+P009949,副运营专员,运营经理,operations_manager,Data Analyst,data_analyst,法务经理,legal_manager,运营,T2_seniority
+P009950,前台主管,行政经理,admin_manager,薪酬经理,hr_manager,高级财务经理,finance_manager,行政,T1_raw
+P009951,Lead 投资助理助理,投资经理,investment_manager,FP&A经理,finance_manager,供应链专员,supply_chain_manager,投资,T2_seniority
+P009952,客户经理，上一段在美团,销售经理,sales_manager,品牌负责人,marketing_manager,IP经理,legal_manager,销售,T7_context
+P009953,Lead 投资主管专家,投资经理,investment_manager,成本会计,finance_manager,平台运营,operations_manager,投资,T2_seniority
+P009954,招一个做用户运营的,运营经理,operations_manager,数据总监,data_analyst,国际业务负责人,general_manager,运营,T4_colloquial
+P009955,类似运营 leader这种的,运营经理,operations_manager,数据分析师,data_analyst,高级财务经理,finance_manager,运营,T4_colloquial
+P009956,做内容运营负责人的哥们,运营经理,operations_manager,商业智能分析师,data_analyst,专利工程师,legal_manager,运营,T4_colloquial
+P009957,风总控监,投资经理,investment_manager,首席财务官,finance_manager,Quality Assurance,test_engineer,投资,T6_typo
+P009958,中级Software Engineer专家,软件工程师,software_engineer,Tech Architect,architect,公关经理,marketing_manager,开发,T2_seniority
+P009959,首席法务主管,法务经理,legal_manager,财务副总裁,finance_manager,供应链VP,supply_chain_manager,法务,T2_seniority
+P009960,designer(senior),设计师,designer,资深算法工程师,algorithm_engineer,高级数据分析师,data_analyst,设计,T5_en_zh_mix
+P009961,做AI产品负责人的哥们,产品经理,product_manager,技术项目经理,project_manager,运营经理,operations_manager,产品,T4_colloquial
+P009962,Motion Desinger,设计师,designer,AI后端工程师,software_engineer,运营经理,operations_manager,设计,T6_typo
+P009963,办公室主任，年包 60-80w,行政经理,admin_manager,培训负责人,hr_manager,供应商管理经理,supply_chain_manager,行政,T7_context
+P009964,BI负责人，汇报给 CEO,数据分析师,data_analyst,私域运营经理,operations_manager,程序员,software_engineer,数据分析,T7_context
+P009965,P经R理,市场经理,marketing_manager,Key Account Manager,sales_manager,新媒体运营,operations_manager,市场,T6_typo
+P009966,副测试专员主管,测试工程师,test_engineer,Java工程师,software_engineer,DPO,legal_manager,测试,T2_seniority
+P009967,Architcet,架构师,architect,中间件工程师,software_engineer,基金经理,investment_manager,开发,T6_typo
+P009968,首席运营官这块,运营经理,operations_manager,数据分析师,data_analyst,TTS工程师,algorithm_engineer,运营,T4_colloquial
+P009969,风控算法工程师，IC 路线,算法工程师,algorithm_engineer,安全负责人,software_engineer,并购经理,investment_manager,算法,T7_context
+P009970,招一个做HRVP的,人力资源经理,hr_manager,行政负责人,admin_manager,产品设计师,designer,人力资源,T4_colloquial
+P009971,资深算法工程师,算法工程师,algorithm_engineer,工程VP,software_engineer,总法律顾问,legal_manager,算法,T1_raw
+P009972,SaaS数据专员,数据分析师,data_analyst,社区运营,operations_manager,财务专员,finance_manager,数据分析,T3_domain
+P009973,System Architect岗位,架构师,architect,开发负责人,software_engineer,KA经理,sales_manager,开发,T4_colloquial
+P009974,首席法务官,法务经理,legal_manager,会计主管,finance_manager,行政VP,admin_manager,法务,T1_raw
+P009975,类似交付负责人这种的,项目经理,project_manager,产品负责人,product_manager,设计总监,designer,产品,T4_colloquial
+P009976,做品牌总监的哥们,市场经理,marketing_manager,全国销售运营负责人,sales_manager,CDO,designer,市场,T4_colloquial
+P009977,产品 lead，跨部门协作多,产品经理,product_manager,项目负责人,project_manager,品牌经理,marketing_manager,产品,T7_context
+P009978,感知算法，上一段在美团,算法工程师,algorithm_engineer,Developer,software_engineer,HR经理,hr_manager,算法,T7_context
+P009979,负责产品总监,产品经理,product_manager,交付经理,project_manager,法务总监,legal_manager,产品,T4_colloquial
+P009980,人力资源业务伙伴，之前做过开发,人力资源经理,hr_manager,高级行政经理,admin_manager,运营 leader,operations_manager,人力资源,T7_context
+P009981,搞营销经理的,市场经理,marketing_manager,客户成功经理,sales_manager,计算机视觉工程师,algorithm_engineer,市场,T4_colloquial
+P009982,搞游戏客户端工程师的同事,软件工程师,software_engineer,前端架构师,architect,法务专员,legal_manager,开发,T4_colloquial
+P009983,品控经理,供应链经理,supply_chain_manager,结构设计工程师,mechanical_engineer,设计总监,designer,供应链,T1_raw
+P009984,搞DPO的同事,法务经理,legal_manager,预算经理,finance_manager,高级行政经理,admin_manager,法务,T4_colloquial
+P009985,结构设计工程师，带过 20+ 人团队,机械工程师,mechanical_engineer,物流主管,supply_chain_manager,销售专员,sales_manager,供应链,T7_context
+P009986,办公室主任，在字节做推荐,行政经理,admin_manager,HR经理,hr_manager,TTS工程师,algorithm_engineer,行政,T7_context
+P009987,电商General Manager,总经理,general_manager,达人运营,operations_manager,UX设计师,designer,管理,T3_domain
+P009988,级高设计师,设计师,designer,搜索推荐工程师,algorithm_engineer,成本经理,finance_manager,设计,T6_typo
+P009989,全国销售负责人，偏管理岗,销售经理,sales_manager,市场经理,marketing_manager,专利工程师,legal_manager,销售,T7_context
+P009990,游戏投资分析师,投资经理,investment_manager,财务副总裁,finance_manager,设计师,designer,投资,T3_domain
+P009991,游服戏务端工程师,软件工程师,software_engineer,Solution Architect,architect,硬件产品经理,product_manager,开发,T6_typo
+P009992,搞基础架构工程师的,软件工程师,software_engineer,IT架构师,architect,事业部总经理,general_manager,开发,T4_colloquial
+P009993,搞光学工程师的同事,机械工程师,mechanical_engineer,品控经理,supply_chain_manager,投资经理,investment_manager,供应链,T4_colloquial
+P009994,我们公司做技术总监,软件工程师,software_engineer,平台架构师,architect,运营 head,operations_manager,开发,T4_colloquial
+P009995,高级Product Manager,产品经理,product_manager,交付负责人,project_manager,投资助理,investment_manager,产品,T5_en_zh_mix
+P009996,做Executive Assistant的,行政经理,admin_manager,HR经理,hr_manager,Design Lead,designer,行政,T4_colloquial
+P009997,AI产品经理，年包 60-80w,产品经理,product_manager,项目总监,project_manager,配送经理,supply_chain_manager,产品,T7_context
+P009998,搞首席财务官的同事,财务经理,finance_manager,战略投资负责人,investment_manager,算法负责人,algorithm_engineer,财务,T4_colloquial
+P009999,架构负责人这块,架构师,architect,Java工程师,software_engineer,组织发展负责人,hr_manager,开发,T4_colloquial
+P010000,负责审计经理,财务经理,finance_manager,基金经理,investment_manager,人事主管,hr_manager,财务,T4_colloquial

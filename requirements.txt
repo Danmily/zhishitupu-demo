@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+
+# ── Embedding & KG Vector Retrieval ─────────────────────
+# 用于 Qwen3-Embedding-0.6B 本地部署与评测
+huggingface_hub>=0.23.0
+transformers>=4.51.0
+sentence-transformers>=2.7.0
+torch>=2.1.0
+numpy>=1.24.0

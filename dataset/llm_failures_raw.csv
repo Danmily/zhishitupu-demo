@@ -1,0 +1,24 @@
+﻿input_title,context,expected,expected_id,llm_got,llm_reason,difficulty,target_level
+做用户研究和竞品分析的人,在产品部门，用Axure画原型,产品经理,product_manager,设计师,embedding最近邻: UX Researcher,hard,L3
+需求分析师,写PRD和需求文档，做产品方向,产品经理,product_manager,供应链经理,embedding最近邻: 需求计划经理,hard,L3
+社群增长专家,负责私域社群拉新和用户增长，用AB测试优化转化,运营经理,operations_manager,产品经理,embedding最近邻: 增长产品经理,hard,L3
+战略规划总监,做战略管理和业务规划,总经理,general_manager,投资经理,embedding最近邻: 战略投资负责人,hard,L3
+数字化转型负责人,推公司数字化转型，管IT和数据,总经理,general_manager,数据分析师,embedding最近邻: 数据负责人,hard,out_of_graph
+GTM策略负责人,做go-to-market策略和市场推广,市场经理,marketing_manager,运营经理,embedding最近邻: 策略运营负责人,hard,out_of_graph
+数据工程师,做ETL和数据管道,数据分析师,data_analyst,算法工程师,embedding最近邻: 数据挖掘工程师,hard,out_of_graph
+MLOps工程师,做机器学习模型部署和运维,算法工程师,algorithm_engineer,软件工程师,embedding最近邻: DevOps工程师,hard,out_of_graph
+RPA开发工程师,做流程自动化机器人,软件工程师,software_engineer,算法工程师,embedding最近邻: 机器人算法工程师,hard,out_of_graph
+全球化人事负责人,管海外团队的HR和薪酬福利,人力资源经理,hr_manager,总经理,embedding最近邻: 海外业务负责人,hard,out_of_graph
+技术合伙人,创业公司的技术合伙人，管研发,软件工程师,software_engineer,总经理,embedding最近邻: 联合创始人,hard,out_of_graph
+资深做用户研究和竞品分析的人,在产品部门，用Axure画原型,产品经理,product_manager,设计师,embedding最近邻: UX研究员,hard,L3
+资深需求分析师,写PRD和需求文档，做产品方向,产品经理,product_manager,软件工程师,embedding最近邻: 研发总监,hard,L3
+资深社群增长专家,负责私域社群拉新和用户增长，用AB测试优化转化,运营经理,operations_manager,产品经理,embedding最近邻: 增长产品经理,hard,L3
+资深战略规划总监,做战略管理和业务规划,总经理,general_manager,投资经理,embedding最近邻: 战略投资负责人,hard,L3
+资深数字化转型负责人,推公司数字化转型，管IT和数据,总经理,general_manager,数据分析师,embedding最近邻: 数据负责人,hard,out_of_graph
+资深数据工程师,做ETL和数据管道,数据分析师,data_analyst,算法工程师,embedding最近邻: 数据挖掘工程师,hard,out_of_graph
+资深机器人产品经理,做服务机器人的产品规划,产品经理,product_manager,算法工程师,embedding最近邻: 机器人算法工程师,hard,out_of_graph
+资深全球化人事负责人,管海外团队的HR和薪酬福利,人力资源经理,hr_manager,总经理,embedding最近邻: 海外业务负责人,hard,out_of_graph
+资深技术合伙人,创业公司的技术合伙人，管研发,软件工程师,software_engineer,总经理,embedding最近邻: 联合创始人,hard,out_of_graph
+CMO（偏策略）,,市场经理,marketing_manager,运营经理,embedding最近邻: 策略运营负责人,easy,L1
+首席投资总监（偏策略）,看AI赛道,投资经理,investment_manager,算法工程师,embedding最近邻: AI总监,easy,L1
+首席CDO（偏策略）,首席数据官，管数据团队,设计师,designer,数据分析师,embedding最近邻: 首席数据官,hard,L3_ambiguous

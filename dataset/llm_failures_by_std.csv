@@ -1,0 +1,11 @@
+﻿expected_standard,expected_id,fail_count,top_llm_mistakes,sample_titles
+产品经理,product_manager,5,设计师 (x2); 供应链经理 (x1); 软件工程师 (x1),做用户研究和竞品分析的人 | 资深做用户研究和竞品分析的人 | 资深机器人产品经理 | 资深需求分析师 | 需求分析师
+总经理,general_manager,4,投资经理 (x2); 数据分析师 (x2),战略规划总监 | 数字化转型负责人 | 资深战略规划总监 | 资深数字化转型负责人
+软件工程师,software_engineer,4,算法工程师 (x2); 总经理 (x2),RPA开发工程师 | 技术合伙人 | 资深技术合伙人
+市场经理,marketing_manager,3,运营经理 (x3),CMO（偏策略） | GTM策略负责人
+运营经理,operations_manager,2,产品经理 (x2),社群增长专家 | 资深社群增长专家
+数据分析师,data_analyst,2,算法工程师 (x2),数据工程师 | 资深数据工程师
+算法工程师,algorithm_engineer,2,软件工程师 (x2),MLOps工程师
+人力资源经理,hr_manager,2,总经理 (x2),全球化人事负责人 | 资深全球化人事负责人
+投资经理,investment_manager,1,算法工程师 (x1),首席投资总监（偏策略）
+设计师,designer,1,数据分析师 (x1),首席CDO（偏策略）
