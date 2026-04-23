@@ -58,7 +58,15 @@ python scripts/holdout_evaluate_train_informed.py         # 补跑 train-informe
 
 - **规格与归档**：见仓库内 **`openspec/`**（与 [Fission-AI OpenSpec](https://github.com/Fission-AI/OpenSpec) 的「specs 与代码同仓」约定一致）。不建议再单独维护 `D:\项目\ttc\openspec` 以免与实现脱节；若只要文档，可将 `openspec/` **打包**发给研发。
 - **业务导出接入**：`dataset/business/`（CSV + `business_manifest.json`）、`scripts/ingest_business_excel.py`、接口 `GET /api/business_data/summary` 等。
-- **Git / GitHub 与模型**：**不要**提交 `models/Qwen3-0.6B`（生成模型）与 **`models/Qwen3-Embedding-0.6B*`**（向量模型）——体积大、且不利于协作；二者均在 `.gitignore` 中。克隆后请用 `scripts/download_qwen_embedding.py` 等拉取 Embedding。
+- **Git / GitHub 与模型**：**不要**提交 `models/Qwen3-0.6B`（生成模型）与 **`models/Qwen3-Embedding-0.6B*`**（向量模型）——体积大、且不利于协作；二者均在 `.gitignore` 中。克隆后在本机拉取：
+  ```powershell
+  # 国内可选镜像
+  $env:HF_ENDPOINT='https://hf-mirror.com'
+  python scripts/download_qwen_embedding.py
+  # 仅在使用 local_qwen 生成后端时需要：
+  # python scripts/download_qwen_llm.py
+  ```
+  完整约定见 **`openspec/specs/local-runtime-models/spec.md`**。
 
 ---
 
