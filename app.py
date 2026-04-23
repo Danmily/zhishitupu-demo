@@ -56,6 +56,35 @@ class TitleKnowledgeGraph:
     def _norm(s: str) -> str:
         return re.sub(r"\s+", "", s).lower()
 
+    _QUERY_STRIP_PREFIXES = (
+        "首席", "资深", "高级", "初级", "副",
+        "chief", "senior", "junior", "sr.", "jr.",
+    )
+
+    @classmethod
+    def _norm_query(cls, s: str) -> str:
+        """查询侧专用 normalize：
+
+        相较 ``_norm`` 多做两件事，用来吸收真实猎头场景里常见的噪声修饰：
+
+        1. 剥离全角/半角圆括号内内容，例如 ``X（偏策略）`` → ``X``
+        2. 反复剥离『首席/资深/高级/初级/副』等职级前缀，支持组合叠加
+           例如 ``首席高级Java工程师`` → ``Java工程师``
+
+        仅用于查询，不会改 KG 构建时的索引 key，因此不会污染元信息。
+        """
+        s = re.sub(r"[（(][^）)]*[）)]", "", s)
+        s = re.sub(r"\s+", "", s).lower()
+        changed = True
+        while changed:
+            changed = False
+            for p in cls._QUERY_STRIP_PREFIXES:
+                if s.startswith(p) and len(s) > len(p):
+                    s = s[len(p):]
+                    changed = True
+                    break
+        return s
+
     def _detect_seniority_from_title(self, t: str) -> str | None:
         tl = t.lower()
         for kw in ("cpo", "coo", "cto", "cfo", "ceo", "cmo", "clo", "首席"):
@@ -120,19 +149,40 @@ class TitleKnowledgeGraph:
 
     # ── L1: exact lookup ──────────────────────────────
     def level1_exact(self, title: str) -> dict | None:
-        r = self.exact_map.get(self._norm(title))
-        if not r:
-            return None
-        return {
-            **r,
-            "level": "L1_exact",
-            "confidence": 1.0,
-            "trace": [
-                {"step": "normalize", "value": self._norm(title)},
-                {"step": "exact_lookup", "hit": True, "edge": f'{r["original_variant"]} --MAPS_TO--> {r["standard_title"]}'},
-                {"step": "result", "standard_title": r["standard_title"], "match_type": r["match_type"]},
-            ],
-        }
+        norm = self._norm(title)
+        r = self.exact_map.get(norm)
+        if r:
+            return {
+                **r,
+                "level": "L1_exact",
+                "confidence": 1.0,
+                "trace": [
+                    {"step": "normalize", "value": norm},
+                    {"step": "exact_lookup", "hit": True, "edge": f'{r["original_variant"]} --MAPS_TO--> {r["standard_title"]}'},
+                    {"step": "result", "standard_title": r["standard_title"], "match_type": r["match_type"]},
+                ],
+            }
+
+        deep = self._norm_query(title)
+        if deep and deep != norm:
+            r = self.exact_map.get(deep)
+            if r:
+                return {
+                    **r,
+                    "level": "L1_exact",
+                    "match_type": r["match_type"] + "_after_strip",
+                    "confidence": 0.95,
+                    "trace": [
+                        {"step": "normalize", "value": norm},
+                        {"step": "strip_modifiers", "deep_norm": deep,
+                         "hint": "剥离括号注释与『首席/资深/高级/初级』等前缀"},
+                        {"step": "exact_lookup", "hit": True,
+                         "edge": f'{r["original_variant"]} --MAPS_TO--> {r["standard_title"]}'},
+                        {"step": "result", "standard_title": r["standard_title"],
+                         "match_type": r["match_type"] + "_after_strip"},
+                    ],
+                }
+        return None
 
     # ── L2: fuzzy matching ────────────────────────────
     def level2_fuzzy(self, title: str) -> dict | None:
@@ -432,10 +482,22 @@ async def batch_eval():
     }
 
 
+GENERALIZATION_HYBRID_CACHE = DATA_DIR / "dataset" / "generalization_8020_hybrid.json"
+
+
 @app.get("/api/generalization")
 async def generalization():
-    """80/20 generalization experiment (instant, no LLM)."""
-    return run_generalization(KG_RAW)
+    """80/20 泛化：默认即时跑纯 KG；若存在离线报表则附带 KG+Embedding(L3) 对比。"""
+    base = run_generalization(KG_RAW)
+    base["kg_plus_embedding"] = None
+    if GENERALIZATION_HYBRID_CACHE.exists():
+        try:
+            base["kg_plus_embedding"] = json.loads(
+                GENERALIZATION_HYBRID_CACHE.read_text(encoding="utf-8")
+            )
+        except Exception:
+            pass
+    return base
 
 
 @app.get("/api/graph_data")
@@ -467,6 +529,49 @@ async def graph_data():
 
     return {"nodes": nodes, "edges": edges,
             "summary": {"nodes": len(nodes), "edges": len(edges)}}
+
+
+BUSINESS_DATA_DIR = DATA_DIR / "dataset" / "business"
+BUSINESS_MANIFEST_PATH = BUSINESS_DATA_DIR / "business_manifest.json"
+
+
+@app.get("/api/business_data/summary")
+async def business_data_summary():
+    """研发业务导出清单：需先运行 scripts/ingest_business_excel.py 生成 manifest。"""
+    if not BUSINESS_MANIFEST_PATH.exists():
+        return {
+            "loaded": False,
+            "hint": "python scripts/ingest_business_excel.py --skills <技能.xlsx> --titles <职称.xlsx>",
+            "spec": "openspec/specs/business-talent-exports/spec.md",
+        }
+    data = json.loads(BUSINESS_MANIFEST_PATH.read_text(encoding="utf-8"))
+    return {"loaded": True, **data}
+
+
+@app.get("/api/business_data/title_freq")
+async def business_data_title_freq(limit: int = 100):
+    path = BUSINESS_DATA_DIR / "talent_titles_top_freq.csv"
+    if not path.exists():
+        raise HTTPException(status_code=404, detail="未找到 talent_titles_top_freq.csv，请先导入业务数据")
+    limit = max(1, min(int(limit), 8000))
+    rows: list[dict] = []
+    with path.open("r", encoding="utf-8-sig", newline="") as f:
+        for i, row in enumerate(csv.DictReader(f)):
+            if i >= limit:
+                break
+            rows.append(row)
+    return {"limit": limit, "rows": rows}
+
+
+@app.get("/api/business_data/skill_key_summary")
+async def business_data_skill_key_summary():
+    path = BUSINESS_DATA_DIR / "talent_skills_by_key_summary.csv"
+    if not path.exists():
+        raise HTTPException(status_code=404, detail="未找到 talent_skills_by_key_summary.csv，请先导入业务数据")
+    rows: list[dict] = []
+    with path.open("r", encoding="utf-8-sig", newline="") as f:
+        rows = list(csv.DictReader(f))
+    return {"rows": rows}
 
 
 # ═══════════════════════════════════════════════════════
@@ -632,6 +737,55 @@ async def pipeline_report():
         v["kg_acc"] = round(v["kg_correct"] / v["total"], 4) if v["total"] else 0
         v["final_acc"] = round(v["final_correct"] / v["total"], 4) if v["total"] else 0
 
+    # 补充“1500 全量口径”：
+    # - 若当前报表本身就是 1500 条，则 directly measured
+    # - 若当前仅 300 条，则按 test_cases_v2 的 target_level 分布做加权推算
+    full_target_counter: dict[str, int] = defaultdict(int)
+    for tc in TEST_CASES:
+        full_target_counter[tc.get("target_level") or "-"] += 1
+
+    full_total = len(TEST_CASES)
+    if total == full_total:
+        full_view = {
+            "mode": "measured",
+            "total": full_total,
+            "kg_only": {
+                "correct": kg_correct,
+                "accuracy": round(kg_correct / total, 4) if total else 0,
+            },
+            "hybrid": {
+                "correct": final_correct,
+                "accuracy": round(final_correct / total, 4) if total else 0,
+            },
+            "uplift_points": round((final_correct - kg_correct) / total, 4) if total else 0,
+            "note": "当前报表已是 1500 条全量实测结果。",
+        }
+    else:
+        est_kg_correct = 0.0
+        est_final_correct = 0.0
+        for k, n in full_target_counter.items():
+            # 当前报表没覆盖到的 target_level，按 0 处理，避免误报
+            m = by_target.get(k, {"kg_acc": 0.0, "final_acc": 0.0})
+            est_kg_correct += n * float(m.get("kg_acc", 0.0))
+            est_final_correct += n * float(m.get("final_acc", 0.0))
+        full_view = {
+            "mode": "estimated_from_current_report",
+            "total": full_total,
+            "kg_only": {
+                "correct": round(est_kg_correct),
+                "accuracy": round(est_kg_correct / full_total, 4) if full_total else 0,
+            },
+            "hybrid": {
+                "correct": round(est_final_correct),
+                "accuracy": round(est_final_correct / full_total, 4) if full_total else 0,
+            },
+            "uplift_points": round((est_final_correct - est_kg_correct) / full_total, 4) if full_total else 0,
+            "note": (
+                f"当前报表仅 {total} 条，以上为按 test_cases_v2.json 全量分布（1500 条）"
+                "加权推算，用于汇报口径；最终以 1500 条实测为准。"
+            ),
+        }
+
     return {
         "total": total,
         "kg_only": {
@@ -647,6 +801,7 @@ async def pipeline_report():
         "llm_rescue_count": llm_rescue,
         "llm_wrong_count": llm_wrong,
         "by_target_level": dict(by_target),
+        "full_1500_view": full_view,
         "llm_rescue_samples": kg_only_missed_llm_saved_cases,
         "details": rows,
     }
@@ -670,6 +825,83 @@ async def kg_expand_candidates():
     """LLM 驱动的词表扩充候选（基于失败反例自动生成）。"""
     rows = _csv_to_list(DATASET_DIR / "kg_expand_candidates.csv")
     return {"total": len(rows), "rows": rows}
+
+
+# ═══════════════════════════════════════════════════════
+#  Skill Graph + Query Expansion (任务 2~4)
+# ═══════════════════════════════════════════════════════
+
+try:
+    from query_expansion import SkillGraph, expand_query as _do_expand_query
+    _SKILL_GRAPH: SkillGraph | None = SkillGraph()
+    print(f"[SkillGraph] loaded v{_SKILL_GRAPH.version}, {_SKILL_GRAPH.total} skills")
+except Exception as e:
+    _SKILL_GRAPH = None
+    print(f"[SkillGraph] load failed: {e}")
+
+
+class ExpandQueryReq(BaseModel):
+    query: str
+    include_skill_expansion: bool = True
+    max_skill_hops: int = 2
+    use_embedding_fallback: bool = True
+
+
+@app.get("/api/skill_graph_info")
+async def skill_graph_info():
+    if _SKILL_GRAPH is None:
+        raise HTTPException(status_code=503, detail="skill_graph_v1.json 未加载成功")
+    by_cat: dict[str, list[dict]] = defaultdict(list)
+    for s in _SKILL_GRAPH.by_id.values():
+        row = {
+            "label": s["label"], "aliases": s.get("aliases", []),
+            "doc_freq_asr": s.get("doc_freq_asr", 0),
+            "in_kg_jobs": s.get("in_kg_jobs", []),
+            "n_synonyms": len(s.get("synonyms", [])),
+            "n_related": len(s.get("related", [])),
+        }
+        if s.get("skill_tree"):
+            row["skill_tree"] = s["skill_tree"]
+        by_cat[s["category"]].append(row)
+    for cat in by_cat:
+        by_cat[cat].sort(key=lambda x: -int(x["doc_freq_asr"] or 0))
+    return {
+        "version": _SKILL_GRAPH.version,
+        "total_skills": _SKILL_GRAPH.total,
+        "categories": {cat: {"count": len(items), "skills": items[:20]}
+                       for cat, items in sorted(by_cat.items())},
+    }
+
+
+def _embedding_job_fallback(query: str) -> dict | None:
+    """当 KG L1/L2 都 miss 时，用已常驻的 _PIPELINE 做 embedding 级兜底匹配标准岗位。"""
+    if not _PIPELINE_READY or _PIPELINE is None:
+        return None
+    r = _PIPELINE.match(query, "", include_semantic_expansions=False)
+    if r and r.get("standard_id"):
+        return {
+            "standard_id": r["standard_id"],
+            "standard_title": r.get("standard_title", ""),
+            "confidence": r.get("confidence", 0),
+        }
+    return None
+
+
+@app.post("/api/expand_query")
+async def api_expand_query(req: ExpandQueryReq):
+    if _SKILL_GRAPH is None:
+        raise HTTPException(status_code=503, detail="skill_graph_v1.json 未加载成功")
+    fallback = _embedding_job_fallback if req.use_embedding_fallback else None
+    res = _do_expand_query(
+        raw_query=req.query,
+        kg=KG,
+        kg_raw=KG_RAW,
+        skill_graph=_SKILL_GRAPH,
+        include_skill_expansion=req.include_skill_expansion,
+        max_skill_hops=req.max_skill_hops,
+        embedding_fallback_fn=fallback,
+    )
+    return res
 
 
 if __name__ == "__main__":

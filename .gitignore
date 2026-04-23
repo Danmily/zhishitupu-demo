@@ -10,8 +10,10 @@ env/
 .DS_Store
 Thumbs.db
 
-# Local model artifacts and indexes
+# Local model artifacts and indexes（勿提交权重；克隆后按 README / scripts 下载）
+models/Qwen3-0.6B/
 models/Qwen3-Embedding-0.6B/
+models/Qwen3-Embedding-0.6B-ft/
 models/_kg_index/
 checkpoints/
 

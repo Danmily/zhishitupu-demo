@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "ingested_at_utc": "2026-04-23T04:19:32.573614+00:00",
+  "outputs": {
+    "talent_skills_full": "dataset/business/talent_skills_full.csv",
+    "talent_skills_by_key_summary": "dataset/business/talent_skills_by_key_summary.csv",
+    "talent_titles_full": "dataset/business/talent_titles_full.csv",
+    "talent_titles_top_freq": "dataset/business/talent_titles_top_freq.csv"
+  },
+  "skills_source": {
+    "path": "C:\\Users\\Damily\\Downloads\\_SELECT_DISTINCT_tp_key_name_COALESCE_elem_name_elem_AS_skill_na_202604221758.xlsx",
+    "sha256_16": "5fb3c5d312641f99",
+    "rows_kept": 108436,
+    "distinct_keys": 5,
+    "distinct_skill_texts": 101233
+  },
+  "titles_source": {
+    "path": "C:\\Users\\Damily\\Downloads\\_SELECT_TRIM_elem_title_AS_title_FROM_talent_profiles_tp_CROSS_J_202604221756.xlsx",
+    "sha256_16": "95f5762c67e95ed8",
+    "rows_kept": 98797,
+    "distinct_titles": 33947
+  }
+}

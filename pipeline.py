@@ -26,7 +26,7 @@ from pathlib import Path
 from typing import Optional
 
 from app import TitleKnowledgeGraph
-from llm_engine import BaseLLMEngine, build_engine
+from llm_engine import BaseLLMEngine, EmbeddingEngine, build_engine
 from prompt_builder import build_kg_context
 
 ROOT = Path(__file__).resolve().parent
@@ -51,6 +51,47 @@ class HybridPipeline:
         self.std_category_by_id = {st["id"]: st["category"] for st in kg_raw["standard_titles"]}
         self._kg_context_cache: Optional[str] = None
 
+    def _semantic_title_expansions(self, title: str, context: str = "", max_n: int = 20) -> list[dict]:
+        """用 Embedding 索引对查询做近邻扩展，输出 10~20 条典型岗位写法（L3 / 检索泛化口径）。"""
+        if not isinstance(self.llm, EmbeddingEngine):
+            return []
+        try:
+            self.llm._ensure_index()
+            q = f"{title} | {context}" if (context or "").strip() else title
+            hits = self.llm.ekg.search(q, top_k=max(max_n * 2, 32))
+        except Exception:
+            return []
+        out: list[dict] = []
+        seen: set[str] = set()
+        for h in hits:
+            phrase = (h.variant_name or "").strip()
+            if not phrase:
+                continue
+            key = phrase.lower()
+            if key in seen:
+                continue
+            seen.add(key)
+            out.append({
+                "phrase": phrase,
+                "standard_title": h.standard_label,
+                "standard_id": h.standard_id,
+                "similarity": round(float(h.score), 4),
+            })
+            if len(out) >= max_n:
+                break
+        return out
+
+    def _attach_expansions(self, result: dict, title: str, context: str) -> dict:
+        ex = self._semantic_title_expansions(title, context)
+        if ex:
+            result["semantic_expansions"] = ex
+            result["semantic_expansions_note"] = (
+                f"基于 Qwen3-Embedding 岗位词表近邻，共 {len(ex)} 条（用于展示/检索扩展，主结果仍由上层 L1/L2/L3 决策）"
+            )
+        else:
+            result.setdefault("semantic_expansions", [])
+        return result
+
     @classmethod
     def from_defaults(
         cls,
@@ -72,13 +113,14 @@ class HybridPipeline:
     # ------------------------------------------------------------------ #
     # main entry
     # ------------------------------------------------------------------ #
-    def match(self, title: str, context: str = "") -> dict:
+    def match(self, title: str, context: str = "", *, include_semantic_expansions: bool = True) -> dict:
         trace: list[dict] = []
 
         r1 = self.kg.level1_exact(title)
         if r1:
             trace.append({"step": "L1_exact", "hit": True})
-            return self._pack(r1, path="kg_l1", trace=trace, level="L1_exact")
+            out = self._pack(r1, path="kg_l1", trace=trace, level="L1_exact")
+            return self._attach_expansions(out, title, context) if include_semantic_expansions else out
         trace.append({"step": "L1_exact", "hit": False})
 
         r2 = self.kg.level2_fuzzy(title)
@@ -86,7 +128,8 @@ class HybridPipeline:
             trace.append({"step": "L2_fuzzy",
                           "hit": True,
                           "confidence": r2["confidence"]})
-            return self._pack(r2, path="kg_l2", trace=trace, level="L2_fuzzy")
+            out = self._pack(r2, path="kg_l2", trace=trace, level="L2_fuzzy")
+            return self._attach_expansions(out, title, context) if include_semantic_expansions else out
         trace.append({
             "step": "L2_fuzzy",
             "hit": bool(r2),
@@ -97,7 +140,7 @@ class HybridPipeline:
 
         if self.llm is None:
             trace.append({"step": "L3_llm", "skipped": "no_llm_configured"})
-            return {
+            miss = {
                 "standard_id": None,
                 "standard_title": None,
                 "seniority": None,
@@ -107,6 +150,7 @@ class HybridPipeline:
                 "confidence": 0.0,
                 "trace": trace,
             }
+            return self._attach_expansions(miss, title, context) if include_semantic_expansions else miss
 
         llm_res = self.llm.predict(
             title=title,
@@ -124,7 +168,7 @@ class HybridPipeline:
 
         sid = llm_res.get("standard_id")
         if sid and sid in self.allowed_ids:
-            return {
+            ok = {
                 "standard_id": sid,
                 "standard_title": llm_res.get("standard_title")
                                   or self.std_label_by_id.get(sid, ""),
@@ -136,8 +180,9 @@ class HybridPipeline:
                 "reason": llm_res.get("reason", ""),
                 "trace": trace,
             }
+            return self._attach_expansions(ok, title, context) if include_semantic_expansions else ok
 
-        return {
+        bad = {
             "standard_id": None,
             "standard_title": None,
             "seniority": None,
@@ -148,6 +193,7 @@ class HybridPipeline:
             "reason": llm_res.get("reason", "llm_returned_other"),
             "trace": trace,
         }
+        return self._attach_expansions(bad, title, context) if include_semantic_expansions else bad
 
     # ------------------------------------------------------------------ #
     # util

@@ -1,0 +1,50 @@
+{
+  "total_variants": 681,
+  "holdout_ratio": 0.2,
+  "rounds": [
+    {
+      "round": 1,
+      "holdout": 136,
+      "kg_correct": 89,
+      "kg_accuracy": 0.6544,
+      "hybrid_correct": 127,
+      "hybrid_accuracy": 0.9338
+    },
+    {
+      "round": 2,
+      "holdout": 136,
+      "kg_correct": 69,
+      "kg_accuracy": 0.5074,
+      "hybrid_correct": 121,
+      "hybrid_accuracy": 0.8897
+    },
+    {
+      "round": 3,
+      "holdout": 136,
+      "kg_correct": 80,
+      "kg_accuracy": 0.5882,
+      "hybrid_correct": 128,
+      "hybrid_accuracy": 0.9412
+    },
+    {
+      "round": 4,
+      "holdout": 136,
+      "kg_correct": 79,
+      "kg_accuracy": 0.5809,
+      "hybrid_correct": 125,
+      "hybrid_accuracy": 0.9191
+    },
+    {
+      "round": 5,
+      "holdout": 136,
+      "kg_correct": 87,
+      "kg_accuracy": 0.6397,
+      "hybrid_correct": 126,
+      "hybrid_accuracy": 0.9265
+    }
+  ],
+  "avg_kg_accuracy": 0.5941,
+  "avg_hybrid_accuracy": 0.9221,
+  "method_note": "hybrid：缩减图走 L1/L2，未命中则走 Embedding L3；向量索引若按全量词表构建，相对「摘掉 20% 边」存在乐观偏差，严格评估需对 holdout 重算索引。",
+  "generated_by": "scripts/run_generalization_8020_hybrid.py"
+}

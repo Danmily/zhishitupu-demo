@@ -1,0 +1,6 @@
+﻿key_name,row_count,sample_skills
+skill.engineering_ability,57090,"['-previz 制作', '0 to 1 Product Development', '0 到 1 业务孵化', '0 到 1 业务突破', '0 到 1 业务设计', '0 到 1 产品化', '0 到 1 产品孵化', '0 到 1 产品定义', '0 到 1 产品建设', '0 到 1 产品开发', '0 到 1 产品打造', '0 到 1 产品搭建']"
+skill.ai_ability,22988,"[',', '0 样本提取', '0→1→100 阶段切换', '108M AI 超清技术', '1D-CNN', '1F1B 流水调度', '2A 算法调试', '2D Gan 数字人', '2D SLAM', '2D 人体关键点检测', '2D 图像识别', '2D 数字人生成']"
+skill.tool,18317,"['.NET', '.NET Ecosystem', '.Net Reactor', '.Net WEB API', '011yDbg', '01lama', '0G', '104', '11 Labs', '1104 报表系统', '11Labs', '11street']"
+skill.framework,9868,"['.NET', '.NET 6', '.NET 6.0', '.NET 7', '.NET Core', '.NET Core MVC', '.NET Framework', '.NET MVC', '.NET Remoting', '.NET WinForms', '.Net', '.Net Core']"
+skill.language,173,"['.NET', '.Net', 'ABAP', 'AE', 'AI', 'APDL', 'ARM Assembly', 'ASM', 'ASP', 'ATL', 'ActionScript', 'Ada']"

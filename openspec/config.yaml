@@ -1,0 +1,5 @@
+# OpenSpec 项目配置（Fission-AI OpenSpec 兼容的轻量占位）
+# 详见 https://github.com/Fission-AI/OpenSpec
+version: 1
+project: zhishitupu-demo
+description: 知识图谱职称标准化 + 业务人才数据资产
