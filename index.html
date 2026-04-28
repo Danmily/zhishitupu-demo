@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
@@ -85,6 +85,14 @@ tr:hover{background:#f8fafc}tr.pass{background:var(--ok-bg)}tr.fail{background:v
 .toggle-btn{display:inline-block;padding:2px 10px;border-radius:12px;font-size:11px;font-weight:600;
   cursor:pointer;border:1px solid #c4b5fd;color:#6b21a8;background:#f5f3ff;margin:3px;transition:.15s;user-select:none}
 .toggle-btn:hover{background:#ede9fe;border-color:#7c3aed}
+.sk-ex{padding:4px 12px;border-radius:999px;background:#f3e8ff;color:#6b21a8;border:1px solid #ddd6fe;
+  font-size:12px;cursor:pointer;transition:.15s;user-select:none}
+.sk-ex:hover{background:#ede9fe;border-color:#a78bfa}
+.sk-pill{display:inline-block;padding:4px 11px;border-radius:8px;font-size:12px;margin:3px;font-weight:500;cursor:default}
+.sk-hop0{background:#7c3aed;color:#fff}
+.sk-hop1{background:#ede9fe;color:#5b21b6;border:1px solid #c4b5fd}
+.sk-hop2{background:#f5f3ff;color:#7c3aed;border:1px dashed #c4b5fd;opacity:.85}
+.sk-badge{display:inline-block;padding:2px 8px;border-radius:6px;font-size:10px;font-weight:700;margin-left:6px;vertical-align:middle}
 </style>
 </head>
 <body>
@@ -102,9 +110,8 @@ tr:hover{background:#f8fafc}tr.pass{background:var(--ok-bg)}tr.fail{background:v
   <div class="tab" data-t="report">混合链路汇报</div>
   <div class="tab" data-t="rescue">LLM 救回 &amp; 词表优化</div>
   <div class="tab" data-t="gen">80/20 泛化（KG vs +Embedding）</div>
-  <div class="tab" data-t="expand">技能扩展 &amp; ES DSL</div>
+  <div class="tab" data-t="skills">技能图谱</div>
   <div class="tab" data-t="graph">图谱浏览器</div>
-  <div class="tab" data-t="biz">业务数据</div>
 </div>
 
 <div class="wrap">
@@ -393,86 +400,61 @@ tr:hover{background:#f8fafc}tr.pass{background:var(--ok-bg)}tr.fail{background:v
   </div>
 </div>
 
-<!-- ═══ Tab 4: 图谱浏览器 ═══ -->
-<!-- ═══ Tab: 技能扩展 & ES DSL ═══ -->
-<div id="p-expand" class="pnl">
+<!-- ═══ Tab: 技能图谱 ═══ -->
+<div id="p-skills" class="pnl">
   <div class="card">
-    <h3><span class="icon icon-kg">EX</span> 查询扩展演示（职位 KG × 技能 KG × Qwen Embedding）</h3>
-    <div class="sr">
-      输入一个用户查询（如 <code>AI 开发工程师</code>），后端会：<br>
-      <b>1.</b> 在职位 KG 里做 L1/L2/L3（Embedding 兜底）匹配 →
-      <b>2.</b> 从命中岗位的 <code>related_skills</code> + 从 query 直接扫到的技能词作为 seed →
-      <b>3.</b> 在 <code>skill_graph_v1.json</code>（267 个技能节点，来自 2066 条 ASR 通话挖掘 + Qwen3-Embedding 聚类）上做 2-hop 扩展 →
-      <b>4.</b> 生成 ES Bool DSL 演示如何用扩展结果打到 Elasticsearch。
+    <h3><span class="icon icon-graph">SK</span> 技能图谱搜索 <span style="font-size:11px;color:var(--text2);font-weight:400;margin-left:8px">输入任意技能词 → 同义词 · 关联词 · 子技能树 · Embedding 岗位近邻</span></h3>
+    <div style="display:flex;gap:8px;margin-bottom:10px">
+      <input id="skQuery" placeholder="例：Python、数据分析、React、机器学习、Scrapy…"/>
+      <button class="btn btn-kg" onclick="doSkillSearch()">搜索</button>
     </div>
-    <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
-      <input id="expQuery" placeholder="输入查询，如：AI 开发工程师" value="AI 开发工程师"
-             style="flex:1;min-width:280px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font-size:14px">
-      <button class="btn btn-kg" onclick="doExpand()">扩展查询</button>
-    </div>
-    <div style="margin-top:10px;font-size:12px;color:var(--text2)">
-      试试：
-      <a href="javascript:void(0)" onclick="setExp('AI 开发工程师')">AI 开发工程师</a> |
-      <a href="javascript:void(0)" onclick="setExp('大模型应用工程师')">大模型应用工程师</a> |
-      <a href="javascript:void(0)" onclick="setExp('资深 HRBP')">资深 HRBP</a> |
-      <a href="javascript:void(0)" onclick="setExp('SaaS 大客户销售')">SaaS 大客户销售</a> |
-      <a href="javascript:void(0)" onclick="setExp('首席增长官')">首席增长官</a> |
-      <a href="javascript:void(0)" onclick="setExp('后端 Java 架构师')">后端 Java 架构师</a>
+    <div style="font-size:12px;color:var(--text2);display:flex;flex-wrap:wrap;gap:5px;align-items:center">
+      <span style="flex-shrink:0">快速示例：</span>
+      <span class="sk-ex">Python</span><span class="sk-ex">Java</span><span class="sk-ex">机器学习</span>
+      <span class="sk-ex">React</span><span class="sk-ex">大模型</span><span class="sk-ex">数据分析</span>
+      <span class="sk-ex">Docker</span><span class="sk-ex">Scrapy</span><span class="sk-ex">Pandas</span>
+      <span class="sk-ex">微服务</span><span class="sk-ex">TypeScript</span><span class="sk-ex">Rust</span>
     </div>
   </div>
 
-  <div class="card" id="expMatch" style="display:none">
-    <h3>① 职位 KG 匹配</h3>
-    <div id="expMatchBody"></div>
+  <div id="skResult" style="display:none">
+    <div class="card" id="skMatchCard">
+      <div id="skMatchBody"></div>
+    </div>
+    <div class="card" id="skGraphCard" style="display:none">
+      <h3>图谱关联词 <span style="font-size:11px;color:var(--text2);font-weight:400">同义词 + 相关词，按跳数/相似度排序（可用于搜索扩词）</span></h3>
+      <div id="skGraphBody"></div>
+    </div>
+    <div class="card" id="skTreeCard" style="display:none">
+      <h3 id="skTreeTitle">技能子树</h3>
+      <div id="skTreeBody"></div>
+    </div>
+    <div class="card" id="skEmbCard" style="display:none">
+      <h3>Embedding 岗位近邻 <span style="font-size:11px;color:var(--text2);font-weight:400">— 岗位词表中包含该技能词的相似写法（辅助扩词）</span></h3>
+      <div id="skEmbBody"></div>
+    </div>
+    <div class="card" id="skCandCard" style="display:none">
+      <h3>模糊候选 <span style="font-size:11px;color:var(--text2);font-weight:400">未精确命中，Token 相似度匹配</span></h3>
+      <div id="skCandBody"></div>
+    </div>
   </div>
-
-  <div class="card" id="expSkills" style="display:none">
-    <h3>② 技能扩展（种子 → 2 hop）</h3>
-    <div id="expSkillsBody"></div>
-  </div>
-
-  <div class="card" id="expDsl" style="display:none">
-    <h3>③ ES Bool DSL（可直接发给 Elasticsearch）</h3>
-    <pre id="expDslBody" style="background:#0b1220;color:#e5e7eb;padding:14px;border-radius:8px;overflow:auto;max-height:360px;font-size:12px;line-height:1.55"></pre>
-  </div>
-
-  <div class="card" id="expTrace" style="display:none">
-    <h3>④ Pipeline Trace</h3>
-    <pre id="expTraceBody" style="background:#f6f7f9;padding:12px;border-radius:8px;overflow:auto;max-height:280px;font-size:11px;line-height:1.5"></pre>
+  <div id="skEmpty" style="display:none" class="card">
+    <p style="color:var(--text2);text-align:center;padding:24px">未在技能图谱中找到匹配词条，请尝试其他关键词。</p>
   </div>
 </div>
 
+<!-- ═══ Tab: 图谱浏览器 ═══ -->
 <div id="p-graph" class="pnl">
   <div class="card">
-    <h3><span class="icon icon-graph">G</span> 图谱结构总览</h3>
+    <h3><span class="icon icon-graph">G</span> 图谱结构总览（职位 KG）</h3>
     <div class="sr" id="gStats"></div>
   </div>
+  <div class="card" id="skillSubtreesCard" style="display:none">
+    <h3><span class="icon icon-graph" style="background:#0891b2">SK</span> 语言 / 框架技能子树（业务 Excel 词表 · 五类分桶）</h3>
+    <p id="skillSubtreesIntro" style="font-size:12px;color:var(--text2);margin-bottom:10px"></p>
+    <div id="skillSubtreesBody"></div>
+  </div>
   <div class="card" id="graphViz"><div style="text-align:center;color:var(--text2);padding:20px">点击「图谱浏览器」标签页加载</div></div>
-</div>
-
-<div id="p-biz" class="pnl">
-  <div class="card">
-    <h3><span class="icon icon-kg">BIZ</span> 真实业务导出（人才画像）</h3>
-    <p style="font-size:13px;color:var(--text2);margin-bottom:12px">
-      数据由研发提供 SQL 导出；仓库内以 UTF-8 CSV 与 <code>business_manifest.json</code> 管理。
-      OpenSpec 说明见 <code>openspec/specs/business-talent-exports/spec.md</code>；导入命令见下方提示。
-    </p>
-    <button class="btn btn-kg" onclick="loadBiz()">刷新摘要</button>
-    <span id="bizSpin" style="display:none;font-size:12px;color:var(--text2);margin-left:8px">加载中…</span>
-    <pre id="bizManifest" style="margin-top:12px;display:none;background:#f8fafc;border:1px solid var(--border);border-radius:8px;padding:12px;font-size:11px;max-height:220px;overflow:auto"></pre>
-  </div>
-  <div class="card" id="bizTables" style="display:none">
-    <h3>高频职称 Top 100（样本）</h3>
-    <div class="tw" style="max-height:280px"><table>
-      <thead><tr><th>职称</th><th>出现次数</th></tr></thead>
-      <tbody id="bizTitleBody"></tbody>
-    </table></div>
-    <h3 style="margin-top:18px">技能大类汇总（key_name）</h3>
-    <div class="tw" style="max-height:260px"><table>
-      <thead><tr><th>key_name</th><th>行数</th><th>示例技能（截断）</th></tr></thead>
-      <tbody id="bizSkillBody"></tbody>
-    </table></div>
-  </div>
 </div>
 
 </div>
@@ -490,8 +472,14 @@ document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{
   if(t.dataset.t==='graph')loadGraph();
   if(t.dataset.t==='report' && !reportData)loadReport();
   if(t.dataset.t==='rescue')loadRescue();
-  if(t.dataset.t==='biz')loadBiz();
 }));
+// sk-ex 快速示例点击
+document.querySelectorAll('.sk-ex').forEach(el=>{
+  el.addEventListener('click',()=>{
+    document.getElementById('skQuery').value=el.textContent.trim();
+    doSkillSearch();
+  });
+});
 
 // ── 轮询 pipeline 加载状态，并把结果显示在 header / 交互式匹配面板 ──
 async function pollPipelineStatus(){
@@ -866,6 +854,41 @@ async function loadGraph(){
     <div class="sc info"><div class="n">${ks.domain_keywords.length}</div><div class="l">领域关键词</div></div>
     <div class="sc info"><div class="n">${ks.cross_references}</div><div class="l">交叉引用</div></div>`;
 
+  // ── 技能子树（多语言根节点）──
+  try{
+    const sub=await(await fetch(A+'/api/skill_subtrees')).json();
+    const list=(sub&&sub.subtrees)||[];
+    if(list.length){
+      document.getElementById('skillSubtreesIntro').textContent=
+        `共 ${sub.count} 个根技能 · 五类：爬虫 / 脚本 / 开发 / 测试 / 数据分析（来自真实业务 Excel skill_name 按频次摘取）。`;
+      let shtml='';
+      list.forEach(one=>{
+        const c=CAT_COLOR[one.category]||'#64748b';
+        const st=one.skill_tree||{};
+        shtml+=`<details style="margin:10px 0;border:1px solid var(--border);border-radius:8px;overflow:hidden">
+          <summary style="padding:10px 14px;cursor:pointer;background:#fafaf9;font-weight:700;color:${c};list-style:none;display:flex;align-items:center;gap:8px">
+            <span style="font-size:15px">${one.label}</span>
+            <span style="font-size:11px;color:var(--text2);font-weight:400">${one.category}</span>
+            <span style="font-size:11px;color:var(--text2);font-weight:400;margin-left:auto">${(st.children||[]).length} 个分支 — 点击展开</span>
+          </summary>
+          <div style="padding:12px 14px">`;
+        (st.children||[]).forEach(ch=>{
+          const terms=(ch.excel_top_terms||ch.aliases||[]).slice(0,16);
+          shtml+=`<div style="margin:8px 0;padding:8px 10px;background:#f8fafc;border-radius:6px">
+            <b style="color:var(--kg)">${ch.label}</b>
+            <span style="font-size:11px;color:var(--text2);margin-left:6px">${ch.description||''}</span>
+            <div style="margin-top:5px;display:flex;flex-wrap:wrap;gap:3px">${terms.map(t=>`<span class="gnode variant" style="font-size:11px;cursor:pointer"
+              onclick="document.querySelector('.tab[data-t=skills]').click();document.getElementById('skQuery').value='${t.replace(/'/g,"\\'").replace(/"/g,'&quot;')}';doSkillSearch()"
+              title="点击搜索该词">${t}</span>`).join('')}</div>
+          </div>`;
+        });
+        shtml+='</div></details>';
+      });
+      document.getElementById('skillSubtreesBody').innerHTML=shtml;
+      document.getElementById('skillSubtreesCard').style.display='block';
+    } else { document.getElementById('skillSubtreesCard').style.display='none'; }
+  }catch(e){ document.getElementById('skillSubtreesCard').style.display='none'; }
+
   const g=await(await fetch(A+'/api/graph_data')).json();
   const cats={},stds={};
   g.nodes.forEach(n=>{if(n.type==='category')cats[n.id]=n;else if(n.type==='standard')stds[n.id]=n});
@@ -949,155 +972,148 @@ function toggleVars(id,count){
 })();
 
 // ═══════════════════════════════════════════════════════
-//  技能扩展 & ES DSL  Tab
+//  技能图谱搜索 Tab
 // ═══════════════════════════════════════════════════════
 const CAT_COLOR={
-  "AI/算法/大模型":"#7c3aed",
-  "后端开发":"#2563eb",
-  "前端":"#0ea5e9",
-  "数据/分析":"#0891b2",
-  "产品":"#059669",
-  "运营/增长":"#16a34a",
-  "销售/商务":"#ea580c",
-  "HR/人力资源":"#db2777",
-  "项目/管理":"#4b5563",
-  "财务/审计/法务":"#b45309",
-  "测试/质量":"#0f766e",
-  "设计":"#e11d48",
+  "AI/算法/大模型":"#7c3aed","后端开发":"#2563eb","前端":"#0ea5e9",
+  "数据/分析":"#0891b2","产品":"#059669","运营/增长":"#16a34a",
+  "销售/商务":"#ea580c","HR/人力资源":"#db2777","项目/管理":"#4b5563",
+  "财务/审计/法务":"#b45309","测试/质量":"#0f766e","设计":"#e11d48",
   "其他(来自KG)":"#64748b"
 };
 
-function setExp(q){document.getElementById('expQuery').value=q;doExpand();}
-
-function skillPill(s){
-  const c = CAT_COLOR[s.category] || '#64748b';
-  const hops = s.hops;
-  const opacity = hops===0?1:(hops===1?0.85:0.65);
-  const border = hops===0?'solid':'dashed';
-  return `<span style="display:inline-block;margin:3px;padding:4px 10px;border-radius:999px;
-    background:${c}${hops===0?'':'15'};color:${hops===0?'#fff':c};
-    border:1px ${border} ${c};font-size:12px;opacity:${opacity}"
-    title="category: ${s.category}\\nhops: ${hops}\\nsim: ${s.sim}\\nvia: ${s.via}">
-    ${s.label}<small style="margin-left:4px;opacity:.7">${hops===0?'seed':'hop'+hops}</small>
-    </span>`;
+function catBadge(cat){
+  const c=CAT_COLOR[cat]||'#64748b';
+  return `<span class="sk-badge" style="background:${c}20;color:${c};border:1px solid ${c}40">${cat||'?'}</span>`;
 }
 
-async function doExpand(){
-  const q = document.getElementById('expQuery').value.trim();
-  if(!q){alert('请输入查询');return;}
+function skPill(label,hops,cat,sim,via){
+  const c=CAT_COLOR[cat]||'#64748b';
+  let cls='sk-pill';
+  if(hops===0) cls+=' sk-hop0';
+  else if(hops===1) cls+=' sk-hop1';
+  else cls+=' sk-hop2';
+  const tip=`分类: ${cat}  跳数: ${hops}  相似度: ${sim||'-'}\\n路径: ${via||'-'}`;
+  const simTxt=sim?` <small style="opacity:.7">${sim}</small>`:'';
+  return `<span class="${cls}" title="${tip}" style="${hops===0?`background:${c};color:#fff`:'background:'+c+'18;color:'+c+';border:1px '+(hops===1?'solid':'dashed')+' '+c}">
+    ${label}${simTxt}
+  </span>`;
+}
 
-  const matchCard=document.getElementById('expMatch');
-  const skillsCard=document.getElementById('expSkills');
-  const dslCard=document.getElementById('expDsl');
-  const traceCard=document.getElementById('expTrace');
-  matchCard.style.display='block';skillsCard.style.display='block';
-  dslCard.style.display='block';traceCard.style.display='block';
+document.getElementById('skQuery').addEventListener('keydown',e=>{if(e.key==='Enter')doSkillSearch();});
 
-  document.getElementById('expMatchBody').innerHTML='<div style="color:#64748b">加载中…</div>';
-  document.getElementById('expSkillsBody').innerHTML='<div style="color:#64748b">加载中…</div>';
-  document.getElementById('expDslBody').textContent='loading...';
-  document.getElementById('expTraceBody').textContent='loading...';
+async function doSkillSearch(){
+  const q=document.getElementById('skQuery').value.trim();
+  if(!q)return;
+  const res=document.getElementById('skResult');
+  const empty=document.getElementById('skEmpty');
+  res.style.display='none'; empty.style.display='none';
+  document.getElementById('skMatchBody').innerHTML='<div style="color:#94a3b8;padding:8px">搜索中…</div>';
+  res.style.display='block';
 
   try{
-    const res=await fetch(A+'/api/expand_query',{
+    const resp=await fetch(A+'/api/skill_search',{
       method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({query:q,include_skill_expansion:true,max_skill_hops:2,
-                            use_embedding_fallback:true})
+      body:JSON.stringify({query:q,hops:2,top_related:10,use_embedding:true})
     });
-    const r=await res.json();
+    const r=await resp.json();
 
-    // ① 匹配结果
+    // ── ① 命中节点 ──
+    const nd=r.matched;
+    const cands=r.candidates||[];
+    if(!nd&&!cands.length){
+      res.style.display='none'; empty.style.display='block'; return;
+    }
     let mhtml='';
-    if(r.matched_standard_jobs && r.matched_standard_jobs.length){
-      mhtml += r.matched_standard_jobs.map(m=>`
-        <div style="padding:10px;background:#ecfdf5;border-left:4px solid #10b981;border-radius:4px;margin-bottom:8px">
-          <b>${m.label}</b> <small style="color:#065f46">(${m.id})</small>
-          <span style="margin-left:12px;padding:2px 8px;background:#10b981;color:#fff;border-radius:4px;font-size:11px">${m.match_level}</span>
-          <span style="margin-left:8px;color:#065f46;font-size:12px">conf=${Number(m.confidence).toFixed(3)}</span>
-        </div>`).join('');
-      mhtml += `<div style="margin-top:8px;font-size:13px;color:#475569">
-        <b>岗位同义词（共 ${r.expanded_job_variants.length} 个将打到 ES title 字段）：</b><br>
-        ${r.expanded_job_variants.slice(0,25).map(v=>`<code style="background:#f1f5f9;padding:2px 6px;margin:2px;border-radius:3px;display:inline-block">${v}</code>`).join('')}
-        ${r.expanded_job_variants.length>25?`<span style="color:#94a3b8">… +${r.expanded_job_variants.length-25} more</span>`:''}
+    if(nd){
+      const c=CAT_COLOR[nd.category]||'#64748b';
+      const freq=nd.doc_freq_asr>0?`<span style="font-size:11px;color:var(--text2);margin-left:8px">ASR 词频 ${nd.doc_freq_asr}</span>`:'';
+      const jobs=(nd.in_kg_jobs||[]).slice(0,5).map(j=>`<code style="background:#dbeafe;color:#1e40af;padding:2px 6px;border-radius:4px;font-size:11px;margin:2px">${j}</code>`).join('');
+      const aliases=(nd.aliases||[]).filter(a=>a.toLowerCase()!==nd.label.toLowerCase())
+        .slice(0,10).map(a=>`<span class="gnode variant" style="font-size:11px;margin:2px">${a}</span>`).join('');
+      mhtml=`<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px">
+        <span style="font-size:22px;font-weight:800;color:${c}">${nd.label}</span>
+        ${catBadge(nd.category)}${freq}
+        <span style="font-size:11px;color:var(--text2);margin-left:auto">${nd.id}</span>
       </div>`;
-    }else{
-      mhtml = `<div style="padding:10px;background:#fef3c7;border-left:4px solid #f59e0b;border-radius:4px">
-        <b>职位 KG 未命中</b>（L1/L2/Embedding 都 miss）；将回退到"纯技能扩展"模式。</div>`;
+      if(aliases) mhtml+=`<div style="margin-bottom:8px"><span style="font-size:12px;color:var(--text2);margin-right:6px">别名：</span>${aliases}</div>`;
+      if(jobs) mhtml+=`<div><span style="font-size:12px;color:var(--text2);margin-right:6px">关联岗位：</span>${jobs}</div>`;
     }
-    if(r.skills_in_query && r.skills_in_query.length){
-      const catHints=r.skills_in_query.filter(s=>s.hit_type==='category_hint');
-      const skillHits=r.skills_in_query.filter(s=>s.hit_type==='skill');
-      if(skillHits.length){
-        mhtml += `<div style="margin-top:8px;font-size:13px;color:#475569">
-          <b>从 query 直接扫到的技能词：</b>
-          ${skillHits.map(s=>`<code style="background:#dbeafe;padding:2px 6px;margin:2px;border-radius:3px;display:inline-block">${s.label} <small>(alias=${s.matched_alias})</small></code>`).join(' ')}
+    document.getElementById('skMatchBody').innerHTML=mhtml;
+
+    // ── ② 图谱关联 ──
+    const exp=r.expansion||[];
+    const gc=document.getElementById('skGraphCard');
+    const gb=document.getElementById('skGraphBody');
+    if(exp.length){
+      const h0=exp.filter(s=>s.hops===0),h1=exp.filter(s=>s.hops===1),h2=exp.filter(s=>s.hops===2);
+      let ghtml='';
+      if(h0.length) ghtml+=`<div style="margin-bottom:10px"><span style="font-size:12px;font-weight:600;color:#059669">当前节点</span><br>${h0.map(s=>skPill(s.label,0,s.category,s.sim,s.via)).join('')}</div>`;
+      if(h1.length) ghtml+=`<div style="margin-bottom:10px"><span style="font-size:12px;font-weight:600;color:#2563eb">1-hop 同义/关联（${h1.length} 个）</span><br>${h1.map(s=>skPill(s.label,1,s.category,s.sim,s.via)).join('')}</div>`;
+      if(h2.length) ghtml+=`<div style="margin-bottom:10px"><span style="font-size:12px;font-weight:600;color:#7c3aed">2-hop 扩展（${h2.length} 个）</span><br>${h2.map(s=>skPill(s.label,2,s.category,s.sim,s.via)).join('')}</div>`;
+      const all=exp.map(s=>s.label);
+      ghtml+=`<div style="margin-top:12px;padding:8px 12px;background:#f0fdf4;border-left:3px solid #22c55e;font-size:12px;color:#14532d">
+        合计 <b>${all.length}</b> 个关联词可用于搜索扩词：<br>
+        <code style="font-size:11px;color:#0f172a;word-break:break-all">${all.join(' · ')}</code>
+      </div>`;
+      gb.innerHTML=ghtml; gc.style.display='block';
+    } else { gc.style.display='none'; }
+
+    // ── ③ 技能子树 ──
+    const tree=nd&&nd.skill_tree;
+    const tc=document.getElementById('skTreeCard');
+    const tb2=document.getElementById('skTreeBody');
+    if(tree&&(tree.children||[]).length){
+      document.getElementById('skTreeTitle').innerHTML=`${nd.label} 技能子树 <span style="font-size:11px;color:var(--text2);font-weight:400">五类工程方向（来自业务词表）</span>`;
+      let thtml='';
+      (tree.children||[]).forEach(ch=>{
+        const terms=(ch.excel_top_terms||ch.aliases||[]).slice(0,16);
+        thtml+=`<div style="margin:10px 0;padding:10px 12px;background:#fafaf9;border-radius:8px;border:1px solid var(--border)">
+          <div style="font-weight:700;color:var(--kg);margin-bottom:6px">${nd.label} → ${ch.label}
+            <span style="font-size:11px;color:var(--text2);font-weight:400;margin-left:8px">${ch.description||''}</span></div>
+          <div style="display:flex;flex-wrap:wrap;gap:4px">${terms.map(t=>`<span class="gnode variant" style="font-size:11px">${t}</span>`).join('')}</div>
+        </div>`;
+      });
+      if((tree.cross_edges||[]).length){
+        thtml+=`<div style="font-size:12px;color:var(--text2);margin-top:8px">
+          <b>横向关联：</b>${tree.cross_edges.map(e=>`<span style="background:#f0fdf4;border:1px solid #86efac;border-radius:4px;padding:2px 8px;margin:2px;display:inline-block;color:#14532d">${(e.between||[]).join(' ↔ ')}: ${e.note||''}</span>`).join('')}
         </div>`;
       }
-      if(catHints.length){
-        mhtml += `<div style="margin-top:8px;font-size:13px;color:#475569">
-          <b>大类提示词</b>（命中 <code>${[...new Set(catHints.map(x=>x.category))].join(', ')}</code>，取 TOP 高频技能当 seed）：
-          ${catHints.map(s=>`<code style="background:#fae8ff;padding:2px 6px;margin:2px;border-radius:3px;display:inline-block">${s.label} <small>(df=${s.doc_freq_asr})</small></code>`).join(' ')}
+      tb2.innerHTML=thtml; tc.style.display='block';
+    } else { tc.style.display='none'; }
+
+    // ── ④ Embedding 岗位近邻 ──
+    const emb=r.embedding_job_neighbors||[];
+    const ec=document.getElementById('skEmbCard');
+    if(emb.length){
+      document.getElementById('skEmbBody').innerHTML=
+        `<div style="display:flex;flex-wrap:wrap;gap:6px">${emb.map(h=>`
+          <div style="padding:7px 14px;background:#f8fafc;border:1px solid var(--border);border-radius:8px;font-size:12px">
+            <span style="font-weight:600">${h.phrase}</span>
+            <span style="font-size:11px;color:var(--text2);margin-left:6px">→ ${h.standard_title}</span>
+            <span style="font-size:10px;color:var(--text2);margin-left:6px">score=${h.score}</span>
+          </div>`).join('')}
         </div>`;
-      }
-    }
-    document.getElementById('expMatchBody').innerHTML=mhtml;
+      ec.style.display='block';
+    } else { ec.style.display='none'; }
 
-    // ② 技能扩展
-    const exp=r.expanded_skills||[];
-    const seed=exp.filter(s=>s.hops===0);
-    const h1=exp.filter(s=>s.hops===1);
-    const h2=exp.filter(s=>s.hops===2);
-    let shtml='';
-    shtml += `<div style="margin-bottom:12px"><b style="color:#065f46">Seed 技能（hops=0，来自 KG.related_skills + query 扫描）共 ${seed.length}：</b><br>${seed.map(skillPill).join('')}</div>`;
-    if(h1.length){
-      shtml += `<div style="margin-bottom:12px"><b style="color:#1d4ed8">1-hop 扩展（synonym + related TOP）共 ${h1.length}：</b><br>${h1.map(skillPill).join('')}</div>`;
-    }
-    if(h2.length){
-      shtml += `<div style="margin-bottom:12px"><b style="color:#7c3aed">2-hop 扩展 共 ${h2.length}：</b><br>${h2.map(skillPill).join('')}</div>`;
-    }
-    shtml += `<div style="margin-top:10px;padding:8px 12px;background:#f0f9ff;border-left:3px solid #0ea5e9;font-size:12px;color:#0c4a6e">
-      合计 <b>${exp.length}</b> 个技能将作为 query 打到 ES 的 <code>skills</code> + <code>description</code> 字段。</div>`;
-    document.getElementById('expSkillsBody').innerHTML=shtml;
+    // ── ⑤ 模糊候选 ──
+    const cc=document.getElementById('skCandCard');
+    if(cands.length&&!nd){
+      document.getElementById('skCandBody').innerHTML=
+        `<div style="display:flex;flex-wrap:wrap;gap:6px">${cands.map(c=>`
+          <span class="sk-pill sk-hop1" style="background:${(CAT_COLOR[c.category]||'#64748b')}18;color:${CAT_COLOR[c.category]||'#64748b'};border:1px solid ${CAT_COLOR[c.category]||'#64748b'};cursor:pointer"
+            onclick="document.getElementById('skQuery').value='${c.label.replace(/'/g,"\\'")}';doSkillSearch()"
+            title="相似度: ${c.score}  ${c.category}">
+            ${c.label} <small style="opacity:.7">${c.score}</small>
+          </span>`).join('')}
+        </div>
+        <p style="font-size:11px;color:var(--text2);margin-top:8px">点击任意词条可跳转精确搜索。</p>`;
+      cc.style.display='block';
+    } else { cc.style.display='none'; }
 
-    // ③ ES DSL
-    document.getElementById('expDslBody').textContent=JSON.stringify(r.es_dsl,null,2);
-
-    // ④ Trace
-    document.getElementById('expTraceBody').textContent=JSON.stringify(r.trace,null,2);
   }catch(e){
-    document.getElementById('expMatchBody').innerHTML=`<div style="color:#b91c1c">请求失败：${e.message}</div>`;
-  }
-}
-
-async function loadBiz(){
-  const sp=document.getElementById('bizSpin');
-  sp.style.display='inline';
-  try{
-    const s=await(await fetch(A+'/api/business_data/summary')).json();
-    const mp=document.getElementById('bizManifest');
-    const tb=document.getElementById('bizTables');
-    if(!s.loaded){
-      mp.style.display='block';
-      mp.textContent=JSON.stringify(s,null,2);
-      tb.style.display='none';
-      return;
-    }
-    mp.style.display='block';
-    mp.textContent=JSON.stringify(s,null,2);
-    const tf=await(await fetch(A+'/api/business_data/title_freq?limit=100')).json();
-    const sk=await(await fetch(A+'/api/business_data/skill_key_summary')).json();
-    document.getElementById('bizTitleBody').innerHTML=(tf.rows||[]).map(r=>
-      `<tr><td><strong>${r.title}</strong></td><td>${r.count}</td></tr>`).join('');
-    document.getElementById('bizSkillBody').innerHTML=(sk.rows||[]).map(r=>{
-      let ex=r.sample_skills||'';
-      if(ex.length>120)ex=ex.slice(0,120)+'…';
-      return `<tr><td><code>${r.key_name}</code></td><td>${r.row_count}</td><td style="font-size:11px;color:var(--text2)">${ex}</td></tr>`;
-    }).join('');
-    tb.style.display='block';
-  }catch(e){
-    alert('业务数据加载失败：'+e.message);
-  }finally{
-    sp.style.display='none';
+    document.getElementById('skMatchBody').innerHTML=`<div style="color:#b91c1c">请求失败：${e.message}</div>`;
   }
 }
 </script>

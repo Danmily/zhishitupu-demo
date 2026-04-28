@@ -51,21 +51,38 @@ class HybridPipeline:
         self.std_category_by_id = {st["id"]: st["category"] for st in kg_raw["standard_titles"]}
         self._kg_context_cache: Optional[str] = None
 
-    def _semantic_title_expansions(self, title: str, context: str = "", max_n: int = 20) -> list[dict]:
-        """用 Embedding 索引对查询做近邻扩展，输出 10~20 条典型岗位写法（L3 / 检索泛化口径）。"""
+    def _semantic_title_expansions(
+        self,
+        title: str,
+        context: str = "",
+        max_n: int = 5,
+        matched_standard_id: Optional[str] = None,
+    ) -> list[dict]:
+        """用 Embedding 索引对查询做近邻扩展，输出若干条（默认 5 条）典型岗位写法。
+
+        当 matched_standard_id 不为 None 时，只保留 standard_id 相同的 hits（方案 A：
+        同标准岗过滤，避免「前端人员」扩展出「C端产品经理」等跨岗噪音）。
+        若命中岗 hits 不足，允许从更大候选池补足至 max_n，但不放宽跨岗过滤。
+        """
         if not isinstance(self.llm, EmbeddingEngine):
             return []
         try:
             self.llm._ensure_index()
             q = f"{title} | {context}" if (context or "").strip() else title
-            hits = self.llm.ekg.search(q, top_k=max(max_n * 2, 32))
+            # 检索更大池：过滤后可能剩不足 max_n 条，需要更多候选
+            pool_size = max(max_n * 6, 32) if matched_standard_id else max(max_n * 3, 16)
+            hits = self.llm.ekg.search(q, top_k=pool_size)
         except Exception:
             return []
+
         out: list[dict] = []
         seen: set[str] = set()
         for h in hits:
             phrase = (h.variant_name or "").strip()
             if not phrase:
+                continue
+            # 同标准岗过滤：L0_miss 不过滤，其余只保留匹配岗的变体
+            if matched_standard_id and h.standard_id != matched_standard_id:
                 continue
             key = phrase.lower()
             if key in seen:
@@ -81,12 +98,17 @@ class HybridPipeline:
                 break
         return out
 
-    def _attach_expansions(self, result: dict, title: str, context: str) -> dict:
-        ex = self._semantic_title_expansions(title, context)
+    def _attach_expansions(
+        self, result: dict, title: str, context: str
+    ) -> dict:
+        # 从 result 取本次命中的标准岗 id（L0_miss 时为 None，不过滤）
+        matched_sid: Optional[str] = result.get("standard_id") or None
+        ex = self._semantic_title_expansions(title, context, matched_standard_id=matched_sid)
         if ex:
             result["semantic_expansions"] = ex
             result["semantic_expansions_note"] = (
-                f"基于 Qwen3-Embedding 岗位词表近邻，共 {len(ex)} 条（用于展示/检索扩展，主结果仍由上层 L1/L2/L3 决策）"
+                f"基于 Qwen3-Embedding 岗位词表近邻，共 {len(ex)} 条"
+                f"{'（已按命中标准岗过滤）' if matched_sid else ''}（用于展示/检索扩展，主结果仍由上层 L1/L2/L3 决策）"
             )
         else:
             result.setdefault("semantic_expansions", [])

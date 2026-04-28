@@ -398,6 +398,153 @@ class MatchReq(BaseModel):
     context: str = ""
 
 
+class SkillLookupReq(BaseModel):
+    query: str
+    limit: int = 8
+
+
+SKILL_GRAPH_ROOTS = (KG_RAW.get("skill_graph") or {}).get("roots", [])
+
+
+def _skill_norm(text: str) -> str:
+    return re.sub(r"[\s_\-./]+", "", (text or "").lower())
+
+
+def _score_skill_text(query: str, candidate: str) -> float:
+    q = _skill_norm(query)
+    c = _skill_norm(candidate)
+    if not q or not c:
+        return 0.0
+    if q == c:
+        return 1.0
+    if q in c:
+        return 0.95
+    if c in q:
+        return 0.88
+    s1, s2 = set(q), set(c)
+    union = len(s1 | s2)
+    if union == 0:
+        return 0.0
+    overlap = len(s1 & s2) / union
+    len_penalty = abs(len(q) - len(c)) * 0.03
+    return max(0.0, overlap - len_penalty)
+
+
+def _build_skill_entry_index() -> list[dict]:
+    entries: list[dict] = []
+    for root in SKILL_GRAPH_ROOTS:
+        root_terms = []
+        seen_root_terms: set[str] = set()
+        for term in [root.get("label", "")] + list(root.get("aliases", []) or []):
+            key = _skill_norm(term)
+            if not key or key in seen_root_terms:
+                continue
+            seen_root_terms.add(key)
+            root_terms.append(term)
+        entries.append({
+            "entry_type": "root",
+            "root_id": root.get("id", ""),
+            "root_label": root.get("label", ""),
+            "branch_id": None,
+            "branch_label": None,
+            "terms": [x for x in root_terms if x],
+        })
+        for child in root.get("children", []) or []:
+            branch_terms = [child.get("label", "")] + list(child.get("top_terms", []) or [])
+            entries.append({
+                "entry_type": "branch",
+                "root_id": root.get("id", ""),
+                "root_label": root.get("label", ""),
+                "branch_id": child.get("id", ""),
+                "branch_label": child.get("label", ""),
+                "terms": [x for x in branch_terms if x],
+                "top_terms": list(child.get("top_terms", []) or []),
+                "description": child.get("description", ""),
+                "source_keys": list(child.get("source_keys", []) or []),
+            })
+    return entries
+
+
+SKILL_ENTRY_INDEX = _build_skill_entry_index()
+
+
+def _skill_roots_summary() -> list[dict]:
+    roots: list[dict] = []
+    for root in SKILL_GRAPH_ROOTS:
+        children = root.get("children", []) or []
+        roots.append({
+            "id": root.get("id", ""),
+            "label": root.get("label", ""),
+            "aliases": root.get("aliases", []) or [],
+            "description": root.get("description", ""),
+            "child_count": len(children),
+            "children": children,
+        })
+    return roots
+
+
+def _skill_lookup(query: str, limit: int = 8) -> dict:
+    ranked: list[dict] = []
+    for entry in SKILL_ENTRY_INDEX:
+        best_term = ""
+        best_score = 0.0
+        for term in entry.get("terms", []):
+            score = _score_skill_text(query, term)
+            if score > best_score:
+                best_score = score
+                best_term = term
+        if best_score <= 0:
+            continue
+        ranked.append({
+            **entry,
+            "score": round(best_score, 4),
+            "matched_term": best_term,
+        })
+
+    ranked.sort(key=lambda x: (-x["score"], x["root_label"], x.get("branch_label") or ""))
+    ranked = ranked[: max(1, min(limit, 20))]
+
+    best = ranked[0] if ranked else None
+    matched_root = None
+    matched_branch = None
+    related_terms: list[str] = []
+
+    if best:
+        matched_root = next((r for r in SKILL_GRAPH_ROOTS if r.get("id") == best["root_id"]), None)
+        if best["entry_type"] == "branch" and matched_root:
+            matched_branch = next(
+                (c for c in (matched_root.get("children", []) or []) if c.get("id") == best["branch_id"]),
+                None,
+            )
+
+    if matched_branch:
+        related_terms = list(matched_branch.get("top_terms", []) or [])[:5]
+    elif matched_root:
+        seen: set[str] = set()
+        for child in matched_root.get("children", []) or []:
+            for term in child.get("top_terms", []) or []:
+                norm = _skill_norm(term)
+                if not norm or norm in seen:
+                    continue
+                seen.add(norm)
+                related_terms.append(term)
+                if len(related_terms) >= 5:
+                    break
+            if len(related_terms) >= 5:
+                break
+
+    return {
+        "query": query,
+        "matched_root": matched_root,
+        "matched_branch": matched_branch,
+        "related_terms": related_terms,
+        "similar_matches": ranked,
+        "roots": _skill_roots_summary(),
+        "match_mode": "fuzzy",
+        "embedding_used": False,
+    }
+
+
 @app.get("/", response_class=HTMLResponse)
 async def index():
     return HTMLResponse((Path(__file__).parent / "index.html").read_text(encoding="utf-8"))
@@ -417,6 +564,21 @@ async def stats():
         "tests_by_category": dict(cat_c),
         "standard_titles": {sid: info["label"] for sid, info in KG.standards.items()},
     }
+
+
+@app.get("/api/skill_graph_roots")
+async def skill_graph_roots():
+    return {
+        "count": len(SKILL_GRAPH_ROOTS),
+        "roots": _skill_roots_summary(),
+    }
+
+
+@app.post("/api/skill_lookup")
+async def skill_lookup(req: SkillLookupReq):
+    if not SKILL_GRAPH_ROOTS:
+        raise HTTPException(status_code=404, detail="knowledge_graph_v2.json 中暂无 skill_graph 数据")
+    return _skill_lookup(req.query, req.limit)
 
 
 @app.get("/api/test_cases")
@@ -873,6 +1035,25 @@ async def skill_graph_info():
     }
 
 
+@app.get("/api/skill_subtrees")
+async def skill_subtrees():
+    """返回所有带 skill_tree 的技能根节点（多语言五叉子树，供图谱页展示）。"""
+    if _SKILL_GRAPH is None:
+        raise HTTPException(status_code=503, detail="skill_graph_v1.json 未加载成功")
+    items: list[dict] = []
+    for s in _SKILL_GRAPH.by_id.values():
+        if not s.get("skill_tree"):
+            continue
+        items.append({
+            "id": s["id"],
+            "label": s["label"],
+            "category": s.get("category", ""),
+            "skill_tree": s["skill_tree"],
+        })
+    items.sort(key=lambda x: (x["category"], x["label"]))
+    return {"count": len(items), "subtrees": items}
+
+
 def _embedding_job_fallback(query: str) -> dict | None:
     """当 KG L1/L2 都 miss 时，用已常驻的 _PIPELINE 做 embedding 级兜底匹配标准岗位。"""
     if not _PIPELINE_READY or _PIPELINE is None:
@@ -902,6 +1083,110 @@ async def api_expand_query(req: ExpandQueryReq):
         embedding_fallback_fn=fallback,
     )
     return res
+
+
+# ═══════════════════════════════════════════════════════
+#  技能图谱搜索  /api/skill_search
+# ═══════════════════════════════════════════════════════
+
+class SkillSearchReq(BaseModel):
+    query: str
+    hops: int = 2
+    top_related: int = 10
+    use_embedding: bool = True
+
+
+def _fuzzy_skill_candidates(q: str, max_n: int = 10) -> list[dict]:
+    """Token 交集模糊匹配，返回去重候选列表（score 降序）。"""
+    if _SKILL_GRAPH is None:
+        return []
+    q_lo = q.lower()
+    q_tok = set(re.split(r"[\s\-_/·,.，。]+", q_lo))
+    q_tok.discard("")
+    scored: dict[str, tuple[float, dict]] = {}
+    for label, node in _SKILL_GRAPH.by_label.items():
+        l_tok = set(re.split(r"[\s\-_/·,.，。]+", label))
+        l_tok.discard("")
+        if not q_tok or not l_tok:
+            continue
+        inter = len(q_tok & l_tok)
+        if inter == 0:
+            continue
+        score = inter / max(len(q_tok), len(l_tok))
+        nid = node["id"]
+        if nid not in scored or score > scored[nid][0]:
+            scored[nid] = (score, node)
+    result = sorted(scored.values(), key=lambda x: -x[0])[:max_n]
+    return [
+        {"id": n["id"], "label": n["label"], "category": n.get("category", ""),
+         "score": round(s, 3)}
+        for s, n in result
+    ]
+
+
+@app.post("/api/skill_search")
+async def skill_search(req: SkillSearchReq):
+    """
+    技能图谱搜索：
+    1. 精确/别名匹配 skill_graph_v1.json 中的技能节点
+    2. 模糊 token 候选（未精确命中时）
+    3. Graph 扩展（synonyms + related，可多跳）
+    4. 如有 embedding 模型，返回岗位词表中近邻（辅助感知）
+    """
+    if _SKILL_GRAPH is None:
+        raise HTTPException(status_code=503, detail="skill_graph_v1.json 未加载成功")
+
+    q = (req.query or "").strip()
+    if not q:
+        raise HTTPException(status_code=400, detail="query 不能为空")
+
+    node = _SKILL_GRAPH.lookup(q)
+    candidates: list[dict] = []
+
+    if not node:
+        candidates = _fuzzy_skill_candidates(q)
+        if candidates:
+            node = _SKILL_GRAPH.by_id.get(candidates[0]["id"])
+
+    # Graph 扩展
+    expansion: list[dict] = []
+    if node:
+        expansion = _SKILL_GRAPH.expand(
+            [node["label"]], max_hops=req.hops, top_related=req.top_related
+        )
+
+    # Embedding：用已有岗位词表 embedding 找「提到该技能的相关岗位写法」
+    emb_neighbors: list[dict] = []
+    if req.use_embedding and _PIPELINE_READY and _PIPELINE is not None:
+        try:
+            from llm_engine import EmbeddingEngine
+            if isinstance(_PIPELINE.llm, EmbeddingEngine):
+                hits = _PIPELINE.llm.ekg.search(q, top_k=12)
+                seen_emb: set[str] = set()
+                for h in hits:
+                    if h.score < 0.45:
+                        break
+                    key = h.variant_name.lower()
+                    if key in seen_emb:
+                        continue
+                    seen_emb.add(key)
+                    emb_neighbors.append({
+                        "phrase": h.variant_name,
+                        "standard_title": h.standard_label,
+                        "score": round(float(h.score), 3),
+                    })
+                    if len(emb_neighbors) >= 8:
+                        break
+        except Exception:
+            pass
+
+    return {
+        "query": q,
+        "matched": node,
+        "candidates": candidates if not node else [],
+        "expansion": expansion,
+        "embedding_job_neighbors": emb_neighbors,
+    }
 
 
 if __name__ == "__main__":

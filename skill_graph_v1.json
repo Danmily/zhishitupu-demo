@@ -2715,7 +2715,311 @@
           "sim": 0.5205,
           "same_category": true
         }
-      ]
+      ],
+      "skill_tree": {
+        "description": "Java 为根节点的五类工程方向子树（业务词表按行筛选 + 分桶频次摘取）。",
+        "source_excel": "key_name, skill_name (user export)",
+        "children": [
+          {
+            "id": "java_cap_crawler",
+            "label": "爬虫",
+            "edge": "directed",
+            "description": "采集与反爬、站点/数据抓取、浏览器自动化（非测试向）等",
+            "aliases": [
+              "爬虫",
+              "反爬虫策略对抗",
+              "网络爬虫",
+              "爬虫开发",
+              "Beautiful Soup",
+              "BeautifulSoup",
+              "网页爬虫",
+              "爬虫技术",
+              "Scrapy",
+              "反爬识别算法",
+              "分布式大数据爬虫系统",
+              "反爬虫开发",
+              "反爬虫实时风控模型",
+              "LLM 爬虫优化",
+              "AI 爬虫",
+              "JS 逆向爬虫",
+              "分布式爬虫集群",
+              "反爬处理"
+            ],
+            "excel_top_terms": [
+              "爬虫",
+              "反爬虫策略对抗",
+              "网络爬虫",
+              "爬虫开发",
+              "Beautiful Soup",
+              "BeautifulSoup",
+              "网页爬虫",
+              "爬虫技术",
+              "Scrapy",
+              "反爬识别算法",
+              "分布式大数据爬虫系统",
+              "反爬虫开发",
+              "反爬虫实时风控模型",
+              "LLM 爬虫优化",
+              "AI 爬虫",
+              "JS 逆向爬虫",
+              "分布式爬虫集群",
+              "反爬处理",
+              "反爬机制开发",
+              "反爬策略优化",
+              "反爬策略应对",
+              "反爬策略管理"
+            ],
+            "ties": [
+              "skill_selenium"
+            ]
+          },
+          {
+            "id": "java_cap_script",
+            "label": "脚本",
+            "edge": "directed",
+            "description": "Shell/批处理/自动化与运维向脚本、构建脚本等",
+            "aliases": [
+              "脚本",
+              "Makefile",
+              "动态批处理",
+              "Bash",
+              "自动化脚本开发",
+              "脚本编写",
+              "自动化脚本生成",
+              "利用 ChatGPT 编写自动化脚本",
+              "AI 辅助脚本编写",
+              "Headless 批处理工作流",
+              "连续批处理",
+              "Makefile 编写",
+              "Makefile 构建系统设计",
+              "Shell 编程",
+              "Shell 脚本编写",
+              "关键字驱动测试脚本编写",
+              "Python 脚本",
+              "分布式批处理"
+            ],
+            "excel_top_terms": [
+              "Makefile",
+              "动态批处理",
+              "Bash",
+              "自动化脚本开发",
+              "脚本编写",
+              "自动化脚本生成",
+              "利用 ChatGPT 编写自动化脚本",
+              "AI 辅助脚本编写",
+              "Headless 批处理工作流",
+              "连续批处理",
+              "Makefile 编写",
+              "Makefile 构建系统设计",
+              "Shell 编程",
+              "Shell 脚本编写",
+              "关键字驱动测试脚本编写",
+              "Python 脚本",
+              "分布式批处理",
+              "安全自动化脚本开发",
+              "异步批处理",
+              "批处理",
+              "批处理与流处理",
+              "批处理机制"
+            ],
+            "ties": [
+              "skill_linux"
+            ]
+          },
+          {
+            "id": "java_cap_dev",
+            "label": "开发",
+            "edge": "directed",
+            "description": "接口/服务/微服务/Web/后端/框架 等工程交付",
+            "aliases": [
+              "开发",
+              "Spring AI",
+              "Gradle Plugin",
+              "Spring",
+              "Mybatis",
+              "MyBatis-Flex",
+              "MyBatis",
+              "SpringMVC",
+              "Spring Security",
+              "ColdSpring",
+              "Spring AI 接入及优化",
+              "FastSpring",
+              "CrowdSpring",
+              "MyBatis-Plus",
+              "MyBatis-plus",
+              "MybatisPlus",
+              "Spring AI Alibaba",
+              "Spring Admin"
+            ],
+            "excel_top_terms": [
+              "Spring AI",
+              "Gradle Plugin",
+              "Spring",
+              "Mybatis",
+              "MyBatis-Flex",
+              "MyBatis",
+              "SpringMVC",
+              "Spring Security",
+              "ColdSpring",
+              "Spring AI 接入及优化",
+              "FastSpring",
+              "CrowdSpring",
+              "MyBatis-Plus",
+              "MyBatis-plus",
+              "MybatisPlus",
+              "Spring AI Alibaba",
+              "Spring Admin",
+              "Spring Al",
+              "Spring Alibaba",
+              "Spring Authorization Server",
+              "MyBatisPlus",
+              "MyBatis Plus"
+            ],
+            "ties": [
+              "skill_spring",
+              "skill_mysql",
+              "skill_redis",
+              "skill_kafka"
+            ]
+          },
+          {
+            "id": "java_cap_test",
+            "label": "测试",
+            "edge": "directed",
+            "description": "质量、自动化/接口/性能/回归测试等",
+            "aliases": [
+              "测试",
+              "A/B 测试",
+              "自动化测试平台",
+              "可用性测试",
+              "自动化测试脚本生成",
+              "测试用例编写",
+              "A/B 测试与数据分析",
+              "红队测试",
+              "A/B 测试框架",
+              "A/B 测试设计",
+              "AB 测试",
+              "一致性测试",
+              "测试用例设计",
+              "产品测试",
+              "A/B 测试平台",
+              "MVP 测试",
+              "仿真测试",
+              "POC 测试"
+            ],
+            "excel_top_terms": [
+              "A/B 测试",
+              "自动化测试平台",
+              "可用性测试",
+              "自动化测试脚本生成",
+              "测试用例编写",
+              "A/B 测试与数据分析",
+              "红队测试",
+              "A/B 测试框架",
+              "A/B 测试设计",
+              "AB 测试",
+              "一致性测试",
+              "测试用例设计",
+              "产品测试",
+              "A/B 测试平台",
+              "MVP 测试",
+              "仿真测试",
+              "POC 测试",
+              "渗透测试",
+              "灰度测试",
+              "自动化测试",
+              "安全性测试",
+              "AB 测试平台"
+            ],
+            "ties": [
+              "skill_自动化测试",
+              "skill_接口测试",
+              "skill_功能测试"
+            ]
+          },
+          {
+            "id": "java_cap_data",
+            "label": "数据分析",
+            "edge": "directed",
+            "description": "数据工程、分析、建模、可视化、数仓/管道 等",
+            "aliases": [
+              "数据分析",
+              "ETL",
+              "BI 数据分析",
+              "Spark GraphX",
+              "数据挖掘与分析",
+              "大数据分析",
+              "Hive",
+              "Spark MLlib",
+              "数据可视化",
+              "数据建模",
+              "大数据分析建模",
+              "数据管道构建",
+              "大数据处理",
+              "数据统计分析",
+              "大数据开发",
+              "点云数据处理",
+              "自动化数据分析",
+              "时序数据分析"
+            ],
+            "excel_top_terms": [
+              "ETL",
+              "BI 数据分析",
+              "Spark GraphX",
+              "数据挖掘与分析",
+              "大数据分析",
+              "Hive",
+              "数据分析",
+              "Spark MLlib",
+              "数据可视化",
+              "数据建模",
+              "大数据分析建模",
+              "数据管道构建",
+              "大数据处理",
+              "数据统计分析",
+              "大数据开发",
+              "点云数据处理",
+              "自动化数据分析",
+              "时序数据分析",
+              "用户数据分析",
+              "自动化数据处理",
+              "大数据建模",
+              "ETL Pipeline Design"
+            ],
+            "ties": [
+              "skill_pandas",
+              "skill_数据分析",
+              "skill_pytorch"
+            ]
+          }
+        ],
+        "cross_edges": [
+          {
+            "edge": "undirected",
+            "between": [
+              "java_cap_crawler",
+              "java_cap_script"
+            ],
+            "note": "采集与脚本编排、清洗常联动。"
+          },
+          {
+            "edge": "undirected",
+            "between": [
+              "java_cap_dev",
+              "java_cap_test"
+            ],
+            "note": "研发交付中开发与测试强耦合。"
+          },
+          {
+            "edge": "undirected",
+            "between": [
+              "java_cap_data",
+              "java_cap_dev"
+            ],
+            "note": "数据服务与业务接口常联调。"
+          }
+        ]
+      }
     },
     {
       "id": "skill_python",
@@ -2733,47 +3037,229 @@
         "algorithm_engineer"
       ],
       "skill_tree": {
-        "description": "Python 作为语言节点的能力树：子节点为有向专精方向；cross_edges 为典型并存场景（无向组合）",
+        "description": "Python 为根节点的五类工程方向子树（业务词表按行筛选 + 分桶频次摘取）。",
+        "source_excel": "key_name, skill_name (user export)",
         "children": [
           {
             "id": "py_cap_crawler",
-            "label": "爬虫与数据采集",
+            "label": "爬虫",
             "edge": "directed",
-            "aliases": ["爬虫", "网络爬虫", "数据采集"],
-            "ties": ["skill_selenium"]
+            "description": "采集与反爬、站点/数据抓取、浏览器自动化（非测试向）等",
+            "aliases": [
+              "爬虫",
+              "BeautifulSoup",
+              "Scrapy",
+              "Scrapy-redis",
+              "Python 爬虫",
+              "Scrapyd"
+            ],
+            "excel_top_terms": [
+              "BeautifulSoup",
+              "Scrapy",
+              "Scrapy-redis",
+              "Python 爬虫",
+              "Scrapyd"
+            ],
+            "ties": [
+              "skill_selenium"
+            ]
           },
           {
-            "id": "py_cap_scripting",
-            "label": "脚本与自动化",
+            "id": "py_cap_script",
+            "label": "脚本",
             "edge": "directed",
-            "aliases": ["脚本", "自动化脚本"],
-            "ties": ["skill_linux"]
+            "description": "Shell/批处理/自动化与运维向脚本、构建脚本等",
+            "aliases": [
+              "脚本",
+              "Python 脚本",
+              "Makefile",
+              "动态批处理",
+              "Bash",
+              "自动化脚本开发",
+              "脚本编写",
+              "自动化脚本生成",
+              "利用 ChatGPT 编写自动化脚本",
+              "AI 辅助脚本编写",
+              "Headless 批处理工作流",
+              "连续批处理",
+              "Makefile 编写",
+              "Makefile 构建系统设计",
+              "Shell 编程",
+              "Shell 脚本编写",
+              "关键字驱动测试脚本编写",
+              "分布式批处理"
+            ],
+            "excel_top_terms": [
+              "Python 脚本",
+              "Makefile",
+              "动态批处理",
+              "Bash",
+              "自动化脚本开发",
+              "脚本编写",
+              "自动化脚本生成",
+              "利用 ChatGPT 编写自动化脚本",
+              "AI 辅助脚本编写",
+              "Headless 批处理工作流",
+              "连续批处理",
+              "Makefile 编写",
+              "Makefile 构建系统设计",
+              "Shell 编程",
+              "Shell 脚本编写",
+              "关键字驱动测试脚本编写",
+              "分布式批处理",
+              "安全自动化脚本开发",
+              "异步批处理",
+              "批处理",
+              "批处理与流处理",
+              "批处理机制"
+            ],
+            "ties": [
+              "skill_linux"
+            ]
           },
           {
-            "id": "py_cap_web",
-            "label": "Web页面与接口侧开发",
+            "id": "py_cap_dev",
+            "label": "开发",
             "edge": "directed",
-            "aliases": ["页面开发", "Web开发", "Web页面"],
-            "ties": ["skill_vue", "skill_react", "skill_mysql", "skill_redis"]
+            "description": "接口/服务/微服务/Web/后端/框架 等工程交付",
+            "aliases": [
+              "开发",
+              "Django",
+              "FastAPI",
+              "Flask",
+              "Django Ninja",
+              "Django Channels",
+              "Django REST Framework",
+              "Django REST framework",
+              "Django-Rest-Framework",
+              "Django Rest Framework",
+              "Flask Appbuilder",
+              "Flask-RESTx"
+            ],
+            "excel_top_terms": [
+              "Django",
+              "FastAPI",
+              "Flask",
+              "Django Ninja",
+              "Django Channels",
+              "Django REST Framework",
+              "Django REST framework",
+              "Django-Rest-Framework",
+              "Django Rest Framework",
+              "Flask Appbuilder",
+              "Flask-RESTx"
+            ],
+            "ties": [
+              "skill_vue",
+              "skill_react",
+              "skill_mysql",
+              "skill_redis"
+            ]
+          },
+          {
+            "id": "py_cap_test",
+            "label": "测试",
+            "edge": "directed",
+            "description": "质量、自动化/接口/性能/回归测试等",
+            "aliases": [
+              "测试",
+              "A/B 测试",
+              "自动化测试平台",
+              "可用性测试",
+              "自动化测试脚本生成",
+              "测试用例编写",
+              "A/B 测试与数据分析",
+              "红队测试",
+              "A/B 测试框架",
+              "A/B 测试设计",
+              "AB 测试",
+              "一致性测试",
+              "测试用例设计",
+              "产品测试",
+              "A/B 测试平台",
+              "MVP 测试",
+              "仿真测试",
+              "POC 测试"
+            ],
+            "excel_top_terms": [
+              "A/B 测试",
+              "自动化测试平台",
+              "可用性测试",
+              "自动化测试脚本生成",
+              "测试用例编写",
+              "A/B 测试与数据分析",
+              "红队测试",
+              "A/B 测试框架",
+              "A/B 测试设计",
+              "AB 测试",
+              "一致性测试",
+              "测试用例设计",
+              "产品测试",
+              "A/B 测试平台",
+              "MVP 测试",
+              "仿真测试",
+              "POC 测试",
+              "渗透测试",
+              "灰度测试",
+              "自动化测试",
+              "安全性测试",
+              "AB 测试平台"
+            ],
+            "ties": [
+              "skill_自动化测试",
+              "skill_接口测试",
+              "skill_功能测试"
+            ]
           },
           {
             "id": "py_cap_data",
-            "label": "数据分析与建模",
+            "label": "数据分析",
             "edge": "directed",
-            "aliases": ["数据分析", "建模"],
-            "ties": ["skill_pandas", "skill_数据分析", "skill_pytorch"]
+            "description": "数据工程、分析、建模、可视化、数仓/管道 等",
+            "aliases": [
+              "数据分析",
+              "NumPy",
+              "Pandas",
+              "GeoPandas",
+              "Python 数据分析工具"
+            ],
+            "excel_top_terms": [
+              "NumPy",
+              "Pandas",
+              "GeoPandas",
+              "Python 数据分析工具"
+            ],
+            "ties": [
+              "skill_pandas",
+              "skill_数据分析",
+              "skill_pytorch"
+            ]
           }
         ],
         "cross_edges": [
           {
             "edge": "undirected",
-            "between": ["py_cap_crawler", "py_cap_scripting"],
-            "note": "采集任务常依赖脚本编排、定时与运维环境"
+            "between": [
+              "py_cap_crawler",
+              "py_cap_script"
+            ],
+            "note": "采集与脚本编排、清洗常联动。"
           },
           {
             "edge": "undirected",
-            "between": ["py_cap_web", "py_cap_data"],
-            "note": "数据看板/增长与页面展示常联动"
+            "between": [
+              "py_cap_dev",
+              "py_cap_test"
+            ],
+            "note": "研发交付中开发与测试强耦合。"
+          },
+          {
+            "edge": "undirected",
+            "between": [
+              "py_cap_data",
+              "py_cap_dev"
+            ],
+            "note": "数据服务与业务接口常联调。"
           }
         ]
       },
@@ -2936,7 +3422,288 @@
           "sim": 0.4982,
           "same_category": true
         }
-      ]
+      ],
+      "skill_tree": {
+        "description": "Go 为根节点的五类工程方向子树（业务词表按行筛选 + 分桶频次摘取）。",
+        "source_excel": "key_name, skill_name (user export)",
+        "children": [
+          {
+            "id": "go_cap_crawler",
+            "label": "爬虫",
+            "edge": "directed",
+            "description": "采集与反爬、站点/数据抓取、浏览器自动化（非测试向）等",
+            "aliases": [
+              "爬虫",
+              "反爬虫策略对抗",
+              "网络爬虫",
+              "爬虫开发",
+              "Beautiful Soup",
+              "BeautifulSoup",
+              "网页爬虫",
+              "爬虫技术",
+              "Scrapy",
+              "反爬识别算法",
+              "分布式大数据爬虫系统",
+              "反爬虫开发",
+              "反爬虫实时风控模型",
+              "LLM 爬虫优化",
+              "AI 爬虫",
+              "JS 逆向爬虫",
+              "分布式爬虫集群",
+              "反爬处理"
+            ],
+            "excel_top_terms": [
+              "爬虫",
+              "反爬虫策略对抗",
+              "网络爬虫",
+              "爬虫开发",
+              "Beautiful Soup",
+              "BeautifulSoup",
+              "网页爬虫",
+              "爬虫技术",
+              "Scrapy",
+              "反爬识别算法",
+              "分布式大数据爬虫系统",
+              "反爬虫开发",
+              "反爬虫实时风控模型",
+              "LLM 爬虫优化",
+              "AI 爬虫",
+              "JS 逆向爬虫",
+              "分布式爬虫集群",
+              "反爬处理",
+              "反爬机制开发",
+              "反爬策略优化",
+              "反爬策略应对",
+              "反爬策略管理"
+            ],
+            "ties": [
+              "skill_selenium"
+            ]
+          },
+          {
+            "id": "go_cap_script",
+            "label": "脚本",
+            "edge": "directed",
+            "description": "Shell/批处理/自动化与运维向脚本、构建脚本等",
+            "aliases": [
+              "脚本",
+              "Makefile",
+              "动态批处理",
+              "Bash",
+              "自动化脚本开发",
+              "脚本编写",
+              "自动化脚本生成",
+              "利用 ChatGPT 编写自动化脚本",
+              "AI 辅助脚本编写",
+              "Headless 批处理工作流",
+              "连续批处理",
+              "Makefile 编写",
+              "Makefile 构建系统设计",
+              "Shell 编程",
+              "Shell 脚本编写",
+              "关键字驱动测试脚本编写",
+              "Python 脚本",
+              "分布式批处理"
+            ],
+            "excel_top_terms": [
+              "Makefile",
+              "动态批处理",
+              "Bash",
+              "自动化脚本开发",
+              "脚本编写",
+              "自动化脚本生成",
+              "利用 ChatGPT 编写自动化脚本",
+              "AI 辅助脚本编写",
+              "Headless 批处理工作流",
+              "连续批处理",
+              "Makefile 编写",
+              "Makefile 构建系统设计",
+              "Shell 编程",
+              "Shell 脚本编写",
+              "关键字驱动测试脚本编写",
+              "Python 脚本",
+              "分布式批处理",
+              "安全自动化脚本开发",
+              "异步批处理",
+              "批处理",
+              "批处理与流处理",
+              "批处理机制"
+            ],
+            "ties": [
+              "skill_linux"
+            ]
+          },
+          {
+            "id": "go_cap_dev",
+            "label": "开发",
+            "edge": "directed",
+            "description": "接口/服务/微服务/Web/后端/框架 等工程交付",
+            "aliases": [
+              "开发",
+              "Gin",
+              "Google App Engine",
+              "Google Earth Engine",
+              "React Three Fiber",
+              "React-three-fiber",
+              "GIN GL5370",
+              "GIN GL5450",
+              "Go 后端开发"
+            ],
+            "excel_top_terms": [
+              "Gin",
+              "Google App Engine",
+              "Google Earth Engine",
+              "React Three Fiber",
+              "React-three-fiber",
+              "GIN GL5370",
+              "GIN GL5450",
+              "Go 后端开发"
+            ],
+            "ties": [
+              "skill_微服务",
+              "skill_redis",
+              "skill_mysql",
+              "skill_kafka"
+            ]
+          },
+          {
+            "id": "go_cap_test",
+            "label": "测试",
+            "edge": "directed",
+            "description": "质量、自动化/接口/性能/回归测试等",
+            "aliases": [
+              "测试",
+              "A/B 测试",
+              "自动化测试平台",
+              "可用性测试",
+              "自动化测试脚本生成",
+              "测试用例编写",
+              "A/B 测试与数据分析",
+              "红队测试",
+              "A/B 测试框架",
+              "A/B 测试设计",
+              "AB 测试",
+              "一致性测试",
+              "测试用例设计",
+              "产品测试",
+              "A/B 测试平台",
+              "MVP 测试",
+              "仿真测试",
+              "POC 测试"
+            ],
+            "excel_top_terms": [
+              "A/B 测试",
+              "自动化测试平台",
+              "可用性测试",
+              "自动化测试脚本生成",
+              "测试用例编写",
+              "A/B 测试与数据分析",
+              "红队测试",
+              "A/B 测试框架",
+              "A/B 测试设计",
+              "AB 测试",
+              "一致性测试",
+              "测试用例设计",
+              "产品测试",
+              "A/B 测试平台",
+              "MVP 测试",
+              "仿真测试",
+              "POC 测试",
+              "渗透测试",
+              "灰度测试",
+              "自动化测试",
+              "安全性测试",
+              "AB 测试平台"
+            ],
+            "ties": [
+              "skill_自动化测试",
+              "skill_接口测试",
+              "skill_功能测试"
+            ]
+          },
+          {
+            "id": "go_cap_data",
+            "label": "数据分析",
+            "edge": "directed",
+            "description": "数据工程、分析、建模、可视化、数仓/管道 等",
+            "aliases": [
+              "数据分析",
+              "Google 数仓",
+              "ETL",
+              "BI 数据分析",
+              "Spark GraphX",
+              "数据挖掘与分析",
+              "大数据分析",
+              "Hive",
+              "Spark MLlib",
+              "数据可视化",
+              "数据建模",
+              "大数据分析建模",
+              "数据管道构建",
+              "大数据处理",
+              "数据统计分析",
+              "大数据开发",
+              "点云数据处理",
+              "自动化数据分析"
+            ],
+            "excel_top_terms": [
+              "Google 数仓",
+              "ETL",
+              "BI 数据分析",
+              "Spark GraphX",
+              "数据挖掘与分析",
+              "大数据分析",
+              "Hive",
+              "数据分析",
+              "Spark MLlib",
+              "数据可视化",
+              "数据建模",
+              "大数据分析建模",
+              "数据管道构建",
+              "大数据处理",
+              "数据统计分析",
+              "大数据开发",
+              "点云数据处理",
+              "自动化数据分析",
+              "时序数据分析",
+              "用户数据分析",
+              "自动化数据处理",
+              "大数据建模"
+            ],
+            "ties": [
+              "skill_pandas",
+              "skill_数据分析",
+              "skill_pytorch"
+            ]
+          }
+        ],
+        "cross_edges": [
+          {
+            "edge": "undirected",
+            "between": [
+              "go_cap_crawler",
+              "go_cap_script"
+            ],
+            "note": "采集与脚本编排、清洗常联动。"
+          },
+          {
+            "edge": "undirected",
+            "between": [
+              "go_cap_dev",
+              "go_cap_test"
+            ],
+            "note": "研发交付中开发与测试强耦合。"
+          },
+          {
+            "edge": "undirected",
+            "between": [
+              "go_cap_data",
+              "go_cap_dev"
+            ],
+            "note": "数据服务与业务接口常联调。"
+          }
+        ]
+      }
     },
     {
       "id": "skill_c",
@@ -3023,7 +3790,281 @@
           "sim": 0.4393,
           "same_category": true
         }
-      ]
+      ],
+      "skill_tree": {
+        "description": "C++ 为根节点的五类工程方向子树（业务词表按行筛选 + 分桶频次摘取）。",
+        "source_excel": "key_name, skill_name (user export)",
+        "children": [
+          {
+            "id": "cpp_cap_crawler",
+            "label": "爬虫",
+            "edge": "directed",
+            "description": "采集与反爬、站点/数据抓取、浏览器自动化（非测试向）等",
+            "aliases": [
+              "爬虫",
+              "多线程爬虫",
+              "反爬虫策略对抗",
+              "网络爬虫",
+              "爬虫开发",
+              "Beautiful Soup",
+              "BeautifulSoup",
+              "网页爬虫",
+              "爬虫技术",
+              "Scrapy",
+              "反爬识别算法",
+              "分布式大数据爬虫系统",
+              "反爬虫开发",
+              "反爬虫实时风控模型",
+              "LLM 爬虫优化",
+              "AI 爬虫",
+              "JS 逆向爬虫",
+              "分布式爬虫集群"
+            ],
+            "excel_top_terms": [
+              "多线程爬虫",
+              "爬虫",
+              "反爬虫策略对抗",
+              "网络爬虫",
+              "爬虫开发",
+              "Beautiful Soup",
+              "BeautifulSoup",
+              "网页爬虫",
+              "爬虫技术",
+              "Scrapy",
+              "反爬识别算法",
+              "分布式大数据爬虫系统",
+              "反爬虫开发",
+              "反爬虫实时风控模型",
+              "LLM 爬虫优化",
+              "AI 爬虫",
+              "JS 逆向爬虫",
+              "分布式爬虫集群",
+              "反爬处理",
+              "反爬机制开发",
+              "反爬策略优化",
+              "反爬策略应对"
+            ],
+            "ties": [
+              "skill_selenium"
+            ]
+          },
+          {
+            "id": "cpp_cap_script",
+            "label": "脚本",
+            "edge": "directed",
+            "description": "Shell/批处理/自动化与运维向脚本、构建脚本等",
+            "aliases": [
+              "脚本",
+              "Makefile",
+              "动态批处理",
+              "Bash",
+              "自动化脚本开发",
+              "脚本编写",
+              "自动化脚本生成",
+              "利用 ChatGPT 编写自动化脚本",
+              "AI 辅助脚本编写",
+              "Headless 批处理工作流",
+              "连续批处理",
+              "Makefile 编写",
+              "Makefile 构建系统设计",
+              "Shell 编程",
+              "Shell 脚本编写",
+              "关键字驱动测试脚本编写",
+              "Python 脚本",
+              "分布式批处理"
+            ],
+            "excel_top_terms": [
+              "Makefile",
+              "动态批处理",
+              "Bash",
+              "自动化脚本开发",
+              "脚本编写",
+              "自动化脚本生成",
+              "利用 ChatGPT 编写自动化脚本",
+              "AI 辅助脚本编写",
+              "Headless 批处理工作流",
+              "连续批处理",
+              "Makefile 编写",
+              "Makefile 构建系统设计",
+              "Shell 编程",
+              "Shell 脚本编写",
+              "关键字驱动测试脚本编写",
+              "Python 脚本",
+              "分布式批处理",
+              "安全自动化脚本开发",
+              "异步批处理",
+              "批处理",
+              "批处理与流处理",
+              "批处理机制"
+            ],
+            "ties": [
+              "skill_linux"
+            ]
+          },
+          {
+            "id": "cpp_cap_dev",
+            "label": "开发",
+            "edge": "directed",
+            "description": "接口/服务/微服务/Web/后端/框架 等工程交付",
+            "aliases": [
+              "开发",
+              "Unreal Engine",
+              "Unreal Engine 5",
+              "Unreal Engine 3D 渲染",
+              "Unreal Engine 4",
+              "UE (Unreal Engine)"
+            ],
+            "excel_top_terms": [
+              "Unreal Engine",
+              "Unreal Engine 5",
+              "Unreal Engine 3D 渲染",
+              "Unreal Engine 4",
+              "UE (Unreal Engine)"
+            ],
+            "ties": [
+              "skill_性能优化",
+              "skill_linux",
+              "skill_docker"
+            ]
+          },
+          {
+            "id": "cpp_cap_test",
+            "label": "测试",
+            "edge": "directed",
+            "description": "质量、自动化/接口/性能/回归测试等",
+            "aliases": [
+              "测试",
+              "多线程并行测试",
+              "多线程测试",
+              "A/B 测试",
+              "自动化测试平台",
+              "可用性测试",
+              "自动化测试脚本生成",
+              "测试用例编写",
+              "A/B 测试与数据分析",
+              "红队测试",
+              "A/B 测试框架",
+              "A/B 测试设计",
+              "AB 测试",
+              "一致性测试",
+              "测试用例设计",
+              "产品测试",
+              "A/B 测试平台",
+              "MVP 测试"
+            ],
+            "excel_top_terms": [
+              "多线程并行测试",
+              "多线程测试",
+              "A/B 测试",
+              "自动化测试平台",
+              "可用性测试",
+              "自动化测试脚本生成",
+              "测试用例编写",
+              "A/B 测试与数据分析",
+              "红队测试",
+              "A/B 测试框架",
+              "A/B 测试设计",
+              "AB 测试",
+              "一致性测试",
+              "测试用例设计",
+              "产品测试",
+              "A/B 测试平台",
+              "MVP 测试",
+              "仿真测试",
+              "POC 测试",
+              "渗透测试",
+              "灰度测试",
+              "自动化测试"
+            ],
+            "ties": [
+              "skill_自动化测试",
+              "skill_接口测试",
+              "skill_功能测试"
+            ]
+          },
+          {
+            "id": "cpp_cap_data",
+            "label": "数据分析",
+            "edge": "directed",
+            "description": "数据工程、分析、建模、可视化、数仓/管道 等",
+            "aliases": [
+              "数据分析",
+              "ClickHouse 性能优化",
+              "海量数据处理性能优化",
+              "ETL",
+              "BI 数据分析",
+              "Spark GraphX",
+              "数据挖掘与分析",
+              "大数据分析",
+              "Hive",
+              "Spark MLlib",
+              "数据可视化",
+              "数据建模",
+              "大数据分析建模",
+              "数据管道构建",
+              "大数据处理",
+              "数据统计分析",
+              "大数据开发",
+              "点云数据处理"
+            ],
+            "excel_top_terms": [
+              "ClickHouse 性能优化",
+              "海量数据处理性能优化",
+              "ETL",
+              "BI 数据分析",
+              "Spark GraphX",
+              "数据挖掘与分析",
+              "大数据分析",
+              "Hive",
+              "数据分析",
+              "Spark MLlib",
+              "数据可视化",
+              "数据建模",
+              "大数据分析建模",
+              "数据管道构建",
+              "大数据处理",
+              "数据统计分析",
+              "大数据开发",
+              "点云数据处理",
+              "自动化数据分析",
+              "时序数据分析",
+              "用户数据分析",
+              "自动化数据处理"
+            ],
+            "ties": [
+              "skill_pandas",
+              "skill_数据分析",
+              "skill_pytorch"
+            ]
+          }
+        ],
+        "cross_edges": [
+          {
+            "edge": "undirected",
+            "between": [
+              "cpp_cap_crawler",
+              "cpp_cap_script"
+            ],
+            "note": "采集与脚本编排、清洗常联动。"
+          },
+          {
+            "edge": "undirected",
+            "between": [
+              "cpp_cap_dev",
+              "cpp_cap_test"
+            ],
+            "note": "研发交付中开发与测试强耦合。"
+          },
+          {
+            "edge": "undirected",
+            "between": [
+              "cpp_cap_data",
+              "cpp_cap_dev"
+            ],
+            "note": "数据服务与业务接口常联调。"
+          }
+        ]
+      }
     },
     {
       "id": "skill_rust",
@@ -3108,7 +4149,310 @@
           "sim": 0.4867,
           "same_category": true
         }
-      ]
+      ],
+      "skill_tree": {
+        "description": "Rust 为根节点的五类工程方向子树（业务词表按行筛选 + 分桶频次摘取）。",
+        "source_excel": "key_name, skill_name (user export)",
+        "children": [
+          {
+            "id": "rust_cap_crawler",
+            "label": "爬虫",
+            "edge": "directed",
+            "description": "采集与反爬、站点/数据抓取、浏览器自动化（非测试向）等",
+            "aliases": [
+              "爬虫",
+              "反爬虫策略对抗",
+              "网络爬虫",
+              "爬虫开发",
+              "Beautiful Soup",
+              "BeautifulSoup",
+              "网页爬虫",
+              "爬虫技术",
+              "Scrapy",
+              "反爬识别算法",
+              "分布式大数据爬虫系统",
+              "反爬虫开发",
+              "反爬虫实时风控模型",
+              "LLM 爬虫优化",
+              "AI 爬虫",
+              "JS 逆向爬虫",
+              "分布式爬虫集群",
+              "反爬处理"
+            ],
+            "excel_top_terms": [
+              "爬虫",
+              "反爬虫策略对抗",
+              "网络爬虫",
+              "爬虫开发",
+              "Beautiful Soup",
+              "BeautifulSoup",
+              "网页爬虫",
+              "爬虫技术",
+              "Scrapy",
+              "反爬识别算法",
+              "分布式大数据爬虫系统",
+              "反爬虫开发",
+              "反爬虫实时风控模型",
+              "LLM 爬虫优化",
+              "AI 爬虫",
+              "JS 逆向爬虫",
+              "分布式爬虫集群",
+              "反爬处理",
+              "反爬机制开发",
+              "反爬策略优化",
+              "反爬策略应对",
+              "反爬策略管理"
+            ],
+            "ties": [
+              "skill_selenium"
+            ]
+          },
+          {
+            "id": "rust_cap_script",
+            "label": "脚本",
+            "edge": "directed",
+            "description": "Shell/批处理/自动化与运维向脚本、构建脚本等",
+            "aliases": [
+              "脚本",
+              "Makefile",
+              "动态批处理",
+              "Bash",
+              "自动化脚本开发",
+              "脚本编写",
+              "自动化脚本生成",
+              "利用 ChatGPT 编写自动化脚本",
+              "AI 辅助脚本编写",
+              "Headless 批处理工作流",
+              "连续批处理",
+              "Makefile 编写",
+              "Makefile 构建系统设计",
+              "Shell 编程",
+              "Shell 脚本编写",
+              "关键字驱动测试脚本编写",
+              "Python 脚本",
+              "分布式批处理"
+            ],
+            "excel_top_terms": [
+              "Makefile",
+              "动态批处理",
+              "Bash",
+              "自动化脚本开发",
+              "脚本编写",
+              "自动化脚本生成",
+              "利用 ChatGPT 编写自动化脚本",
+              "AI 辅助脚本编写",
+              "Headless 批处理工作流",
+              "连续批处理",
+              "Makefile 编写",
+              "Makefile 构建系统设计",
+              "Shell 编程",
+              "Shell 脚本编写",
+              "关键字驱动测试脚本编写",
+              "Python 脚本",
+              "分布式批处理",
+              "安全自动化脚本开发",
+              "异步批处理",
+              "批处理",
+              "批处理与流处理",
+              "批处理机制"
+            ],
+            "ties": [
+              "skill_linux"
+            ]
+          },
+          {
+            "id": "rust_cap_dev",
+            "label": "开发",
+            "edge": "directed",
+            "description": "接口/服务/微服务/Web/后端/框架 等工程交付",
+            "aliases": [
+              "开发",
+              "Prompt Engineering",
+              "BFF",
+              "OpenAPI",
+              "API 接口开发",
+              "React",
+              "gRPC",
+              "GraphQL",
+              "Harness Engineering",
+              "REST API",
+              "RESTful API",
+              "Node.js",
+              "Vue.js",
+              "Feature Engineering",
+              "Feature engineering",
+              "Restful API",
+              "Search Engine",
+              "微服务架构"
+            ],
+            "excel_top_terms": [
+              "Prompt Engineering",
+              "BFF",
+              "OpenAPI",
+              "API 接口开发",
+              "React",
+              "gRPC",
+              "GraphQL",
+              "Harness Engineering",
+              "REST API",
+              "RESTful API",
+              "Node.js",
+              "Vue.js",
+              "Feature Engineering",
+              "Feature engineering",
+              "Restful API",
+              "Search Engine",
+              "微服务架构",
+              "Bagging",
+              "Spring AI",
+              "Reactive Programming",
+              "ReAct",
+              "REST APIs"
+            ],
+            "ties": [
+              "skill_微服务",
+              "skill_redis",
+              "skill_kafka"
+            ]
+          },
+          {
+            "id": "rust_cap_test",
+            "label": "测试",
+            "edge": "directed",
+            "description": "质量、自动化/接口/性能/回归测试等",
+            "aliases": [
+              "测试",
+              "A/B 测试",
+              "自动化测试平台",
+              "可用性测试",
+              "自动化测试脚本生成",
+              "测试用例编写",
+              "A/B 测试与数据分析",
+              "红队测试",
+              "A/B 测试框架",
+              "A/B 测试设计",
+              "AB 测试",
+              "一致性测试",
+              "测试用例设计",
+              "产品测试",
+              "A/B 测试平台",
+              "MVP 测试",
+              "仿真测试",
+              "POC 测试"
+            ],
+            "excel_top_terms": [
+              "A/B 测试",
+              "自动化测试平台",
+              "可用性测试",
+              "自动化测试脚本生成",
+              "测试用例编写",
+              "A/B 测试与数据分析",
+              "红队测试",
+              "A/B 测试框架",
+              "A/B 测试设计",
+              "AB 测试",
+              "一致性测试",
+              "测试用例设计",
+              "产品测试",
+              "A/B 测试平台",
+              "MVP 测试",
+              "仿真测试",
+              "POC 测试",
+              "渗透测试",
+              "灰度测试",
+              "自动化测试",
+              "安全性测试",
+              "AB 测试平台"
+            ],
+            "ties": [
+              "skill_自动化测试",
+              "skill_接口测试",
+              "skill_功能测试"
+            ]
+          },
+          {
+            "id": "rust_cap_data",
+            "label": "数据分析",
+            "edge": "directed",
+            "description": "数据工程、分析、建模、可视化、数仓/管道 等",
+            "aliases": [
+              "数据分析",
+              "ETL",
+              "BI 数据分析",
+              "Spark GraphX",
+              "数据挖掘与分析",
+              "大数据分析",
+              "Hive",
+              "Spark MLlib",
+              "数据可视化",
+              "数据建模",
+              "大数据分析建模",
+              "数据管道构建",
+              "大数据处理",
+              "数据统计分析",
+              "大数据开发",
+              "点云数据处理",
+              "自动化数据分析",
+              "时序数据分析"
+            ],
+            "excel_top_terms": [
+              "ETL",
+              "BI 数据分析",
+              "Spark GraphX",
+              "数据挖掘与分析",
+              "大数据分析",
+              "Hive",
+              "数据分析",
+              "Spark MLlib",
+              "数据可视化",
+              "数据建模",
+              "大数据分析建模",
+              "数据管道构建",
+              "大数据处理",
+              "数据统计分析",
+              "大数据开发",
+              "点云数据处理",
+              "自动化数据分析",
+              "时序数据分析",
+              "用户数据分析",
+              "自动化数据处理",
+              "大数据建模",
+              "ETL Pipeline Design"
+            ],
+            "ties": [
+              "skill_pandas",
+              "skill_数据分析",
+              "skill_pytorch"
+            ]
+          }
+        ],
+        "cross_edges": [
+          {
+            "edge": "undirected",
+            "between": [
+              "rust_cap_crawler",
+              "rust_cap_script"
+            ],
+            "note": "采集与脚本编排、清洗常联动。"
+          },
+          {
+            "edge": "undirected",
+            "between": [
+              "rust_cap_dev",
+              "rust_cap_test"
+            ],
+            "note": "研发交付中开发与测试强耦合。"
+          },
+          {
+            "edge": "undirected",
+            "between": [
+              "rust_cap_data",
+              "rust_cap_dev"
+            ],
+            "note": "数据服务与业务接口常联调。"
+          }
+        ]
+      }
     },
     {
       "id": "skill_node_js",
@@ -5540,7 +6884,311 @@
           "sim": 0.419,
           "same_category": true
         }
-      ]
+      ],
+      "skill_tree": {
+        "description": "TypeScript 为根节点的五类工程方向子树（业务词表按行筛选 + 分桶频次摘取）。",
+        "source_excel": "key_name, skill_name (user export)",
+        "children": [
+          {
+            "id": "ts_cap_crawler",
+            "label": "爬虫",
+            "edge": "directed",
+            "description": "采集与反爬、站点/数据抓取、浏览器自动化（非测试向）等",
+            "aliases": [
+              "爬虫",
+              "反爬虫策略对抗",
+              "网络爬虫",
+              "爬虫开发",
+              "Beautiful Soup",
+              "BeautifulSoup",
+              "网页爬虫",
+              "爬虫技术",
+              "Scrapy",
+              "反爬识别算法",
+              "分布式大数据爬虫系统",
+              "反爬虫开发",
+              "反爬虫实时风控模型",
+              "LLM 爬虫优化",
+              "AI 爬虫",
+              "JS 逆向爬虫",
+              "分布式爬虫集群",
+              "反爬处理"
+            ],
+            "excel_top_terms": [
+              "爬虫",
+              "反爬虫策略对抗",
+              "网络爬虫",
+              "爬虫开发",
+              "Beautiful Soup",
+              "BeautifulSoup",
+              "网页爬虫",
+              "爬虫技术",
+              "Scrapy",
+              "反爬识别算法",
+              "分布式大数据爬虫系统",
+              "反爬虫开发",
+              "反爬虫实时风控模型",
+              "LLM 爬虫优化",
+              "AI 爬虫",
+              "JS 逆向爬虫",
+              "分布式爬虫集群",
+              "反爬处理",
+              "反爬机制开发",
+              "反爬策略优化",
+              "反爬策略应对",
+              "反爬策略管理"
+            ],
+            "ties": [
+              "skill_selenium"
+            ]
+          },
+          {
+            "id": "ts_cap_script",
+            "label": "脚本",
+            "edge": "directed",
+            "description": "Shell/批处理/自动化与运维向脚本、构建脚本等",
+            "aliases": [
+              "脚本",
+              "Makefile",
+              "动态批处理",
+              "Bash",
+              "自动化脚本开发",
+              "脚本编写",
+              "自动化脚本生成",
+              "利用 ChatGPT 编写自动化脚本",
+              "AI 辅助脚本编写",
+              "Headless 批处理工作流",
+              "连续批处理",
+              "Makefile 编写",
+              "Makefile 构建系统设计",
+              "Shell 编程",
+              "Shell 脚本编写",
+              "关键字驱动测试脚本编写",
+              "Python 脚本",
+              "分布式批处理"
+            ],
+            "excel_top_terms": [
+              "Makefile",
+              "动态批处理",
+              "Bash",
+              "自动化脚本开发",
+              "脚本编写",
+              "自动化脚本生成",
+              "利用 ChatGPT 编写自动化脚本",
+              "AI 辅助脚本编写",
+              "Headless 批处理工作流",
+              "连续批处理",
+              "Makefile 编写",
+              "Makefile 构建系统设计",
+              "Shell 编程",
+              "Shell 脚本编写",
+              "关键字驱动测试脚本编写",
+              "Python 脚本",
+              "分布式批处理",
+              "安全自动化脚本开发",
+              "异步批处理",
+              "批处理",
+              "批处理与流处理",
+              "批处理机制"
+            ],
+            "ties": [
+              "skill_linux"
+            ]
+          },
+          {
+            "id": "ts_cap_dev",
+            "label": "开发",
+            "edge": "directed",
+            "description": "接口/服务/微服务/Web/后端/框架 等工程交付",
+            "aliases": [
+              "开发",
+              "NestJS",
+              "NestJs",
+              "Nestjs",
+              "NextJS",
+              "Nest",
+              "Nest.js",
+              "Next.js",
+              "Onestream",
+              "ProNest",
+              "Prompt Engineering",
+              "BFF",
+              "OpenAPI",
+              "API 接口开发",
+              "React",
+              "gRPC",
+              "GraphQL",
+              "Harness Engineering"
+            ],
+            "excel_top_terms": [
+              "NestJS",
+              "NestJs",
+              "Nestjs",
+              "NextJS",
+              "Nest",
+              "Nest.js",
+              "Next.js",
+              "Onestream",
+              "ProNest",
+              "Prompt Engineering",
+              "BFF",
+              "OpenAPI",
+              "API 接口开发",
+              "React",
+              "gRPC",
+              "GraphQL",
+              "Harness Engineering",
+              "REST API",
+              "RESTful API",
+              "Node.js",
+              "Vue.js",
+              "Feature Engineering"
+            ],
+            "ties": [
+              "skill_vue",
+              "skill_react",
+              "skill_node_js",
+              "skill_mysql"
+            ]
+          },
+          {
+            "id": "ts_cap_test",
+            "label": "测试",
+            "edge": "directed",
+            "description": "质量、自动化/接口/性能/回归测试等",
+            "aliases": [
+              "测试",
+              "A/B 测试",
+              "自动化测试平台",
+              "可用性测试",
+              "自动化测试脚本生成",
+              "测试用例编写",
+              "A/B 测试与数据分析",
+              "红队测试",
+              "A/B 测试框架",
+              "A/B 测试设计",
+              "AB 测试",
+              "一致性测试",
+              "测试用例设计",
+              "产品测试",
+              "A/B 测试平台",
+              "MVP 测试",
+              "仿真测试",
+              "POC 测试"
+            ],
+            "excel_top_terms": [
+              "A/B 测试",
+              "自动化测试平台",
+              "可用性测试",
+              "自动化测试脚本生成",
+              "测试用例编写",
+              "A/B 测试与数据分析",
+              "红队测试",
+              "A/B 测试框架",
+              "A/B 测试设计",
+              "AB 测试",
+              "一致性测试",
+              "测试用例设计",
+              "产品测试",
+              "A/B 测试平台",
+              "MVP 测试",
+              "仿真测试",
+              "POC 测试",
+              "渗透测试",
+              "灰度测试",
+              "自动化测试",
+              "安全性测试",
+              "AB 测试平台"
+            ],
+            "ties": [
+              "skill_自动化测试",
+              "skill_接口测试",
+              "skill_功能测试"
+            ]
+          },
+          {
+            "id": "ts_cap_data",
+            "label": "数据分析",
+            "edge": "directed",
+            "description": "数据工程、分析、建模、可视化、数仓/管道 等",
+            "aliases": [
+              "数据分析",
+              "ETL",
+              "BI 数据分析",
+              "Spark GraphX",
+              "数据挖掘与分析",
+              "大数据分析",
+              "Hive",
+              "Spark MLlib",
+              "数据可视化",
+              "数据建模",
+              "大数据分析建模",
+              "数据管道构建",
+              "大数据处理",
+              "数据统计分析",
+              "大数据开发",
+              "点云数据处理",
+              "自动化数据分析",
+              "时序数据分析"
+            ],
+            "excel_top_terms": [
+              "ETL",
+              "BI 数据分析",
+              "Spark GraphX",
+              "数据挖掘与分析",
+              "大数据分析",
+              "Hive",
+              "数据分析",
+              "Spark MLlib",
+              "数据可视化",
+              "数据建模",
+              "大数据分析建模",
+              "数据管道构建",
+              "大数据处理",
+              "数据统计分析",
+              "大数据开发",
+              "点云数据处理",
+              "自动化数据分析",
+              "时序数据分析",
+              "用户数据分析",
+              "自动化数据处理",
+              "大数据建模",
+              "ETL Pipeline Design"
+            ],
+            "ties": [
+              "skill_pandas",
+              "skill_数据分析",
+              "skill_pytorch"
+            ]
+          }
+        ],
+        "cross_edges": [
+          {
+            "edge": "undirected",
+            "between": [
+              "ts_cap_crawler",
+              "ts_cap_script"
+            ],
+            "note": "采集与脚本编排、清洗常联动。"
+          },
+          {
+            "edge": "undirected",
+            "between": [
+              "ts_cap_dev",
+              "ts_cap_test"
+            ],
+            "note": "研发交付中开发与测试强耦合。"
+          },
+          {
+            "edge": "undirected",
+            "between": [
+              "ts_cap_data",
+              "ts_cap_dev"
+            ],
+            "note": "数据服务与业务接口常联调。"
+          }
+        ]
+      }
     },
     {
       "id": "skill_h5_小程序",
@@ -16426,7 +18074,311 @@
           "sim": 0.5321,
           "same_category": true
         }
-      ]
+      ],
+      "skill_tree": {
+        "description": "JavaScript 为根节点的五类工程方向子树（业务词表按行筛选 + 分桶频次摘取）。",
+        "source_excel": "key_name, skill_name (user export)",
+        "children": [
+          {
+            "id": "js_cap_crawler",
+            "label": "爬虫",
+            "edge": "directed",
+            "description": "采集与反爬、站点/数据抓取、浏览器自动化（非测试向）等",
+            "aliases": [
+              "爬虫",
+              "反爬虫策略对抗",
+              "网络爬虫",
+              "爬虫开发",
+              "Beautiful Soup",
+              "BeautifulSoup",
+              "网页爬虫",
+              "爬虫技术",
+              "Scrapy",
+              "反爬识别算法",
+              "分布式大数据爬虫系统",
+              "反爬虫开发",
+              "反爬虫实时风控模型",
+              "LLM 爬虫优化",
+              "AI 爬虫",
+              "JS 逆向爬虫",
+              "分布式爬虫集群",
+              "反爬处理"
+            ],
+            "excel_top_terms": [
+              "爬虫",
+              "反爬虫策略对抗",
+              "网络爬虫",
+              "爬虫开发",
+              "Beautiful Soup",
+              "BeautifulSoup",
+              "网页爬虫",
+              "爬虫技术",
+              "Scrapy",
+              "反爬识别算法",
+              "分布式大数据爬虫系统",
+              "反爬虫开发",
+              "反爬虫实时风控模型",
+              "LLM 爬虫优化",
+              "AI 爬虫",
+              "JS 逆向爬虫",
+              "分布式爬虫集群",
+              "反爬处理",
+              "反爬机制开发",
+              "反爬策略优化",
+              "反爬策略应对",
+              "反爬策略管理"
+            ],
+            "ties": [
+              "skill_selenium"
+            ]
+          },
+          {
+            "id": "js_cap_script",
+            "label": "脚本",
+            "edge": "directed",
+            "description": "Shell/批处理/自动化与运维向脚本、构建脚本等",
+            "aliases": [
+              "脚本",
+              "Makefile",
+              "动态批处理",
+              "Bash",
+              "自动化脚本开发",
+              "脚本编写",
+              "自动化脚本生成",
+              "利用 ChatGPT 编写自动化脚本",
+              "AI 辅助脚本编写",
+              "Headless 批处理工作流",
+              "连续批处理",
+              "Makefile 编写",
+              "Makefile 构建系统设计",
+              "Shell 编程",
+              "Shell 脚本编写",
+              "关键字驱动测试脚本编写",
+              "Python 脚本",
+              "分布式批处理"
+            ],
+            "excel_top_terms": [
+              "Makefile",
+              "动态批处理",
+              "Bash",
+              "自动化脚本开发",
+              "脚本编写",
+              "自动化脚本生成",
+              "利用 ChatGPT 编写自动化脚本",
+              "AI 辅助脚本编写",
+              "Headless 批处理工作流",
+              "连续批处理",
+              "Makefile 编写",
+              "Makefile 构建系统设计",
+              "Shell 编程",
+              "Shell 脚本编写",
+              "关键字驱动测试脚本编写",
+              "Python 脚本",
+              "分布式批处理",
+              "安全自动化脚本开发",
+              "异步批处理",
+              "批处理",
+              "批处理与流处理",
+              "批处理机制"
+            ],
+            "ties": [
+              "skill_linux"
+            ]
+          },
+          {
+            "id": "js_cap_dev",
+            "label": "开发",
+            "edge": "directed",
+            "description": "接口/服务/微服务/Web/后端/框架 等工程交付",
+            "aliases": [
+              "开发",
+              "React",
+              "Vue.js",
+              "Node.js",
+              "Angular",
+              "React-query",
+              "QLExpress",
+              "Express",
+              "React DnD",
+              "ReactFlow",
+              "ReAct",
+              "React Native",
+              "React-router",
+              "React Email",
+              "React Hook Form",
+              "React Flow",
+              "React Hooks",
+              "React Router"
+            ],
+            "excel_top_terms": [
+              "React",
+              "Vue.js",
+              "Node.js",
+              "Angular",
+              "React-query",
+              "QLExpress",
+              "Express",
+              "React DnD",
+              "ReactFlow",
+              "ReAct",
+              "React Native",
+              "React-router",
+              "React Email",
+              "React Hook Form",
+              "React Flow",
+              "React Hooks",
+              "React Router",
+              "React Query",
+              "React Testing Library",
+              "Reactive Programming",
+              "AngularJS",
+              "react-dnd"
+            ],
+            "ties": [
+              "skill_vue",
+              "skill_react",
+              "skill_node_js",
+              "skill_mysql"
+            ]
+          },
+          {
+            "id": "js_cap_test",
+            "label": "测试",
+            "edge": "directed",
+            "description": "质量、自动化/接口/性能/回归测试等",
+            "aliases": [
+              "测试",
+              "A/B 测试",
+              "自动化测试平台",
+              "可用性测试",
+              "自动化测试脚本生成",
+              "测试用例编写",
+              "A/B 测试与数据分析",
+              "红队测试",
+              "A/B 测试框架",
+              "A/B 测试设计",
+              "AB 测试",
+              "一致性测试",
+              "测试用例设计",
+              "产品测试",
+              "A/B 测试平台",
+              "MVP 测试",
+              "仿真测试",
+              "POC 测试"
+            ],
+            "excel_top_terms": [
+              "A/B 测试",
+              "自动化测试平台",
+              "可用性测试",
+              "自动化测试脚本生成",
+              "测试用例编写",
+              "A/B 测试与数据分析",
+              "红队测试",
+              "A/B 测试框架",
+              "A/B 测试设计",
+              "AB 测试",
+              "一致性测试",
+              "测试用例设计",
+              "产品测试",
+              "A/B 测试平台",
+              "MVP 测试",
+              "仿真测试",
+              "POC 测试",
+              "渗透测试",
+              "灰度测试",
+              "自动化测试",
+              "安全性测试",
+              "AB 测试平台"
+            ],
+            "ties": [
+              "skill_自动化测试",
+              "skill_接口测试",
+              "skill_功能测试"
+            ]
+          },
+          {
+            "id": "js_cap_data",
+            "label": "数据分析",
+            "edge": "directed",
+            "description": "数据工程、分析、建模、可视化、数仓/管道 等",
+            "aliases": [
+              "数据分析",
+              "ETL",
+              "BI 数据分析",
+              "Spark GraphX",
+              "数据挖掘与分析",
+              "大数据分析",
+              "Hive",
+              "Spark MLlib",
+              "数据可视化",
+              "数据建模",
+              "大数据分析建模",
+              "数据管道构建",
+              "大数据处理",
+              "数据统计分析",
+              "大数据开发",
+              "点云数据处理",
+              "自动化数据分析",
+              "时序数据分析"
+            ],
+            "excel_top_terms": [
+              "ETL",
+              "BI 数据分析",
+              "Spark GraphX",
+              "数据挖掘与分析",
+              "大数据分析",
+              "Hive",
+              "数据分析",
+              "Spark MLlib",
+              "数据可视化",
+              "数据建模",
+              "大数据分析建模",
+              "数据管道构建",
+              "大数据处理",
+              "数据统计分析",
+              "大数据开发",
+              "点云数据处理",
+              "自动化数据分析",
+              "时序数据分析",
+              "用户数据分析",
+              "自动化数据处理",
+              "大数据建模",
+              "ETL Pipeline Design"
+            ],
+            "ties": [
+              "skill_pandas",
+              "skill_数据分析",
+              "skill_pytorch"
+            ]
+          }
+        ],
+        "cross_edges": [
+          {
+            "edge": "undirected",
+            "between": [
+              "js_cap_crawler",
+              "js_cap_script"
+            ],
+            "note": "采集与脚本编排、清洗常联动。"
+          },
+          {
+            "edge": "undirected",
+            "between": [
+              "js_cap_dev",
+              "js_cap_test"
+            ],
+            "note": "研发交付中开发与测试强耦合。"
+          },
+          {
+            "edge": "undirected",
+            "between": [
+              "js_cap_data",
+              "js_cap_dev"
+            ],
+            "note": "数据服务与业务接口常联调。"
+          }
+        ]
+      }
     },
     {
       "id": "skill_git",
@@ -21663,5 +23615,8 @@
         }
       ]
     }
-  ]
+  ],
+  "ingest_meta": {
+    "skill_trees_excel": "D:\\项目\\ttc\\zhishitupu-demo\\dataset\\skill_trees_from_excel.json"
+  }
 }
